@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תוכנית אימונים | עדן סנסל | 8 שבועות</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; font-size: 13px; direction: rtl; }
+
+  .page-wrap { max-width: 960px; margin: 0 auto; padding: 16px; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%); color: #fff; border-radius: 14px; padding: 28px 32px 22px; margin-bottom: 18px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -40px; left: -40px; width: 200px; height: 200px; background: rgba(255,255,255,0.03); border-radius: 50%; }
+  .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .hero-name { font-size: 32px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+  .hero-sub { font-size: 12px; color: #a8b4c8; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+  .hero-badge { background: #e94560; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .hero-stats { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+  .hstat { text-align: center; }
+  .hstat .v { font-size: 24px; font-weight: 900; color: #e94560; line-height: 1; }
+  .hstat .l { font-size: 10px; color: #a8b4c8; margin-top: 2px; }
+
+  /* GOALS */
+  .goals-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+  .goal-card { background: #fff; border-radius: 10px; padding: 14px 16px; border-right: 4px solid #e94560; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  .goal-card.g2 { border-color: #f5a623; }
+  .goal-card.g3 { border-color: #27ae60; }
+  .goal-num { font-size: 9px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+  .goal-title { font-size: 14px; font-weight: 800; margin-top: 2px; color: #1a1a2e; }
+  .goal-sub { font-size: 11px; color: #666; margin-top: 3px; }
+
+  /* TAGS */
+  .tag { display: inline-block; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 0.3px; }
+  .tag.dk { background: #1a1a2e; color: #fff; }
+  .tag.r { background: #e94560; color: #fff; }
+  .tag.au { background: #f5a623; color: #1a1a2e; }
+  .tag.g { background: #27ae60; color: #fff; }
+  .tag.bl { background: #2980b9; color: #fff; }
+  .tag.pur { background: #8e44ad; color: #fff; }
+
+  /* SECTION */
+  .section { background: #fff; border-radius: 12px; padding: 18px 20px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+
+  /* WEEK OVERVIEW */
+  .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .day-card { background: #f8f9fa; border-radius: 8px; padding: 10px 8px; text-align: center; border: 1.5px solid #e9ecef; }
+  .day-card.active { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #fff; border-color: #1a1a2e; }
+  .day-card.active .day-name { color: #a8b4c8; }
+  .day-card.active .day-content { color: #fff; }
+  .day-card.test { background: linear-gradient(135deg, #e94560, #c0392b); color: #fff; border-color: #e94560; }
+  .day-card.test .day-name { color: #ffb3be; }
+  .day-card.gym { background: linear-gradient(135deg, #f5a623, #e67e22); color: #1a1a2e; border-color: #f5a623; }
+  .day-card.gym .day-name { color: #7d4d00; }
+  .day-card.run { background: linear-gradient(135deg, #27ae60, #1e8449); color: #fff; border-color: #27ae60; }
+  .day-card.run .day-name { color: #a8f0c6; }
+  .day-card.xpert { background: linear-gradient(135deg, #2980b9, #1a5276); color: #fff; border-color: #2980b9; }
+  .day-card.xpert .day-name { color: #aed6f1; }
+  .day-card.rest { background: #f8f9fa; border-color: #dee2e6; }
+  .day-name { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; color: #999; }
+  .day-icon { font-size: 18px; line-height: 1.2; }
+  .day-content { font-size: 9.5px; font-weight: 700; margin-top: 3px; line-height: 1.3; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { background: #1a1a2e; color: #fff; padding: 8px 10px; text-align: right; font-size: 11px; font-weight: 700; }
+  td { padding: 7px 10px; border-bottom: 1px solid #f0f2f5; text-align: right; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+  .wbadge { display: inline-block; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+  .wbadge.r1 { background: #fdecea; color: #c0392b; }
+  .wbadge.r2 { background: #e94560; color: #fff; }
+  .wbadge.r3 { background: #c0392b; color: #fff; }
+  .wbadge.g1 { background: #eafaf1; color: #1e8449; }
+  .test-badge { background: #e94560; color: #fff; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 10px; }
+  .rm-badge { background: #f5a623; color: #1a1a2e; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 10px; }
+
+  /* EXERCISE BLOCKS */
+  .ex-block { border: 1.5px solid #e9ecef; border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; }
+  .ex-block .ex-letter { display: inline-block; background: #1a1a2e; color: #fff; width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 11px; font-weight: 800; margin-left: 8px; }
+  .ex-block .ex-title { font-weight: 800; font-size: 13px; display: inline; }
+  .ex-block .ex-detail { font-size: 11px; color: #555; margin-top: 5px; line-height: 1.6; }
+  .ex-meta { font-size: 10px; color: #888; font-style: italic; float: left; }
+
+  /* RM1 TABLE */
+  .rm-table th { background: #f5a623; color: #1a1a2e; }
+  .rm-table td:first-child { font-weight: 700; }
+  .pct-col { color: #e94560; font-weight: 700; }
+
+  /* NOTES */
+  .note { background: #f8f9fa; border-right: 3px solid #a8b4c8; padding: 8px 12px; font-size: 11px; color: #555; margin-bottom: 10px; border-radius: 0 6px 6px 0; line-height: 1.5; }
+  .note.warn { border-color: #e94560; background: #fdecea; }
+  .note.success { border-color: #27ae60; background: #eafaf1; }
+  .note.info { border-color: #2980b9; background: #eaf4fb; }
+
+  /* TRACKING */
+  .track-table th { background: #16213e; }
+  .track-table td { vertical-align: middle; }
+  .check-box { display: inline-block; width: 16px; height: 16px; border: 2px solid #ccc; border-radius: 3px; vertical-align: middle; }
+
+  /* EXPERT VISITS */
+  .visit-card { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .visit-box { border: 2px dashed #2980b9; border-radius: 10px; padding: 14px; text-align: center; }
+  .visit-box .vnum { font-size: 28px; font-weight: 900; color: #2980b9; }
+  .visit-box .vtitle { font-size: 12px; font-weight: 700; color: #1a1a2e; margin-top: 4px; }
+  .visit-box .vsub { font-size: 10px; color: #888; margin-top: 3px; }
+  .visit-box .vline { border-bottom: 1.5px solid #dee2e6; margin: 8px 0; }
+  .visit-box .vfield { font-size: 10px; color: #aaa; }
+
+  /* WEIGHT */
+  .weight-target { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .wt-box { background: #f8f9fa; border-radius: 8px; padding: 10px; text-align: center; border: 1.5px solid #e9ecef; }
+  .wt-box .wt-week { font-size: 10px; color: #888; }
+  .wt-box .wt-kg { font-size: 18px; font-weight: 900; color: #e94560; }
+  .wt-box .wt-label { font-size: 9px; color: #aaa; }
+
+  /* TWO COLUMN */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  @media (max-width: 700px) {
+    .goals-row { grid-template-columns: 1fr; }
+    .week-grid { grid-template-columns: repeat(4, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .weight-target { grid-template-columns: repeat(2,1fr); }
+    .visit-card { grid-template-columns: 1fr; }
+  }
+
+  .divider { border: none; border-top: 2px solid #f0f2f5; margin: 14px 0; }
+  strong { font-weight: 800; }
+  em { color: #e94560; font-style: normal; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-top">
+      <div>
+        <div class="hero-name">עדן סנסל</div>
+        <div class="hero-sub">תוכנית אישית | צוות גזר · XPERT ראשון + שלישי · 8 שבועות</div>
+      </div>
+      <div class="hero-badge">🏅 צוות גזר</div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="v">8</div><div class="l">שבועות תוכנית</div></div>
+      <div class="hstat"><div class="v">&lt;12:00</div><div class="l">יעד 3000מ'</div></div>
+      <div class="hstat"><div class="v">−2 ק"ג</div><div class="l">יעד משקל גוף</div></div>
+      <div class="hstat"><div class="v">5×5</div><div class="l">כוח אולימפי</div></div>
+      <div class="hstat"><div class="v">3</div><div class="l">בוחני 3000מ'</div></div>
+    </div>
+  </div>
+
+  <!-- GOALS -->
+  <div class="goals-row">
+    <div class="goal-card">
+      <div class="goal-num">יעד 1 — ריצה</div>
+      <div class="goal-title">🏃 3000מ' מתחת ל-12:00</div>
+      <div class="goal-sub">בוחנים בשבועות 1 · 4 · 7. לרשום זמן ולשלוח לאמיט.</div>
+    </div>
+    <div class="goal-card g2">
+      <div class="goal-num">יעד 2 — משקל גוף</div>
+      <div class="goal-title">⚖️ ירידה של 2 ק"ג</div>
+      <div class="goal-sub">עד סיום השבוע השמיני. לשקול כל שבוע בבוקר, בצום.</div>
+    </div>
+    <div class="goal-card g3">
+      <div class="goal-num">יעד 3 — אקספרט</div>
+      <div class="goal-title">👥 2 ביקורי אקספרט — צוותים שונים</div>
+      <div class="goal-sub">לא צוות גזר. לאורך התוכנית. לדווח לאמיט.</div>
+    </div>
+  </div>
+
+  <!-- WEEKLY OVERVIEW -->
+  <div class="section">
+    <div class="tag dk">📅 לוח שבועי — מבנה קבוע</div>
+    <div class="week-grid">
+      <div class="day-card xpert">
+        <div class="day-name">ראשון</div>
+        <div class="day-icon">⚡</div>
+        <div class="day-content">XPERT<br>גזר</div>
+      </div>
+      <div class="day-card rest">
+        <div class="day-name">שני</div>
+        <div class="day-icon">😴</div>
+        <div class="day-content">מנוחה</div>
+      </div>
+      <div class="day-card xpert">
+        <div class="day-name">שלישי</div>
+        <div class="day-icon">⚡</div>
+        <div class="day-content">XPERT<br>גזר</div>
+      </div>
+      <div class="day-card gym">
+        <div class="day-name">רביעי</div>
+        <div class="day-icon">🏋️</div>
+        <div class="day-content">כוח אולימפי 1<br>5×5</div>
+      </div>
+      <div class="day-card test">
+        <div class="day-name">חמישי</div>
+        <div class="day-icon">⚡</div>
+        <div class="day-content">אינטרוואלים<br>שב' 1,4,7: בוחן</div>
+      </div>
+      <div class="day-card run">
+        <div class="day-name">שישי</div>
+        <div class="day-icon">🏃</div>
+        <div class="day-content">ריצת נפח<br>4:50/ק"מ</div>
+      </div>
+      <div class="day-card gym">
+        <div class="day-name">שבת</div>
+        <div class="day-icon">🏋️</div>
+        <div class="day-content">כוח אולימפי 2<br>5×5 + ליבה</div>
+      </div>
+    </div>
+    <div class="note info" style="margin-top:12px;">
+      <strong>שבוע 8 — הורדת עומס:</strong> XPERT בלבד + ריצה קלה. ללא אימוני כוח אולימפי.
+      בשבועות 3 ו-6 — <span class="rm-badge">RM1 TEST</span> ביום שישי נוסף (לא מחליף שום אימון אחר).
+    </div>
+  </div>
+
+  <!-- RUNNING PLAN -->
+  <div class="section">
+    <div class="tag r">⚡ חמישי — אינטרוואלים + בוחני 3000מ'</div>
+    <div class="note">
+      <strong>מבנה:</strong> חימום 10 דק' ריצה קלה → סדרה → שחרור 5 דק'. מנוחה בין חזרות: 2:00–3:00 דק' (לפי טבלה).
+      <strong> בסיס:</strong> יכולת נוכחית — 3000מ' סביב 12:00. יעד 1000מ': מתחת ל-3:40.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:12%">שבוע</th>
+          <th style="width:10%">תאריך</th>
+          <th style="width:20%">מהלך</th>
+          <th style="width:18%">יעד</th>
+          <th style="width:12%">מנוחה</th>
+          <th style="width:10%">נפח</th>
+          <th>הערה</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r1">שבוע 1</span></td>
+          <td>8.6</td>
+          <td><span class="test-badge">⭐ בוחן 3000מ'</span></td>
+          <td>לרשום זמן בסיס!</td>
+          <td>—</td>
+          <td>3 ק"מ</td>
+          <td>אחרי חימום 10 דק'. שולחים זמן לאמיט מיד.</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r1">שבוע 2</span></td>
+          <td>15.6</td>
+          <td>4×1000מ'</td>
+          <td>&lt;3:38</td>
+          <td>3 דק'</td>
+          <td>4 ק"מ</td>
+          <td>כניסה לעבודה — קצב עקבי בכל חזרה</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r1">שבוע 3</span></td>
+          <td>22.6</td>
+          <td>3×2000מ'</td>
+          <td>&lt;8:00</td>
+          <td>4:30 דק'</td>
+          <td>6 ק"מ</td>
+          <td>עלייה בנפח — שבוע RM1 ביום שישי נוסף</td>
+        </tr>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r2">שבוע 4</span></td>
+          <td>29.6</td>
+          <td><span class="test-badge">⭐ בוחן 3000מ'</span></td>
+          <td>שיפור על בוחן 1</td>
+          <td>—</td>
+          <td>3 ק"מ</td>
+          <td>לדחוף. לראות כמה ירדת. לשלוח לאמיט.</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r2">שבוע 5</span></td>
+          <td>6.7</td>
+          <td>5×1000מ'</td>
+          <td>&lt;3:40</td>
+          <td>3 דק'</td>
+          <td>5 ק"מ</td>
+          <td>עלייה בנפח — לשמור קצב עקבי</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r2">שבוע 6</span></td>
+          <td>13.7</td>
+          <td>4×2000מ'</td>
+          <td>&lt;8:00</td>
+          <td>4:30 דק'</td>
+          <td>8 ק"מ</td>
+          <td>שיא נפח אינטרוואלים. שבוע RM1 ביום שישי נוסף.</td>
+        </tr>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r3">שבוע 7</span></td>
+          <td>20.7</td>
+          <td><span class="test-badge">⭐ בוחן 3000מ'</span></td>
+          <td><strong>מתחת ל-12:00!</strong></td>
+          <td>—</td>
+          <td>3 ק"מ</td>
+          <td>🏁 הבוחן הסופי. כל מה שאימנת — עכשיו.</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge g1">שבוע 8</span></td>
+          <td>27.7</td>
+          <td>ריצה קלה</td>
+          <td>לפי תחושה</td>
+          <td>—</td>
+          <td>—</td>
+          <td>הורדת עומס. ללא אינטרוואלים.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note warn" style="margin-top:12px;">
+      <strong>⚠️ לקראת בוחן 3000מ':</strong> חימום 10 דק' ריצה קלה. קצב אחיד מהמטר הראשון — לא לצאת מהר מדי. הכאב מגיע ב-2,000מ' — לצפות אותו. ב-200מ' האחרונים — הכל על השולחן.
+    </div>
+  </div>
+
+  <!-- VOLUME RUN -->
+  <div class="section">
+    <div class="tag g">🌿 שישי — ריצת נפח (קצב נוח)</div>
+    <div class="note">
+      <strong>קצב:</strong> 4:50/ק"מ — נוח, ברציפות, ללא עצירה. <strong>בשבועות בוחן (1, 4, 7)</strong> — ריצה קצרה ונוחה, לא להעמיס לפני/אחרי הבוחן.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:12%">שבוע</th>
+          <th style="width:10%">תאריך</th>
+          <th style="width:15%">זמן ריצה</th>
+          <th style="width:18%">קצב יעד</th>
+          <th style="width:15%">מרחק משוער</th>
+          <th>הערה</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r1">שבוע 1</span></td>
+          <td>9.6</td>
+          <td>30 דק' (קל)</td>
+          <td>5:00/ק"מ</td>
+          <td>~6 ק"מ</td>
+          <td>שבוע בוחן — לחיות, לא לרוץ חזק</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r1">שבוע 2</span></td>
+          <td>16.6</td>
+          <td>40 דק'</td>
+          <td>4:50/ק"מ</td>
+          <td>~8.3 ק"מ</td>
+          <td>עלייה בנפח</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r1">שבוע 3</span></td>
+          <td>23.6</td>
+          <td>45 דק'</td>
+          <td>4:50/ק"מ</td>
+          <td>~9.3 ק"מ</td>
+          <td>שבוע RM1 — הריצה נשמרת</td>
+        </tr>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r2">שבוע 4</span></td>
+          <td>30.6</td>
+          <td>30 דק' (קל)</td>
+          <td>5:00/ק"מ</td>
+          <td>~6 ק"מ</td>
+          <td>שבוע בוחן — לנוח, לא לרוץ חזק</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r2">שבוע 5</span></td>
+          <td>7.7</td>
+          <td>47.5 דק'</td>
+          <td>4:50/ק"מ</td>
+          <td>~9.8 ק"מ</td>
+          <td>שיפור קצב ונפח</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r2">שבוע 6</span></td>
+          <td>14.7</td>
+          <td>50 דק'</td>
+          <td>4:50/ק"מ</td>
+          <td>~10.3 ק"מ</td>
+          <td>שבוע RM1 — שיא נפח ריצה</td>
+        </tr>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r3">שבוע 7</span></td>
+          <td>21.7</td>
+          <td>30 דק' (קל)</td>
+          <td>5:00/ק"מ</td>
+          <td>~6 ק"מ</td>
+          <td>שבוע בוחן — לחסוך כוחות לחמישי</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge g1">שבוע 8</span></td>
+          <td>28.7</td>
+          <td>ריצה קלה</td>
+          <td>5:00/ק"מ</td>
+          <td>5–6 ק"מ</td>
+          <td>הורדת עומס. לפי תחושה.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- OLYMPIC STRENGTH -->
+  <div class="section">
+    <div class="tag au">🏋️ רביעי + שבת — כוח אולימפי 5×5 (מתוכנית אלון מרכוס)</div>
+
+    <div class="note info">
+      <strong>שיטת עבודה 5×5:</strong> 5 סטים × 5 חזרות. לפני כל תרגיל — חימום הדרגתי ספציפי: 50% → 65% → 80% → 90% → משקל עבודה.
+      מנוחה 2 דק' בין סט לסט. כל שבוע — <strong>+2.5 ק"ג</strong> (תרגילים גדולים) / <strong>+1.25 ק"ג</strong> (כתפיים).
+    </div>
+
+    <div class="note warn">
+      <strong>⚠️ שבוע ראשון:</strong> מצא את המשקל שאיתו אתה מסיים 5×5 עם טכניקה מלאה. עדיף להתחיל נמוך ולעלות, מאשר להיכנס גבוה מדי. אין RM1 עדיין — ת'חיה בכבוד, תגלה את המשקל בהדרגה.
+    </div>
+
+    <!-- WARMUP -->
+    <div style="background:#f8f9fa; border-radius:8px; padding:14px; margin-bottom:14px;">
+      <strong>חימום לפני כל אימון כוח:</strong>
+      <ul style="margin-top:6px; padding-right:18px; font-size:12px; color:#555; line-height:1.8;">
+        <li>ריצה קלה 5–7 דק' + חימום מפרקים: ירכיים, כתפיים, מרפקים, קרסוליים</li>
+        <li>חימום ספציפי לכל תרגיל: 50% → 65% → 80% → 90% → משקל עבודה</li>
+      </ul>
+    </div>
+
+    <!-- EXERCISES -->
+    <div class="ex-block">
+      <span class="ex-letter">א</span>
+      <span class="ex-title">סקאווט (Squat)</span>
+      <span class="ex-meta">+2.5 ק"ג/שבוע</span>
+      <div class="ex-detail">
+        <strong>5 סטים × 5 חזרות</strong> · מנוחה 2 דק'<br>
+        גב ישר, ברכיים לפי כיוון האצבעות, ירידה מעל מקביל. שומר חובה.<br>
+        <em>לצלם מהצד — לשלוח לאמיט.</em>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <span class="ex-letter">ב</span>
+      <span class="ex-title">בנץ' פרס (Bench Press)</span>
+      <span class="ex-meta">+1.25–2.5 ק"ג/שבוע</span>
+      <div class="ex-detail">
+        <strong>5 סטים × 5 חזרות</strong> · מנוחה 2 דק'<br>
+        מגע חזה מלא, עלייה מפוצצת. שומר חובה.<br>
+        <em>לצלם מהצד — לשלוח לאמיט.</em>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <span class="ex-letter">ג</span>
+      <span class="ex-title">דדליפט (Deadlift)</span>
+      <span class="ex-meta">+2.5 ק"ג/שבוע</span>
+      <div class="ex-detail">
+        <strong>5 סטים × 5 חזרות</strong> · מנוחה 2 דק'<br>
+        גב שטוח, לחיצת מלחציים, מוט קרוב לגוף לאורך כל הדרך.<br>
+        <em>לצלם מאחור — לשלוח לאמיט.</em>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <span class="ex-letter">ד</span>
+      <span class="ex-title">מיליטרי פרס — דמבל (Overhead Press)</span>
+      <span class="ex-meta">+1.25 ק"ג/שבוע</span>
+      <div class="ex-detail">
+        <strong>5 סטים × 5 חזרות</strong> · מנוחה 2 דק'<br>
+        עמידה, לחיצה מעל הראש, בטן מכווצת לאורך כל הדרך.
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <span class="ex-letter">ה</span>
+      <span class="ex-title">לאנץ' הליכה (Walking Lunges)</span>
+      <span class="ex-meta">+2.5 ק"ג/שבוע</span>
+      <div class="ex-detail">
+        <strong>5 סטים × 5 חזרות בכל רגל</strong> · מנוחה 2 דק'<br>
+        עם מוט על הגב, צעד גדול, ברך אחורית קרובה לרצפה.
+      </div>
+    </div>
+
+    <div style="background:#fff3cd; border-radius:8px; padding:12px; margin-top:10px; font-size:12px; border: 1.5px solid #f5a623;">
+      <strong>🗓 שבת בלבד — ליבה ובטן:</strong> לאחר כל 5 התרגילים — פלאנק עם 20 ק"ג על הגב. 3 סטים × כמה שיותר זמן. מנוחה 90 שניות.
+    </div>
+  </div>
+
+  <!-- RM1 SECTION -->
+  <div class="section">
+    <div class="tag au">📹 שבועות 3 + 6 — בוחן RM1 (שישי נוסף, לא מחליף)</div>
+
+    <div class="note warn">
+      <strong>⚠️ חובה שומר לסקאווט ולבנץ' פרס.</strong> לצלם כל תרגיל מהצד (מאחור לדדליפט) — כל הגוף בפריים. לשלוח לאמיט.
+    </div>
+
+    <div class="note">
+      <strong>מבנה בוחן RM1 — סדר:</strong> סקאווט → בנץ' → דדליפט → מיליטרי → לאנץ'. מנוחה בין תרגיל לתרגיל: 5–8 דק'. לא ממהרים.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>סט</th>
+          <th>משקל</th>
+          <th>חזרות</th>
+          <th>מנוחה</th>
+          <th>מטרה</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>מוט ריק</td><td>10</td><td>2 דק'</td><td>חימום + תחושת התרגיל</td></tr>
+        <tr><td>2</td><td>50% מהמשוער</td><td>5</td><td>2 דק'</td><td>חימום ספציפי</td></tr>
+        <tr><td>3</td><td>70%</td><td>3</td><td>3 דק'</td><td>כניסה לכבד</td></tr>
+        <tr><td>4</td><td>85%</td><td>2</td><td>3 דק'</td><td>הכנה לשיא</td></tr>
+        <tr><td>5</td><td>95%</td><td>1</td><td>4 דק'</td><td>גישוש</td></tr>
+        <tr style="background:#fff3cd;"><td><strong>6</strong></td><td><strong>100%+ (RM1)</strong></td><td><strong>1</strong></td><td>—</td><td><strong>הרמה מקסימלית — זה ה-RM1!</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:14px;">
+      <div class="tag r">📊 חישוב אחוזי עבודה — לאחר בוחן RM1</div>
+      <div class="note success">
+        לאחר שמצאת RM1 — המשקל לאימון 5×5 = <strong>80% מה-RM1</strong>. חזרות 1–3 מהשבוע הבא = 80%, ואז עולה 2.5 ק"ג כל שבוע.
+      </div>
+      <table class="rm-table">
+        <thead>
+          <tr>
+            <th>תרגיל</th>
+            <th>RM1 (למילוי)</th>
+            <th>80% — משקל עבודה 5×5</th>
+            <th>85%</th>
+            <th>90%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>סקאווט</td><td>_______ ק"ג</td><td class="pct-col">_______ ק"ג</td><td>_______ ק"ג</td><td>_______ ק"ג</td></tr>
+          <tr><td>בנץ' פרס</td><td>_______ ק"ג</td><td class="pct-col">_______ ק"ג</td><td>_______ ק"ג</td><td>_______ ק"ג</td></tr>
+          <tr><td>דדליפט</td><td>_______ ק"ג</td><td class="pct-col">_______ ק"ג</td><td>_______ ק"ג</td><td>_______ ק"ג</td></tr>
+          <tr><td>מיליטרי פרס</td><td>_______ ק"ג</td><td class="pct-col">_______ ק"ג</td><td>_______ ק"ג</td><td>_______ ק"ג</td></tr>
+          <tr><td>לאנץ'</td><td>_______ ק"ג</td><td class="pct-col">_______ ק"ג</td><td>_______ ק"ג</td><td>_______ ק"ג</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top:8px;">אם עלה RM1 בשבוע 6 — לחשב מחדש ולשלוח לאמיט. <strong>כלל:</strong> לא לאמן RM1 ב-אותו יום כמו 5×5. זה שישי נוסף בלבד.</div>
+    </div>
+  </div>
+
+  <!-- EXPERT VISITS -->
+  <div class="section">
+    <div class="tag bl">👥 ביקורי אקספרט — צוותים שונים (חובה)</div>
+    <div class="note">לא צוות גזר. לבחור 2 צוותים שונים. לדווח לאמיט — שם הצוות + תאריך + מה עשיתם.</div>
+    <div class="visit-card">
+      <div class="visit-box">
+        <div class="vnum">1</div>
+        <div class="vtitle">ביקור אקספרט ראשון</div>
+        <div class="vsub">בצוות שאינו גזר</div>
+        <div class="vline"></div>
+        <div class="vfield">תאריך: _______________</div>
+        <div class="vfield" style="margin-top:4px;">שם הצוות: _______________</div>
+        <div class="vfield" style="margin-top:4px;">מה אמנתם: _______________</div>
+      </div>
+      <div class="visit-box">
+        <div class="vnum">2</div>
+        <div class="vtitle">ביקור אקספרט שני</div>
+        <div class="vsub">בצוות שונה מהביקור הראשון</div>
+        <div class="vline"></div>
+        <div class="vfield">תאריך: _______________</div>
+        <div class="vfield" style="margin-top:4px;">שם הצוות: _______________</div>
+        <div class="vfield" style="margin-top:4px;">מה אמנתם: _______________</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEIGHT LOSS -->
+  <div class="section">
+    <div class="tag pur">⚖️ יעד משקל — ירידה של 2 ק"ג עד סיום</div>
+    <div class="note success">
+      <strong>גישה:</strong> 150–170 גרם חלבון ביום. מים 3–4 ליטר. לאחר אימון כוח — ארוחה תוך שעה. <strong>לא לאכול מעל קיבולת — גוף בגירעון קלורי קל (200–300 קל/יום).</strong>
+    </div>
+    <div class="weight-target">
+      <div class="wt-box">
+        <div class="wt-week">שבוע 1</div>
+        <div class="wt-kg">_______ ק"ג</div>
+        <div class="wt-label">משקל פתיחה</div>
+      </div>
+      <div class="wt-box">
+        <div class="wt-week">שבוע 3</div>
+        <div class="wt-kg">_______ ק"ג</div>
+        <div class="wt-label">יעד ביניים: −0.5</div>
+      </div>
+      <div class="wt-box">
+        <div class="wt-week">שבוע 6</div>
+        <div class="wt-kg">_______ ק"ג</div>
+        <div class="wt-label">יעד ביניים: −1.5</div>
+      </div>
+      <div class="wt-box" style="border-color:#27ae60; background:#eafaf1;">
+        <div class="wt-week">שבוע 8</div>
+        <div class="wt-kg" style="color:#27ae60;">פתיחה − 2</div>
+        <div class="wt-label">🏁 יעד סיום</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY TRACKING -->
+  <div class="section">
+    <div class="tag dk">📊 לוח מעקב שבועי — למילוי ידני</div>
+    <table class="track-table">
+      <thead>
+        <tr>
+          <th style="width:11%">שבוע</th>
+          <th style="width:11%">תאריכים</th>
+          <th style="width:7%">XPERT ×2</th>
+          <th style="width:8%">כוח א'</th>
+          <th style="width:8%">כוח ב'</th>
+          <th style="width:14%">חמישי</th>
+          <th style="width:12%">ריצת נפח</th>
+          <th style="width:7%">משקל</th>
+          <th style="width:7%">RM1</th>
+          <th>הרגשה</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r1">שבוע 1</span></td>
+          <td>8–13.6</td>
+          <td><span class="check-box"></span><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="test-badge">⭐ בוחן ______</span></td>
+          <td>30 דק' ____</td>
+          <td>____ק"ג</td>
+          <td>—</td>
+          <td>______</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r1">שבוע 2</span></td>
+          <td>15–20.6</td>
+          <td><span class="check-box"></span><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td>4×1000מ' ____</td>
+          <td>40 דק' ____</td>
+          <td>____ק"ג</td>
+          <td>—</td>
+          <td>______</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r1">שבוע 3</span></td>
+          <td>22–27.6</td>
+          <td><span class="check-box"></span><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td>3×2000מ' ____</td>
+          <td>45 דק' ____</td>
+          <td>____ק"ג</td>
+          <td><span class="rm-badge">RM1</span></td>
+          <td>______</td>
+        </tr>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r2">שבוע 4</span></td>
+          <td>29.6–4.7</td>
+          <td><span class="check-box"></span><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="test-badge">⭐ בוחן ______</span></td>
+          <td>30 דק' ____</td>
+          <td>____ק"ג</td>
+          <td>—</td>
+          <td>______</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r2">שבוע 5</span></td>
+          <td>6–11.7</td>
+          <td><span class="check-box"></span><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td>5×1000מ' ____</td>
+          <td>47.5 דק' ____</td>
+          <td>____ק"ג</td>
+          <td>—</td>
+          <td>______</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge r2">שבוע 6</span></td>
+          <td>13–18.7</td>
+          <td><span class="check-box"></span><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td>4×2000מ' ____</td>
+          <td>50 דק' ____</td>
+          <td>____ק"ג</td>
+          <td><span class="rm-badge">RM1</span></td>
+          <td>______</td>
+        </tr>
+        <tr style="background:#fce8e6;">
+          <td><span class="wbadge r3">שבוע 7</span></td>
+          <td>20–25.7</td>
+          <td><span class="check-box"></span><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="check-box"></span></td>
+          <td><span class="test-badge">⭐ בוחן ______</span></td>
+          <td>30 דק' ____</td>
+          <td>____ק"ג</td>
+          <td>—</td>
+          <td>______</td>
+        </tr>
+        <tr>
+          <td><span class="wbadge g1">שבוע 8</span></td>
+          <td>27.7–1.8</td>
+          <td><span class="check-box"></span><span class="check-box"></span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>ריצה קלה</td>
+          <td>קל ____</td>
+          <td>____ק"ג</td>
+          <td>—</td>
+          <td>הורדת עומס</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IMPORTANT NOTES -->
+  <div class="section">
+    <div class="tag r">⚠️ כללים חשובים</div>
+    <div class="two-col">
+      <div>
+        <div class="note warn"><strong>🚫 כאב חד:</strong> בכתפיים, מרפקים, ברכיים — עצור מיד. מספר לאמיט.</div>
+        <div class="note info"><strong>📱 דיווח:</strong> אחרי כל אימון — שלח לאמיט: זמני ריצה, משקלי כוח, תוצאות בוחן.</div>
+        <div class="note success"><strong>🥗 תזונה:</strong> 150–170 גרם חלבון/יום. אחרי כוח — ארוחה תוך שעה. מים 3–4 ליטר.</div>
+      </div>
+      <div>
+        <div class="note"><strong>📹 RM1 Test:</strong> לצלם כל תרגיל ולשלוח לאמיט. שומר חובה לסקאווט ובנץ'.</div>
+        <div class="note"><strong>🏃 בוחן 3000מ':</strong> חימום 10 דק' ריצה קלה. קצב אחיד. לשלוח זמן לאמיט מיד.</div>
+        <div class="note"><strong>👥 אקספרט:</strong> 2 ביקורים בצוותים שונים (לא גזר). לדווח שם צוות + תאריך.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; font-size:10px; color:#aaa; padding: 10px 0 20px;">
+    תוכנית ריצה: בהתאמה לתוכנית אפיק · תוכנית כוח: בהתאמה לתוכנית אלון מרכוס · הכנה: אמיט לאופולד
+  </div>
+
+</div>
+</body>
+</html>
