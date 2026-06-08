@@ -5,98 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>מבנה ארגוני – Xpert כושר קרבי</title>
 <style>
-@page { size: A4 landscape; margin: 12mm 16mm; }
+@page { size: A4 landscape; margin: 11mm 15mm; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Arial, sans-serif; background: #ebebE6; direction: rtl; color: #1a1a1a; }
-.page { max-width: 970px; margin: 0 auto; padding: 28px 18px 60px; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #e9e9e3; direction: rtl; color: #1a1a1a; }
+.page { max-width: 960px; margin: 0 auto; padding: 24px 16px 60px; }
 
-/* HEADER */
+/* ── HEADER ── */
 .header {
   background: #000;
-  border-radius: 16px; padding: 26px 36px;
-  display: flex; align-items: center; gap: 28px;
-  margin-bottom: 22px;
-  box-shadow: 0 10px 36px rgba(0,0,0,.55);
+  border-radius: 14px;
+  padding: 22px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.55);
 }
-.header-logo { flex-shrink: 0; width: 220px; }
-.header-logo svg { width: 100%; height: auto; display: block; }
-.header-text {
-  flex: 1; text-align: center;
-  border-right: 2px solid #7A8B26;
-  padding-right: 28px;
+.hlogo { flex-shrink:0; width:200px; }
+.hlogo svg { width:100%; height:auto; display:block; }
+.htext {
+  flex:1; text-align:center;
+  border-right:2px solid #7A8B26;
+  padding-right:24px;
 }
-.header-title { font-size: 1.9em; font-weight: 900; color: #fff; margin-bottom: 10px; }
-.header-bar { width: 46px; height: 3px; background: #7A8B26; border-radius: 2px; margin: 0 auto 10px; }
-.header-sub { color: #7A8B26; font-size: .82em; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+.htitle { font-size:1.75em; font-weight:900; color:#fff; margin-bottom:8px; }
+.hbar { width:44px; height:3px; background:#7A8B26; border-radius:2px; margin:0 auto 8px; }
+.hsub { color:#7A8B26; font-size:.78em; letter-spacing:2px; font-weight:700; text-transform:uppercase; }
 
-/* SECTION */
-.section { background: #fff; border-radius: 14px; padding: 28px 26px; margin-bottom: 18px; box-shadow: 0 3px 18px rgba(0,0,0,.07); page-break-inside: avoid; }
-.stitle { font-size: 1.05em; font-weight: 800; color: #111; text-align: center; margin-bottom: 24px; padding-bottom: 11px; position: relative; }
-.stitle::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:38px; height:3px; background:#7A8B26; border-radius:2px; }
+/* ── SECTION ── */
+.sec { background:#fff; border-radius:13px; padding:26px 24px; margin-bottom:16px; box-shadow:0 3px 16px rgba(0,0,0,.07); page-break-inside:avoid; }
+.stitle { font-size:1em; font-weight:800; color:#111; text-align:center; margin-bottom:22px; padding-bottom:10px; position:relative; }
+.stitle::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:36px; height:3px; background:#7A8B26; border-radius:2px; }
 
-/* ORG CHART */
-.org { display:flex; flex-direction:column; align-items:center; }
-.two-trees { display:flex; gap:38px; justify-content:center; align-items:flex-start; }
+/* ── ORG CHART ── */
+.org { direction:ltr; display:flex; flex-direction:column; align-items:center; overflow:visible; }
+
+.two-trees { display:flex; gap:36px; align-items:flex-start; justify-content:center; }
 .subtree { display:flex; flex-direction:column; align-items:center; }
-.vl { width:2px; background:#a8b490; align-self:center; }
-.vl18 { height:18px; }
-.nb { padding:9px 12px; border-radius:10px; text-align:center; font-weight:700; line-height:1.3; }
-.nb-gm { background:#000; color:#fff; min-width:170px; box-shadow:0 4px 14px rgba(0,0,0,.4); font-size:.9em; border:1.5px solid #7A8B26; }
+
+/* Vertical connector line */
+.vl { width:2px; background:#8da870; }
+.vl20 { height:20px; }
+
+/* Horizontal bracket row */
+.bracket { display:flex; }
+
+/* Each child column in bracket */
+.bch {
+  display:flex; flex-direction:column; align-items:center;
+  padding:0 5px; position:relative;
+}
+/* Horizontal line per child (builds the cross-bar) */
+.bch::before {
+  content:''; position:absolute; top:0;
+  height:2px; background:#8da870;
+  left:0; right:0;
+}
+.bch:first-child::before { left:50%; }
+.bch:last-child::before  { right:50%; }
+.bch:first-child:last-child::before { display:none; }
+
+/* Node boxes */
+.nb { padding:9px 13px; border-radius:9px; text-align:center; font-weight:700; line-height:1.3; direction:rtl; }
+.nb-gm {
+  background:#000; color:#fff;
+  min-width:168px; max-width:185px;
+  border:1.5px solid #7A8B26;
+  box-shadow:0 4px 14px rgba(0,0,0,.4);
+  font-size:.9em;
+}
 .nb-gm .sub { font-size:.67em; font-weight:400; color:#7A8B26; margin-top:3px; display:block; }
-.nb-mgr { background:#7A8B26; color:#fff; min-width:148px; box-shadow:0 4px 12px rgba(122,139,38,.32); font-size:.84em; }
-.nb-ca { background:#3d4a14; color:#fff; min-width:112px; box-shadow:0 3px 8px rgba(61,74,20,.3); font-size:.76em; padding:8px 9px; }
-.nb-cp { background:#2a2a2a; color:#e0e0e0; min-width:118px; box-shadow:0 3px 8px rgba(0,0,0,.3); font-size:.76em; padding:8px 9px; }
-.bracket { display:flex; position:relative; }
-.bracket::before { content:''; position:absolute; top:0; right:0; left:0; height:2px; background:#a8b490; }
-.bch { display:flex; flex-direction:column; align-items:center; padding:0 5px; }
-.shared-panel { margin-top:22px; border:1.5px dashed #7A8B26; background:#f5f6ee; border-radius:11px; padding:13px 22px; display:flex; flex-direction:column; align-items:center; gap:11px; }
-.shared-label { font-size:.66em; color:#5a6818; letter-spacing:1.5px; font-weight:700; text-transform:uppercase; }
-.shared-row { display:flex; gap:16px; }
+.nb-mgr { background:#7A8B26; color:#fff; min-width:146px; box-shadow:0 4px 12px rgba(122,139,38,.3); font-size:.84em; }
+.nb-ca  { background:#3d4a14; color:#fff; min-width:110px; max-width:122px; font-size:.76em; padding:8px 9px; box-shadow:0 3px 8px rgba(0,0,0,.2); }
+.nb-cp  { background:#222;    color:#ddd; min-width:118px; max-width:132px; font-size:.76em; padding:8px 9px; box-shadow:0 3px 8px rgba(0,0,0,.25); }
 
-/* ROLE CARDS */
-.rgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-.rcard { border-radius:11px; padding:16px 14px; background:#f8f9f3; border:1px solid #dde0cc; border-right:4px solid #000; page-break-inside:avoid; }
-.rcard.p { border-right-color:#7A8B26; }
-.rh { display:flex; align-items:center; gap:8px; margin-bottom:7px; }
-.rn { width:25px; height:25px; border-radius:50%; background:#000; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.76em; font-weight:800; flex-shrink:0; }
-.rcard.p .rn { background:#7A8B26; }
-.rt { font-size:.88em; font-weight:800; color:#111; }
-.rd { font-size:.79em; color:#555; line-height:1.7; }
+/* Shared managers panel */
+.shared-panel {
+  margin-top:20px;
+  border:1.5px dashed #7A8B26;
+  background:#f4f6ea;
+  border-radius:10px;
+  padding:12px 20px;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+}
+.shared-lbl { font-size:.64em; color:#5a6818; letter-spacing:1.5px; font-weight:700; text-transform:uppercase; direction:rtl; }
+.shared-row { display:flex; gap:14px; }
 
-/* CONDITIONS */
-.cgrid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
-.ccard { background:#f8f9f3; border-radius:11px; padding:18px 16px; border:1px solid #dde0cc; page-break-inside:avoid; }
-.ct { font-size:.9em; font-weight:800; color:#111; margin-bottom:11px; }
-.cl { list-style:none; }
-.cl li { font-size:.8em; color:#444; padding:6px 0; border-bottom:1px solid #e8ebda; display:flex; gap:6px; align-items:flex-start; line-height:1.5; }
-.cl li:last-child { border-bottom:none; }
-.cl li::before { content:'▸'; color:#7A8B26; flex-shrink:0; font-size:.86em; margin-top:2px; }
+/* ── TABLES ── */
+.rtbl { width:100%; border-collapse:collapse; font-size:.83em; }
+.rtbl th { background:#000; color:#fff; padding:10px 14px; text-align:right; font-weight:700; }
+.rtbl th:first-child { border-radius:0 8px 0 0; }
+.rtbl th:last-child  { border-radius:8px 0 0 0; }
+.rtbl td { padding:10px 14px; border-bottom:1px solid #e6e9da; color:#333; vertical-align:top; line-height:1.6; }
+.rtbl tr:last-child td { border-bottom:none; }
+.rtbl tr:nth-child(even) td { background:#f5f6ee; }
+.rtbl td:first-child { font-weight:700; color:#111; white-space:nowrap; }
+.rtbl td.role-name { color:#000; font-weight:800; background:#f0f2e8; border-right:3px solid #7A8B26; }
 
-/* SALARY TABLE */
-.tbl { width:100%; border-collapse:collapse; font-size:.83em; }
-.tbl th { background:#000; color:#fff; padding:11px 14px; text-align:right; font-weight:700; }
-.tbl th:first-child { border-radius:0 8px 0 0; }
-.tbl th:last-child { border-radius:8px 0 0 0; }
-.tbl td { padding:10px 14px; border-bottom:1px solid #e8ebda; color:#333; vertical-align:middle; }
-.tbl tr:last-child td { border-bottom:none; }
-.tbl tr:nth-child(even) td { background:#f5f6ee; }
+/* Employment table */
+.etbl { width:100%; border-collapse:collapse; font-size:.84em; }
+.etbl th { background:#000; color:#fff; padding:10px 14px; text-align:right; font-weight:700; }
+.etbl th:first-child { border-radius:0 8px 0 0; }
+.etbl th:last-child  { border-radius:8px 0 0 0; }
+.etbl td { padding:11px 14px; border-bottom:1px solid #e6e9da; color:#333; vertical-align:top; line-height:1.65; }
+.etbl tr:last-child td { border-bottom:none; }
+.etbl tr:nth-child(even) td { background:#f5f6ee; }
+.etbl td:first-child { font-weight:800; color:#111; background:#f0f2e8; border-right:3px solid #7A8B26; white-space:nowrap; }
+
 .badge { display:inline-block; padding:3px 9px; border-radius:20px; font-size:.78em; font-weight:700; }
-.bf { background:#dff0c8; color:#2a5a10; }
-.bg { background:#e0e8b8; color:#4a5810; }
+.bf { background:#dff0c8; color:#285a10; }
+.bg { background:#e0e8b8; color:#485810; }
+
+.section-label {
+  display:inline-block;
+  background:#7A8B26; color:#fff;
+  font-size:.72em; font-weight:700;
+  padding:3px 10px; border-radius:20px;
+  margin-bottom:14px; letter-spacing:.5px;
+}
 
 @media print {
   body { background:#fff; }
   .page { padding:0; max-width:100%; }
-  .section, .header { box-shadow:none; }
+  .sec, .header { box-shadow:none; }
 }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- HEADER -->
+  <!-- ═══ HEADER ═══ -->
   <header class="header">
-    <div class="header-logo">
+    <div class="hlogo">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 310">
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
@@ -110,52 +150,75 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #ebebE6; directio
             <stop offset="100%" stop-color="#686868"/>
           </linearGradient>
         </defs>
-        <!-- Right stroke \ -->
         <polygon points="158,18 238,18 143,295 63,295" fill="url(#g2)"/>
-        <!-- Left stroke / on top -->
         <polygon points="60,18 140,18 235,295 155,295" fill="url(#g1)"/>
-        <!-- PERT -->
         <text x="74" y="303" fill="#8C8C8C" font-family="Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="8">PERT</text>
-        <!-- Olive banner -->
         <polygon points="242,108 437,108 437,190 242,190 212,149" fill="#7A8B26"/>
-        <!-- כושר קרבי -->
         <text x="338" y="158" fill="#fff" font-family="Arial,sans-serif" font-size="25" font-weight="700" text-anchor="middle">כושר קרבי</text>
       </svg>
     </div>
-    <div class="header-text">
-      <div class="header-title">מבנה ארגוני</div>
-      <div class="header-bar"></div>
-      <div class="header-sub">כוח אדם ותפקידים &#x2022; 2025</div>
+    <div class="htext">
+      <div class="htitle">מבנה ארגוני</div>
+      <div class="hbar"></div>
+      <div class="hsub">כוח אדם ותפקידים &#x2022; 2025</div>
     </div>
   </header>
 
-  <!-- ORG CHART -->
-  <div class="section">
-    <div class="stitle">תרשים ארגוני</div>
+  <!-- ═══ ORG CHART ═══ -->
+  <div class="sec">
+    <div class="stitle">עץ ארגוני</div>
     <div class="org">
       <div class="two-trees">
+
+        <!-- ▶ GM Admin -->
         <div class="subtree">
           <div class="nb nb-gm">מנהל כללי<span class="sub">אדמינסטרטיבי</span></div>
-          <div class="vl vl18"></div>
+          <div class="vl vl20"></div>
           <div class="bracket">
-            <div class="bch"><div class="vl vl18"></div><div class="nb nb-ca">רכז בוגרים</div></div>
-            <div class="bch"><div class="vl vl18"></div><div class="nb nb-ca">רכז גיוסים</div></div>
-            <div class="bch"><div class="vl vl18"></div><div class="nb nb-ca">רכז קשרי קהילה</div></div>
-            <div class="bch"><div class="vl vl18"></div><div class="nb nb-ca">מנהלת משרד</div></div>
+            <div class="bch">
+              <div class="vl vl20"></div>
+              <div class="nb nb-ca">מנהלת משרד</div>
+            </div>
+            <div class="bch">
+              <div class="vl vl20"></div>
+              <div class="nb nb-ca">רכז קשרי קהילה</div>
+            </div>
+            <div class="bch">
+              <div class="vl vl20"></div>
+              <div class="nb nb-ca">רכז גיוסים</div>
+            </div>
+            <div class="bch">
+              <div class="vl vl20"></div>
+              <div class="nb nb-ca">רכז בוגרים</div>
+            </div>
           </div>
         </div>
+
+        <!-- ▶ GM Professional -->
         <div class="subtree">
           <div class="nb nb-gm">מנהל כללי<span class="sub">מקצועי</span></div>
-          <div class="vl vl18"></div>
+          <div class="vl vl20"></div>
           <div class="bracket">
-            <div class="bch"><div class="vl vl18"></div><div class="nb nb-cp">רכז מדיה וקריאייטיב</div></div>
-            <div class="bch"><div class="vl vl18"></div><div class="nb nb-cp">רכז צוותים</div></div>
-            <div class="bch"><div class="vl vl18"></div><div class="nb nb-cp">רכז אונליין</div></div>
+            <div class="bch">
+              <div class="vl vl20"></div>
+              <div class="nb nb-cp">רכז מדיה וקריאייטיב</div>
+            </div>
+            <div class="bch">
+              <div class="vl vl20"></div>
+              <div class="nb nb-cp">רכז צוותים</div>
+            </div>
+            <div class="bch">
+              <div class="vl vl20"></div>
+              <div class="nb nb-cp">רכז אונליין</div>
+            </div>
           </div>
         </div>
+
       </div>
+
+      <!-- ▶ Shared managers -->
       <div class="shared-panel">
-        <div class="shared-label">מנהלים כפופים לשני המנהלים הכלליים</div>
+        <div class="shared-lbl">מנהלים כפופים לשני המנהלים הכלליים</div>
         <div class="shared-row">
           <div class="nb nb-mgr">מנהל מצוינות</div>
           <div class="nb nb-mgr">מנהל מוסדות</div>
@@ -164,74 +227,100 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #ebebE6; directio
     </div>
   </div>
 
-  <!-- ROLES -->
-  <div class="section" style="page-break-before:always;">
-    <div class="stitle">תיאור תפקידים</div>
-    <div class="rgrid">
-      <div class="rcard">
-        <div class="rh"><div class="rn">1</div><div class="rt">רכז קשרי קהילה</div></div>
-        <div class="rd">אחראי על קשר עם תנועות נוער ופעילות קהילתית. מגיע פעם בשבוע למקום משתנה — תנועת נוער או מרכז הכנה לצה"ל — לשיחה או אימון עם השכבה הבוגרת. מטרתו לחשוף את הארגון בפני קהל רחב ולדרבן עקיבה ברשתות.</div>
-      </div>
-      <div class="rcard">
-        <div class="rh"><div class="rn">2</div><div class="rt">מנהלת משרד</div></div>
-        <div class="rd">אחראית על כלל הטלפונים של המשרד — ליבה ומצוינות. ניהול שוטף, מענה לפניות ורישום מסודר של כל השיחות והבקשות הנכנסות.</div>
-      </div>
-      <div class="rcard">
-        <div class="rh"><div class="rn">3</div><div class="rt">רכז גיוסים</div></div>
-        <div class="rd">אחראי לכניסה שבועית קבועה לבתי ספר ברחבי הארץ לאורך כל שנת הפעילות לגיוס חניכים. פועל גם לגיוס לחטיבה הצעירה ולצוותים חדשים ויוצר מודעות רחבה.</div>
-      </div>
-      <div class="rcard p">
-        <div class="rh"><div class="rn">4</div><div class="rt">רכז מדיה וקריאייטיב</div></div>
-        <div class="rd">אחראי על הסטוריז והקריאייטיב של כלל הפלטפורמות הדיגיטליות — ליבה ומצוינות. שמירה על זהות ויזואלית עקבית ועדכון תוכן שוטף ברשתות.</div>
-      </div>
-      <div class="rcard p">
-        <div class="rh"><div class="rn">5</div><div class="rt">רכז צוותים</div></div>
-        <div class="rd">מגיע בכל יום לצוות אחר בארגון לביקור ובקרה על המדריך. נדרש "מדריך בכיר". אימוני הקבוצה שלו מרוכזים ביום חמישי, כדי לפנות את שאר הימים לצוותי הארגון.</div>
-      </div>
-      <div class="rcard p">
-        <div class="rh"><div class="rn">6</div><div class="rt">רכז בוגרים</div></div>
-        <div class="rd">מתפעל את תחום ניהול הבוגרים בשלמותו — ממסלולי מעקב ועד הטבות הארגון. שומר על קשר רציף ומטפח קהילת בוגרים פעילה ומעורבת.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONDITIONS + SALARY -->
-  <div class="section" style="page-break-before:always;">
-    <div class="stitle">תנאי העסקה ומפגשים</div>
-    <div class="cgrid">
-      <div class="ccard">
-        <div class="ct">פגישות שוטפות – מנהלים</div>
-        <ul class="cl">
-          <li>פגישה אחת לשבוע במשרדי החברה</li>
-          <li>נוכחות פיזית חובה במשרד</li>
-          <li>שני המנהלים הכלליים, מנהל מצוינות ומנהל מוסדות</li>
-        </ul>
-      </div>
-      <div class="ccard">
-        <div class="ct">פגישות שוטפות – רכזים</div>
-        <ul class="cl">
-          <li>פגישה אחת לשבועיים בחברה</li>
-          <li>ציר פיתוח אישי ומקצועי</li>
-          <li>כלל הרכזים מכל התחומים יחד</li>
-        </ul>
-      </div>
-    </div>
-    <table class="tbl">
+  <!-- ═══ ADMIN ROLES ═══ -->
+  <div class="sec" style="page-break-before:always;">
+    <div class="stitle">תפקידי הציר האדמינסטרטיבי</div>
+    <table class="rtbl">
       <thead>
-        <tr><th>תפקיד</th><th>סוג משרה</th><th>שכר בסיס</th><th>הערות</th></tr>
+        <tr>
+          <th style="width:18%">תפקיד</th>
+          <th style="width:46%">תחומי אחריות ופעילות שוטפת</th>
+          <th style="width:36%">מטרות ויעדים</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td><strong>מנהל כללי אדמינסטרטיבי</strong></td><td><span class="badge bf">משרה מלאה</span></td><td>לפי הסכם</td><td>—</td></tr>
-        <tr><td><strong>מנהל כללי מקצועי</strong></td><td><span class="badge bf">משרה מלאה</span></td><td>לפי הסכם</td><td>—</td></tr>
-        <tr><td><strong>מנהל מצוינות</strong></td><td><span class="badge bf">משרה מלאה</span></td><td>לפי הסכם</td><td>כפוף לשני המנהלים הכלליים</td></tr>
-        <tr><td><strong>מנהל מוסדות</strong></td><td><span class="badge bf">משרה מלאה</span></td><td>לפי הסכם</td><td>כפוף לשני המנהלים הכלליים</td></tr>
-        <tr><td>רכז בוגרים</td><td><span class="badge bg">גלובלי</span></td><td>2,500 – 3,000 ₪ + תוספת תפקיד</td><td>הגעה פעמיים בחודש + שיחות חניכים</td></tr>
-        <tr><td>רכז גיוסים</td><td><span class="badge bg">גלובלי</span></td><td>2,500 – 3,000 ₪ + תוספת תפקיד</td><td>הגעה פעמיים בחודש + שיחות חניכים</td></tr>
-        <tr><td>רכז קשרי קהילה</td><td><span class="badge bg">גלובלי</span></td><td>2,500 – 3,000 ₪ + תוספת תפקיד</td><td>הגעה פעמיים בחודש + שיחות חניכים</td></tr>
-        <tr><td>רכז מדיה וקריאייטיב</td><td><span class="badge bg">גלובלי</span></td><td>2,500 – 3,000 ₪ + תוספת תפקיד</td><td>הגעה פעמיים בחודש + שיחות חניכים</td></tr>
-        <tr><td>רכז צוותים</td><td><span class="badge bg">גלובלי</span></td><td>2,500 – 3,000 ₪ + תוספת תפקיד</td><td>הגעה פעמיים בחודש + שיחות חניכים</td></tr>
-        <tr><td>רכז אונליין</td><td><span class="badge bg">גלובלי</span></td><td>2,500 – 3,000 ₪ + תוספת תפקיד</td><td>הגעה פעמיים בחודש + שיחות חניכים</td></tr>
-        <tr><td>מנהלת משרד</td><td><span class="badge bg">גלובלי</span></td><td>2,500 – 3,000 ₪ + תוספת תפקיד</td><td>הגעה פעמיים בחודש + שיחות חניכים</td></tr>
+        <tr>
+          <td class="role-name">מנהלת משרד</td>
+          <td>ניהול טלפונים ומענה שוטף עבור כלל המשרד — ליבה ומצוינות.</td>
+          <td>זרימת מידע תקינה וטיפול יעיל בכלל הפניות.</td>
+        </tr>
+        <tr>
+          <td class="role-name">רכז קשרי קהילה</td>
+          <td>אחריות על תנועות נוער ומעורבות קהילתית. הגעה שבועית למקום משתנה (תנועת נוער / מרכז הכנה לצה"ל) לביצוע שיחה או אימון עם השכבה הבוגרת / הצעירה.</td>
+          <td>חשיפת הארגון, הגברת מודעות בקרב שכבות בוגרות וצעירות, ועידוד מעקב ברשתות החברתיות.</td>
+        </tr>
+        <tr>
+          <td class="role-name">רכז גיוסים</td>
+          <td>כניסה קבועה לבתי ספר אחת לשבוע במהלך כל שנת הפעילות, כולל גיוס לחטיבה הצעירה וצוותים חדשים.</td>
+          <td>יצירת מודעות רחבה בתיכונים וניצול חלונות זמן נוחים לגיוס לאורך השנה.</td>
+        </tr>
+        <tr>
+          <td class="role-name">רכז בוגרים</td>
+          <td>תפעול מקיף של תחום ניהול הבוגרים והטבות הארגון.</td>
+          <td>שימור הקשר עם בוגרי הארגון והענקת ערך מוסף באמצעות סל ההטבות.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- PRO ROLES (same page) -->
+    <div class="stitle" style="margin-top:28px;">תפקידי הציר המקצועי</div>
+    <table class="rtbl">
+      <thead>
+        <tr>
+          <th style="width:20%">תפקיד</th>
+          <th style="width:44%">תחומי אחריות ופעילות שוטפת</th>
+          <th style="width:36%">דגשים מיוחדים</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="role-name">רכז מדיה וקריאייטיב</td>
+          <td>ניהול מערך הסטוריז והקריאייטיב של החברה.</td>
+          <td>מתן מענה רוחבי הן לפעילות הליבה והן למצוינות.</td>
+        </tr>
+        <tr>
+          <td class="role-name">רכז צוותים<br><span style="font-weight:400;font-size:.9em;color:#555">(מדריך בכיר)</span></td>
+          <td>ביקור, בקרה וליווי של מדריכי הארגון בצוותים השונים.</td>
+          <td>יכול לקיים את אימוני הקבוצה האישית שלו ביום חמישי, כדי להתפנות לימי השבוע האחרים עבור ביקורי הצוותים.</td>
+        </tr>
+        <tr>
+          <td class="role-name">רכז אונליין</td>
+          <td>ניהול מערך האונליין של החברה כזרוע מקצועית.</td>
+          <td>הובלת הפן הדיגיטלי המקצועי והדרכתי מרחוק.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ CONDITIONS ═══ -->
+  <div class="sec" style="page-break-before:always;">
+    <div class="stitle">שגרות ניהול ותנאי העסקה</div>
+    <table class="etbl">
+      <thead>
+        <tr>
+          <th style="width:18%">דרג</th>
+          <th style="width:30%">היקף משרה ושכר</th>
+          <th style="width:52%">שגרות התכנסות ודרישות נוכחות</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>מנהלים<br><span style="font-weight:400;font-size:.85em;color:#555">(כלליים ורוחב)</span></td>
+          <td><span class="badge bf">משרה מלאה</span></td>
+          <td>פגישה שבועית שוטפת במשרדי החברה לטובת סנכרון וקבלת החלטות.</td>
+        </tr>
+        <tr>
+          <td>רכזים</td>
+          <td>
+            <span class="badge bg">גלובלי</span><br>
+            <span style="font-size:.88em;">2,500 – 3,000 ₪ בגין דרישות התפקיד + שכר גלובלי נוסף בהתאם לתפקיד הביצועי בשטח.</span>
+          </td>
+          <td>
+            <strong>הגעה פעמיים בחודש</strong> למשרדי החברה.<br>
+            <strong>פגישה דו-שבועית</strong> לפיתוח אישי במסגרת החברה.<br>
+            <strong>שיחות חניכים חובה</strong> לפני ואחרי כל אימון.
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
