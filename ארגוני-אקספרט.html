@@ -21,7 +21,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #e9e9e3; directio
   margin-bottom: 18px;
   box-shadow: 0 8px 30px rgba(0,0,0,.55);
 }
-.hlogo { flex-shrink:0; width:200px; }
+.hlogo { flex-shrink:0; width:250px; }
 .hlogo svg { width:100%; height:auto; display:block; }
 .htext {
   flex:1; text-align:center;
@@ -137,30 +137,38 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #e9e9e3; directio
   <!-- ═══ HEADER ═══ -->
   <header class="header">
     <div class="hlogo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 310">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340">
         <defs>
-          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
-            <stop offset="0%" stop-color="#E8E8E8"/>
-            <stop offset="45%" stop-color="#C0C0C0"/>
-            <stop offset="100%" stop-color="#808080"/>
+          <linearGradient id="ga" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0%" stop-color="#E6E6E6"/>
+            <stop offset="35%" stop-color="#C4C4C4"/>
+            <stop offset="100%" stop-color="#747474"/>
           </linearGradient>
-          <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
-            <stop offset="0%" stop-color="#D0D0D0"/>
-            <stop offset="50%" stop-color="#A8A8A8"/>
-            <stop offset="100%" stop-color="#686868"/>
+          <linearGradient id="gb" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0%" stop-color="#CACACA"/>
+            <stop offset="50%" stop-color="#9E9E9E"/>
+            <stop offset="100%" stop-color="#585858"/>
           </linearGradient>
         </defs>
-        <polygon points="158,18 238,18 143,295 63,295" fill="url(#g2)"/>
-        <polygon points="60,18 140,18 235,295 155,295" fill="url(#g1)"/>
-        <text x="74" y="303" fill="#8C8C8C" font-family="Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="8">PERT</text>
-        <polygon points="242,108 437,108 437,190 242,190 212,149" fill="#7A8B26"/>
-        <text x="338" y="158" fill="#fff" font-family="Arial,sans-serif" font-size="25" font-weight="700" text-anchor="middle">כושר קרבי</text>
+        <!-- X: two crossing rotated rectangles -->
+        <g transform="translate(132,162)">
+          <!-- \ stroke -->
+          <rect x="-28" y="-150" width="56" height="300" fill="url(#gb)" transform="rotate(38)"/>
+          <!-- / stroke (on top) -->
+          <rect x="-28" y="-150" width="56" height="300" fill="url(#ga)" transform="rotate(-38)"/>
+        </g>
+        <!-- PERT -->
+        <text x="52" y="326" fill="#8A8A8A" font-family="Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="7">PERT</text>
+        <!-- Olive arrow banner -->
+        <polygon points="228,110 496,110 496,192 228,192 196,151" fill="#7A8B26"/>
+        <!-- כושר קרבי -->
+        <text x="360" y="160" fill="#fff" font-family="Arial,sans-serif" font-size="25" font-weight="700" text-anchor="middle">כושר קרבי</text>
       </svg>
     </div>
     <div class="htext">
       <div class="htitle">מבנה ארגוני</div>
       <div class="hbar"></div>
-      <div class="hsub">כוח אדם ותפקידים &#x2022; 2025</div>
+      <div class="hsub">כוח אדם ותפקידים</div>
     </div>
   </header>
 
@@ -300,7 +308,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #e9e9e3; directio
         <tr>
           <th style="width:18%">דרג</th>
           <th style="width:30%">היקף משרה ושכר</th>
-          <th style="width:52%">שגרות התכנסות ודרישות נוכחות</th>
+          <th style="width:52%">מפגשים ודרישות נוכחות</th>
         </tr>
       </thead>
       <tbody>
