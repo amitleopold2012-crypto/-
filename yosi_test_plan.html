@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>תוכנית אימונים | יוסי בדיקה</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+@page { size: A4 portrait; margin: 0mm; }
+:root {
+  --bl:#1a5faa; --bd:#0f3d78; --bll:#5aaad9;
+  --gold:#c8952a; --go:#e8b84a;
+  --red:#c0392b; --rd:#922b21; --rl:#e74c3c;
+  --green:#4a8a1a; --gd:#2d5a0e; --gl:#7bbf30;
+  --pu:#8e44ad; --pul:#c39bd3;
+  --teal:#0d7a7a; --teall:#12aaaa;
+  --white:#fff; --gray:#f5f5f3; --mid:#e0e0d8; --text:#222;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Heebo',Arial,sans-serif; background:#152238; color:var(--text); direction:rtl; }
+.page { width:210mm; height:297mm; margin:0 auto; background:var(--white);
+  overflow:hidden; display:flex; flex-direction:column; }
+.page:not(:last-child) { page-break-after:always; break-after:page; }
+.page:last-child { page-break-after:avoid; break-after:avoid; }
+@media screen { .page { margin:7mm auto; box-shadow:0 6px 40px rgba(0,0,0,.4); } }
+
+.topbar { height:6px; flex-shrink:0;
+  background:linear-gradient(90deg,#030d1a 0%,#0f3d78 30%,#1a5faa 58%,#5aaad9 80%,#c8952a 100%); }
+
+.hdr { flex-shrink:0; display:flex; align-items:center; justify-content:space-between;
+  padding:6px 16px; background:linear-gradient(90deg,#020810,#071530); border-bottom:3px solid var(--bl); }
+.hdr .mid { font-size:10px; font-weight:700; color:#fff; letter-spacing:.8px; text-align:center; }
+.hdr .mid span { color:var(--go); }
+.hdr .side { font-size:8px; color:rgba(255,255,255,.45); line-height:1.5; }
+
+.hero { flex-shrink:0; height:158px; position:relative; overflow:hidden;
+  background:linear-gradient(135deg,#020b1a,#071a35,#020b1a); }
+.hero-pat { position:absolute; inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 14px,rgba(26,95,170,.05) 14px,rgba(26,95,170,.05) 28px); }
+.hero-c { position:relative; z-index:2; padding:13px 20px; height:100%;
+  display:flex; flex-direction:column; justify-content:space-between; }
+.hbadge { display:inline-block; background:linear-gradient(135deg,#0a2a5a,var(--bl));
+  color:#fff; font-size:7px; font-weight:800; letter-spacing:2.5px; padding:3px 11px; border-radius:20px; margin-bottom:3px; }
+.hname { font-size:37px; font-weight:900; color:#fff; line-height:1; letter-spacing:-1px; }
+.hname .acc { color:var(--bll); }
+.hsub { font-size:10px; color:rgba(255,255,255,.65); margin-top:2px; }
+.hteam { font-size:9.5px; color:var(--go); font-weight:700; margin-top:2px; }
+.hstats { display:flex; gap:6px; }
+.hs { background:rgba(255,255,255,.09); border:1px solid rgba(26,95,170,.35); border-radius:7px; padding:4px 10px; text-align:center; }
+.hs .v { font-size:13px; font-weight:900; color:var(--go); line-height:1; }
+.hs .l { font-size:6.5px; color:rgba(255,255,255,.5); margin-top:1px; }
+.hs.b .v { color:var(--bll); }
+.hs.g .v { color:var(--gl); }
+
+.pi { flex:1; padding:9px 15px 6px; display:flex; flex-direction:column; overflow:hidden; }
+
+.tag { display:inline-flex; align-items:center; gap:4px; color:#fff; font-size:8.5px; font-weight:800;
+  letter-spacing:.7px; padding:3px 11px 3px 7px; border-radius:0 13px 13px 0; margin-right:-15px; margin-bottom:5px; }
+.tag.b  { background:linear-gradient(90deg,var(--bd),var(--bl)); }
+.tag.g  { background:linear-gradient(90deg,var(--gd),var(--green)); }
+.tag.au { background:linear-gradient(90deg,#7a4a08,var(--gold)); }
+.tag.r  { background:linear-gradient(90deg,var(--rd),var(--red)); }
+.tag.pu { background:linear-gradient(90deg,#4a1a6e,var(--pu)); }
+.tag.tl { background:linear-gradient(90deg,#054040,var(--teal)); }
+.tag.dk { background:linear-gradient(90deg,#020810,#071530); border-left:3px solid var(--bl); }
+
+.stbl { width:100%; border-collapse:collapse; font-size:8.5px; margin-bottom:8px; }
+.stbl thead tr { background:linear-gradient(90deg,#020810,#071530); }
+.stbl thead th { color:#fff; padding:4px 6px; font-size:8px; font-weight:700; text-align:center; }
+.stbl thead th.g { color:var(--go); }
+.stbl tbody tr { border-bottom:1px solid var(--mid); }
+.stbl tbody tr:nth-child(even) { background:var(--gray); }
+.stbl td { padding:3.5px 6px; text-align:center; vertical-align:middle; font-size:8.5px; }
+.stbl td.dn { font-weight:800; font-size:9px; }
+.wt { display:inline-block; color:#fff; font-size:7.5px; font-weight:800; padding:2px 8px; border-radius:9px; }
+.wt.xp { background:linear-gradient(90deg,#0a2a5a,var(--bl)); }
+.wt.st { background:linear-gradient(90deg,#3a2a08,var(--gold)); }
+.wt.ru { background:linear-gradient(90deg,#0d3a3a,var(--teal)); }
+.wt.rs { background:#999; }
+
+.mission-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+.mcard { border-radius:6px; overflow:hidden; border:1px solid #dde; }
+.mcard-head { padding:6px 10px 5px; }
+.mcard-head.b  { background:linear-gradient(90deg,#0a2040,#1a4a8a); }
+.mcard-head.g  { background:linear-gradient(90deg,#1a3a08,#2d5a12); }
+.mcard-head.au { background:linear-gradient(90deg,#4a2e08,#7a4a12); }
+.mcard-head.r  { background:linear-gradient(90deg,#4a0d0d,#7a1a1a); }
+.mcard-head.pu { background:linear-gradient(90deg,#2a0d4e,#4a1a7a); }
+.mcard-head.teal { background:linear-gradient(90deg,#0d3a3a,#0d5a5a); }
+.mcard-icon { font-size:15px; float:left; margin-left:6px; line-height:1; }
+.mcard-title { font-size:9.5px; font-weight:900; color:#fff; line-height:1.2; }
+.mcard-desc { font-size:7.5px; color:rgba(255,255,255,.7); margin-top:2px; line-height:1.3; }
+.mcard-body { padding:5px 10px 6px; background:#fdfdfc; }
+.mweek { display:flex; gap:5px; padding:2.5px 0; border-bottom:1px solid #eee; align-items:flex-start; }
+.mweek:last-child { border-bottom:none; padding-bottom:0; }
+.mw-num { min-width:22px; font-size:7px; font-weight:900; color:#fff; background:var(--bl);
+  border-radius:3px; padding:1px 3px; text-align:center; flex-shrink:0; margin-top:1px; }
+.mw-num.au { background:var(--gold); color:#2a1a00; }
+.mw-num.r  { background:var(--red); }
+.mw-num.pu { background:var(--pu); }
+.mw-num.tl { background:var(--teal); }
+.mw-num.dk { background:var(--bd); }
+.mw-text { font-size:7.5px; color:#333; line-height:1.4; }
+.mw-text strong { color:#111; font-weight:700; }
+
+.ph2 { color:#fff; padding:5px 12px; font-size:9px; font-weight:800;
+  display:flex; align-items:center; gap:5px; margin-bottom:0; }
+.ph2.b  { background:linear-gradient(90deg,#020810,#071530); border-right:4px solid var(--bl); }
+.ph2.au { background:linear-gradient(90deg,#0d0805,#1a1002); border-right:4px solid var(--gold); }
+.ph2.r  { background:linear-gradient(90deg,#0d0505,#1a0808); border-right:4px solid var(--red); }
+.ph2.tl { background:linear-gradient(90deg,#010d0d,#021a1a); border-right:4px solid var(--teal); }
+.ph2.g  { background:linear-gradient(90deg,#050d02,#0a1a04); border-right:4px solid var(--green); }
+.phl { width:19px; height:19px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:9px; font-weight:900; flex-shrink:0; color:#fff; }
+.phl.b  { background:var(--bl); }
+.phl.au { background:var(--gold); }
+.phl.r  { background:var(--red); }
+.phl.tl { background:var(--teal); }
+.phl.g  { background:var(--green); }
+
+.pb { background:var(--gray); border:1px solid var(--mid); border-top:none;
+  padding:6px 12px; margin-bottom:5px; font-size:8.5px; line-height:1.65; }
+.pb strong { color:var(--bd); }
+.pb .hl { color:var(--teal); font-weight:700; }
+
+.wu { background:#020810; border-right:4px solid var(--go); padding:6px 12px; margin-bottom:6px; border-radius:0 4px 4px 0; }
+.wu-t { font-size:9px; font-weight:800; color:var(--go); margin-bottom:3px; }
+.wu ul { list-style:none; }
+.wu ul li { font-size:8.5px; color:rgba(255,255,255,.85); padding:2px 0;
+  border-bottom:1px solid rgba(255,255,255,.07); display:flex; gap:6px; }
+.wu ul li:last-child { border-bottom:none; }
+.wu ul li span { color:var(--go); min-width:18px; }
+
+.note { border-radius:0 5px 5px 0; padding:6px 11px; margin-bottom:5px; font-size:8.5px; line-height:1.55; }
+.note.b  { border-right:3px solid var(--bd); background:#e6f0ff; color:#0a2040; }
+.note.g  { border-right:3px solid var(--gd); background:#eaf4cc; color:#1a3a08; }
+.note.au { border-right:3px solid var(--gold); background:#fff8e6; color:#4a3500; }
+.note.r  { border-right:3px solid var(--red); background:#fce8e6; color:#4a1010; }
+.note.dk { border-right:3px solid var(--bl); background:#020810; color:rgba(255,255,255,.85); }
+.note.pu { border-right:3px solid var(--pu); background:#0f0820; color:rgba(255,255,255,.88); }
+.note strong { font-weight:800; }
+.note.b  strong { color:var(--bd); }
+.note.g  strong { color:var(--gd); }
+.note.au strong { color:#7a4a08; }
+.note.dk strong { color:var(--go); }
+.note.pu strong { color:var(--pul); }
+
+.pt { width:100%; border-collapse:collapse; font-size:8px; margin-bottom:6px; }
+.pt thead tr { background:linear-gradient(90deg,#020810,#071530); }
+.pt thead th { color:#fff; padding:4px 5px; font-size:7.5px; font-weight:700; text-align:center; }
+.pt thead th:first-child { text-align:right; }
+.pt thead th.w { color:var(--go); }
+.pt tbody tr { border-bottom:1px solid var(--mid); }
+.pt tbody tr:nth-child(even) { background:var(--gray); }
+.pt td { padding:3.5px 5px; text-align:center; font-size:8px; }
+.pt td:first-child { text-align:right; font-weight:700; color:#333; }
+.pt .hl { background:#e6f0ff; color:var(--bd); font-weight:800; }
+
+.gb { background:#020810; border-right:4px solid var(--bl); padding:7px 12px;
+  margin-bottom:6px; border-radius:0 5px 5px 0; }
+.gb p { font-size:8.5px; color:rgba(255,255,255,.88); line-height:1.65; }
+.gb strong { color:var(--go); }
+
+.mental { background:linear-gradient(135deg,#020810,#071530); border:1px solid var(--bl);
+  border-radius:7px; padding:7px 12px; margin-bottom:5px; }
+.mental-t { font-size:9px; font-weight:800; color:var(--bll); margin-bottom:5px; }
+.mrow { display:flex; gap:6px; margin-bottom:4px; align-items:flex-start; }
+.mrow:last-child { margin-bottom:0; }
+.mnum { background:var(--bl); color:#fff; font-size:8px; font-weight:900; min-width:22px; height:22px;
+  border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.mtext { font-size:8px; color:rgba(255,255,255,.85); line-height:1.5; }
+.mtext strong { color:var(--bll); }
+
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+
+.foot { flex-shrink:0; background:#020810; padding:4px 16px;
+  display:flex; justify-content:space-between; align-items:center; }
+.foot span { font-size:7.5px; color:rgba(255,255,255,.4); }
+.foot strong { color:rgba(255,255,255,.7); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ PAGE 1 — לוח שבועי ═══════════════ -->
+<div class="page">
+  <div class="topbar"></div>
+  <div class="hdr">
+    <div class="side">XPERT — כושר קרבי<br>צוות קליינמן | רחובות</div>
+    <div class="mid">תוכנית אימונים מלאה · 7 שבועות<br><span>בנה בסיס, התחזק, הגע מוכן</span></div>
+    <div class="side" style="text-align:left;">שני + רביעי<br><span style="color:var(--go);font-weight:700;">XPERT</span></div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-pat"></div>
+    <div class="hero-c">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div class="hbadge">MILITARY ATHLETE</div>
+          <div class="hname">יואל <span class="acc">סרויה</span></div>
+          <div class="hsub">7 שבועות — בנה בסיס, התחזק, הגע מוכן לכל אתגר</div>
+          <div class="hteam">⚡ צוות קליינמן · רחובות · XPERT שני + רביעי</div>
+        </div>
+        <div class="hstats">
+          <div class="hs b"><div class="v">7</div><div class="l">שבועות</div></div>
+          <div class="hs"><div class="v">6</div><div class="l">אימונים/שבוע</div></div>
+          <div class="hs"><div class="v">6</div><div class="l">מיומנויות</div></div>
+        </div>
+      </div>
+      <div class="hstats">
+        <div class="hs"><div class="v" style="font-size:9px;">14.6.26</div><div class="l">תחילת תוכנית</div></div>
+        <div class="hs"><div class="v" style="font-size:9px;">ראשון</div><div class="l">כוח עלית</div></div>
+        <div class="hs"><div class="v" style="font-size:9px;">שלישי</div><div class="l">כוח תחתון</div></div>
+        <div class="hs"><div class="v" style="font-size:9px;">חמישי</div><div class="l">ריצת נפח</div></div>
+        <div class="hs"><div class="v" style="font-size:9px;">שני+רביעי</div><div class="l">XPERT</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pi">
+    <div class="tag b">📅 מבנה שבוע קבוע — מ-14.6.2026</div>
+    <table class="stbl" style="margin-bottom:7px;">
+      <thead>
+        <tr><th class="g">יום</th><th>סוג</th><th>תוכן</th><th>משך</th><th>עמוד</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="dn">ראשון</td><td><span class="wt st">כוח עלית</span></td><td>מתח · מקבילים · שכיבות שמיכה · AMRAP</td><td>65 ד'</td><td>3</td></tr>
+        <tr><td class="dn">שני</td><td><span class="wt xp">XPERT</span></td><td>אימון XPERT — כושר קרבי</td><td>90 ד'</td><td>—</td></tr>
+        <tr><td class="dn">שלישי</td><td><span class="wt st">כוח תחתון</span></td><td>סקאווט · לאנץ' · שקים · 2×1,000מ בסיום</td><td>75 ד'</td><td>3</td></tr>
+        <tr><td class="dn">רביעי</td><td><span class="wt xp">XPERT</span></td><td>אימון XPERT — כושר קרבי</td><td>90 ד'</td><td>—</td></tr>
+        <tr><td class="dn">חמישי</td><td><span class="wt ru">ריצת נפח</span></td><td>4–5 ק"מ · קצב 6:00 לק"מ · מתחיל קל, מסיים חזק</td><td>30–35 ד'</td><td>4</td></tr>
+        <tr><td class="dn" style="color:#888;">שישי</td><td><span class="wt rs">מנוחה פעילה</span></td><td>מתיחות + שחרור + נשימות</td><td>—</td><td>—</td></tr>
+        <tr><td class="dn" style="color:#888;">שבת</td><td><span class="wt rs">מנוחה</span></td><td>מנוחה מלאה</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="foot"><span>XPERT — כושר קרבי</span><span><strong>יוסי בדיקה</strong> | עמוד 1 מתוך 4</span><span>צוות קליינמן · רחובות</span></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 2 — מיומנויות שדה ═══════════════ -->
+<div class="page">
+  <div class="topbar"></div>
+  <div class="hdr">
+    <div class="side">משימה שבועית</div>
+    <div class="mid">מיומנויות שדה — 6 משימות<br><span>ביצוע: פעם בשבוע · תיעוד כתוב חובה</span></div>
+    <div class="side">יוסי בדיקה</div>
+  </div>
+
+  <div class="pi">
+    <div class="tag b">🎯 6 מיומנויות — הכנה ושיפור עצמי (1 לשבוע · בחר מתי)</div>
+
+    <div class="mission-grid">
+
+      <!-- CARD 1 -->
+      <div class="mcard">
+        <div class="mcard-head b">
+          <div class="mcard-icon">🩹</div>
+          <div class="mcard-title">עזרה ראשונה בשדה</div>
+          <div class="mcard-desc">ידע שכל אחד חייב. טיפול בעצמך ובאחרים בשטח — ללא ציוד מתקדם, תחת לחץ ועייפות.</div>
+        </div>
+        <div class="mcard-body">
+          <div class="mweek"><div class="mw-num">ש'1</div><div class="mw-text"><strong>ABC + תנוחת שחרור:</strong> למד בדיקת Airway/Breathing/Circulation. תרגל מיצוב נפגע לא מודע × 5.</div></div>
+          <div class="mweek"><div class="mw-num">ש'2</div><div class="mw-text"><strong>חוסם עורקים (CAT/RAT):</strong> הנחה על עצמך — מרפק ועד מפשעה. יעד: הנחה בפחות מ-30 שניות × 20.</div></div>
+          <div class="mweek"><div class="mw-num">ש'3</div><div class="mw-text"><strong>חבישת לחץ ופצע פתוח:</strong> ניקוי + חוסם אוויר + חבישה לחץ. תרגל עם פצע מדומה × 3 חזרות.</div></div>
+          <div class="mweek"><div class="mw-num">ש'4</div><div class="mw-text"><strong>פינוי נפגע:</strong> גרירת חירום (fireman's drag) 50 מטר עם שותף (או תיק 30 ק"ג) × 3.</div></div>
+          <div class="mweek"><div class="mw-num">ש'5</div><div class="mw-text"><strong>סימולציה מלאה:</strong> "פצוע" עם חוסר הכרה + פצע — 5 דקות להחליט ולטפל בכל השלבים × 3.</div></div>
+          <div class="mweek"><div class="mw-num">ש'6</div><div class="mw-text"><strong>לחץ + עייפות:</strong> תרחיש מלא אחרי אימון ובחושך — חוסם + חבישה + פינוי. כל הרצף בפחות מ-3 דק'.</div></div>
+          <div class="mweek"><div class="mw-num">ש'7</div><div class="mw-text"><strong>בחן שותף:</strong> הסבר ותרגל איתו — ABC + חוסם + חבישה + פינוי. אם הוא עבר, עברת גם אתה.</div></div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="mcard">
+        <div class="mcard-head au">
+          <div class="mcard-icon">🪢</div>
+          <div class="mcard-title">קשרים</div>
+          <div class="mcard-desc">4 קשרי שדה בסיסיים — על חבל 8 מ"מ. יעד: כל קשר בפחות מ-15 שניות, גם בחושך ובלחץ.</div>
+        </div>
+        <div class="mcard-body">
+          <div class="mweek"><div class="mw-num au">ש'1</div><div class="mw-text"><strong>קשר בוצ'ר (bowline):</strong> × 20 חזרות עד שרירותי. שימוש: עגינה יציבה למוצק. YouTube: "bowline knot".</div></div>
+          <div class="mweek"><div class="mw-num au">ש'2</div><div class="mw-text"><strong>קשר מסלול (anchor hitch):</strong> × 20 חזרות. שימוש: קשירה לעמוד/עץ. YouTube: "anchor hitch".</div></div>
+          <div class="mweek"><div class="mw-num au">ש'3</div><div class="mw-text"><strong>קשר פרפרי (butterfly knot):</strong> × 20 חזרות. שימוש: לולאה יציבה באמצע חבל פעיל.</div></div>
+          <div class="mweek"><div class="mw-num au">ש'4</div><div class="mw-text"><strong>קשר תליה:</strong> × 20 חזרות. שימוש: ריתוק ציוד לגב/אוהל/עץ. כולל שחרור מהיר.</div></div>
+          <div class="mweek"><div class="mw-num au">ש'5</div><div class="mw-text"><strong>קשירת אוהל שלם:</strong> כל חבל פינה בקשר שונה מ-4 שלמדת. זמן כולל: פחות מ-3 דקות.</div></div>
+          <div class="mweek"><div class="mw-num au">ש'6</div><div class="mw-text"><strong>עיניים עצומות:</strong> כל 4 קשרים × 5 חזרות בחשיכה מוחלטת × 3 סבבים רצופים.</div></div>
+          <div class="mweek"><div class="mw-num au">ש'7</div><div class="mw-text"><strong>לחץ:</strong> אחרי 30 שכיבות שמיכה — בצע בוצ'ר + מסלול + פרפרי תוך 90 שניות × 5.</div></div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="mcard">
+        <div class="mcard-head teal">
+          <div class="mcard-icon">🗺️</div>
+          <div class="mcard-title">ניווט — מפה ומצפן</div>
+          <div class="mcard-desc">מפה טופוגרפית + מצפן, ללא GPS. בונוס התוכנית — שיעורי YouTube ויישום בשטח.</div>
+        </div>
+        <div class="mcard-body">
+          <div class="mweek"><div class="mw-num tl">ש'1</div><div class="mw-text"><strong>שיעור 1:</strong> youtube.com/watch?v=Ec_Da3KMZps — צפה, רשום 5 נקודות. מה הם קווי גובה?</div></div>
+          <div class="mweek"><div class="mw-num tl">ש'2</div><div class="mw-text"><strong>שיעור 2:</strong> youtube.com/watch?v=R_7mbudFhjk — הדפס מפה של אזורך, זהה 5 תכונות שטח.</div></div>
+          <div class="mweek"><div class="mw-num tl">ש'3</div><div class="mw-text"><strong>בשטח שעה:</strong> מפה + מצפן — זהה 5 נקודות ציון. רשום מה מצאת ומה טעית.</div></div>
+          <div class="mweek"><div class="mw-num tl">ש'4</div><div class="mw-text"><strong>נווט לנקודת יעד:</strong> 2 ק"מ מביתך, ללא GPS — מפה + מצפן בלבד. יעד: הגעה בפחות מ-30 דק'.</div></div>
+          <div class="mweek"><div class="mw-num tl">ש'5</div><div class="mw-text"><strong>ציור מפה:</strong> שרטט מהראש 1 ק"מ² סביב ביתך. כבישים, מבנים, גבהים. בדוק מול מפה.</div></div>
+          <div class="mweek"><div class="mw-num tl">ש'6</div><div class="mw-text"><strong>3 נקודות ברצף:</strong> מצפן בלבד — ללא הסתמכות ויזואלית על ציוני דרך. תעד דיוק.</div></div>
+          <div class="mweek"><div class="mw-num tl">ש'7</div><div class="mw-text"><strong>ניווט לילה:</strong> 3 נקודות ציון, 5 ק"מ, פנס בלבד. יעד: פחות מ-90 דקות. תיעוד כתוב.</div></div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="mcard">
+        <div class="mcard-head r">
+          <div class="mcard-icon">⛺</div>
+          <div class="mcard-title">אוהל סיירים</div>
+          <div class="mcard-desc">הקמת מחסה שדה עם ציוד מינימלי — פונצ'ו/ניילון + חבל + מוטות. יעד: הקמה בפחות מ-8 דק'.</div>
+        </div>
+        <div class="mcard-body">
+          <div class="mweek"><div class="mw-num r">ש'1</div><div class="mw-text"><strong>למד:</strong> YouTube "הקמת פונצ'ו שלטר". צפה × 3. רשום שלבי הקמה ושיקולי מיקום.</div></div>
+          <div class="mweek"><div class="mw-num r">ש'2</div><div class="mw-text"><strong>הקמה ראשונה:</strong> הקם ומדוד זמן. פרק והקם שוב × 3 — מה לשפר?</div></div>
+          <div class="mweek"><div class="mw-num r">ש'3</div><div class="mw-text"><strong>יעד פחות מ-10 דקות:</strong> × 5 ניסיונות עם מדידת זמן. השווה כל ניסיון.</div></div>
+          <div class="mweek"><div class="mw-num r">ש'4</div><div class="mw-text"><strong>בחושך:</strong> לילה, פנס מצח בלבד × 3 ניסיונות. יעד: פחות מ-10 דקות לכל הקמה.</div></div>
+          <div class="mweek"><div class="mw-num r">ש'5</div><div class="mw-text"><strong>לחץ:</strong> הקם לאחר 500 מטר ריצה — תנאי עייפות אמיתיים. מדוד זמן.</div></div>
+          <div class="mweek"><div class="mw-num r">ש'6</div><div class="mw-text"><strong>ציוד חלקי:</strong> ללא מוט — רק חבל + עצים טבעיים. פתרון יצירתי. יעד: פחות מ-12 דקות.</div></div>
+          <div class="mweek"><div class="mw-num r">ש'7</div><div class="mw-text"><strong>לחץ מלא:</strong> אחרי ק"מ ריצה, בלילה, ציוד חלקי. הכל ביחד. יעד: פחות מ-12 דקות.</div></div>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="mcard">
+        <div class="mcard-head dk">
+          <div class="mcard-icon">✏️</div>
+          <div class="mcard-title">ציור מפה מזיכרון</div>
+          <div class="mcard-desc">שינון מפת ישראל ואזורים ספציפיים. יעד: ישראל מלאה + 20 נקודות תוך 5 דקות ללא הכנה.</div>
+        </div>
+        <div class="mcard-body">
+          <div class="mweek"><div class="mw-num dk">ש'1</div><div class="mw-text"><strong>גבולות + 5 ערים:</strong> שרטט רק גבולות ישראל מזיכרון × 3. בדוק מול מפה — מה טעית?</div></div>
+          <div class="mweek"><div class="mw-num dk">ש'2</div><div class="mw-text"><strong>אזורים:</strong> הוסף גליל, שומרון, יהודה, נגב. ציור × 3 עם הסברים על כל אזור.</div></div>
+          <div class="mweek"><div class="mw-num dk">ש'3</div><div class="mw-text"><strong>מים:</strong> ים המלח, כנרת, ירדן, גולן. ציור מלא של צפון ישראל × 3.</div></div>
+          <div class="mweek"><div class="mw-num dk">ש'4</div><div class="mw-text"><strong>מפה מלאה:</strong> 15 ערים, גבולות, מים, כבישים ראשיים. ציור מלא בפחות מ-10 דקות.</div></div>
+          <div class="mweek"><div class="mw-num dk">ש'5</div><div class="mw-text"><strong>אזור ספציפי:</strong> רחובות + שפלת יהודה — ישובים, כבישים, ואדיות, גבהים.</div></div>
+          <div class="mweek"><div class="mw-num dk">ש'6</div><div class="mw-text"><strong>ציור × 2:</strong> 15 דקות מפורט → 8 דקות מהיר. השווה — מה נשמט במהיר?</div></div>
+          <div class="mweek"><div class="mw-num dk">ש'7</div><div class="mw-text"><strong>מבחן:</strong> 5 דקות ללא הכנה — ישראל מלאה + 20 נקודות. ציון מול מפה אמיתית.</div></div>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="mcard">
+        <div class="mcard-head pu">
+          <div class="mcard-icon">🎤</div>
+          <div class="mcard-title">הרצאה בפני קבוצה</div>
+          <div class="mcard-desc">הכן נושא והצג 5–10 דקות. ביטחון עצמי, ניסוח מחשבות, עמידה תחת לחץ חברתי — בלי נייר.</div>
+        </div>
+        <div class="mcard-body">
+          <div class="mweek"><div class="mw-num pu">ש'1</div><div class="mw-text"><strong>בחר נושא:</strong> דבר שאתה מכיר לעומק. כתוב: 3 נקודות מרכזיות + פתיחה + סיכום.</div></div>
+          <div class="mweek"><div class="mw-num pu">ש'2</div><div class="mw-text"><strong>כתוב ותרגל:</strong> 400 מילה במלואה → קרא בקול × 2. שים לב לקצב, טון, ביטחון.</div></div>
+          <div class="mweek"><div class="mw-num pu">ש'3</div><div class="mw-text"><strong>מול מראה:</strong> בעל פה (ללא דף) × 3. הקלט את עצמך. האזן: מה לשפר בניסוח ובביטחון?</div></div>
+          <div class="mweek"><div class="mw-num pu">ש'4</div><div class="mw-text"><strong>בפני אדם:</strong> הצג לבן משפחה/חבר 5–7 דקות. בקש משוב: מה היה ברור? מה לא?</div></div>
+          <div class="mweek"><div class="mw-num pu">ש'5</div><div class="mw-text"><strong>הרצאה שנייה:</strong> נושא שאינך מכיר, שעה הכנה בלבד → הצג בפני 2 אנשים.</div></div>
+          <div class="mweek"><div class="mw-num pu">ש'6</div><div class="mw-text"><strong>ללא הכנה:</strong> הצג הרצאה שנייה שוב — רק מהזיכרון, 5 דקות לפחות. ללא ניירות.</div></div>
+          <div class="mweek"><div class="mw-num pu">ש'7</div><div class="mw-text"><strong>5+ אנשים:</strong> הצג 10 דקות בפני קבוצה. קבל משוב מכולם. כך זה בחיים האמיתיים.</div></div>
+        </div>
+      </div>
+
+    </div><!-- end mission-grid -->
+  </div>
+
+  <div class="foot"><span>XPERT — כושר קרבי</span><span><strong>יוסי בדיקה</strong> | עמוד 2 מתוך 4</span><span>מיומנויות שדה</span></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 3 — אימוני כוח ═══════════════ -->
+<div class="page">
+  <div class="topbar"></div>
+  <div class="hdr">
+    <div class="side">ראשון + שלישי</div>
+    <div class="mid">אימוני כוח — עלית + תחתון<br><span>מקסימום עבודה · עם שק חול 20 ק"ג</span></div>
+    <div class="side">יוסי בדיקה</div>
+  </div>
+
+  <div class="pi">
+    <div class="gb"><p><strong>עיקרון:</strong> מקסימום עבודה בכל סט. בין חלק לחלק: <strong>2–3 דקות מנוחה</strong>. ה-AMRAP גדל לפי שבוע — עובדים כמה שיותר סבבים במסגרת הזמן. <strong>הגוף מגיב לאיכות, לא לכמות.</strong></p></div>
+
+    <div class="tag b">💪 ראשון — כוח עלית (65 דקות)</div>
+
+    <div class="wu">
+      <div class="wu-t">🔥 חימום — 10 דקות קל</div>
+      <ul>
+        <li><span>×1</span> 5 מתח + 10 שכיבות שמיכה + 5 שכיבות שמיכה עם מחיאת כף + 300מ' ריצה קלה</li>
+      </ul>
+    </div>
+
+    <div class="ph2 b"><div class="phl b">א</div> <span>מתח ומקבילים עם גומיית התנגדות — 5 סטים</span></div>
+    <div class="pb"><strong>6–8 מתח</strong> ← 30 שניות מנוחה → <strong>4–6 מתח רחב</strong> ← מנוחה 2 דקות. חוזרים × 5 סטים. גומיית התנגדות = תמיכה בעלייה. <strong>ירידה איטית ומבוקרת תמיד.</strong></div>
+
+    <div class="ph2 b"><div class="phl b">ב</div> <span>מקבילים ושכיבות שמיכה — 5 סטים</span></div>
+    <div class="pb"><strong>6–8 מקבילים</strong> ← 30 שניות מנוחה → <strong>18 שכיבות שמיכה</strong> (2 שניות ירידה, עלייה מהירה) ← מנוחה 2:00–2:30 דקות. חוזרים × 5 סטים. <span class="hl">חשוב: להרגיש הבדל בין קצב הירידה לקצב העלייה.</span></div>
+
+    <div class="ph2 au"><div class="phl au">ג</div> <span>AMRAP — כמה שיותר סבבים (גדל לפי שבוע)</span></div>
+    <div class="pb"><strong>ש'1–2: 12 דקות | ש'3–4: 16 דקות | ש'5–7: 20 דקות</strong><br>סבב: 12 כפיפות בטן + 6 שכיבות שמיכה רחב + 12 אולרים + 6 שכיבות שמיכה יהלום. מנוח בין סבבים בלבד.</div>
+
+    <div class="tag b" style="margin-top:4px;">🏋️ שלישי — כוח תחתון (75 דקות)</div>
+
+    <div class="wu">
+      <div class="wu-t">🔥 חימום — 10 דקות | 3–4 סבבים</div>
+      <ul>
+        <li><span>×3–4</span> 20 הליכת לאנץ' + 20 צעדים הליכת ברווז + 250מ' ריצה קלה</li>
+      </ul>
+    </div>
+
+    <div class="ph2 b"><div class="phl b">א</div> <span>סקאווט סטטי עם שק חול/תיק 20 ק"ג — × 6</span></div>
+    <div class="pb"><strong>דקה שלמה סקאווט סטטי</strong> (ישיבת קיר עם שק על הגב) ← <strong>דקה מנוחה</strong>. חוזרים 6 פעמים. גב ישר, ירכיים מקבילות לרצפה.</div>
+
+    <div class="ph2 b"><div class="phl b">ב</div> <span>סקאווט רגיל עם שק — × 5</span></div>
+    <div class="pb"><strong>30 סקאווט</strong> ← מנוחה 45 שניות. חוזרים 5 פעמים. ירידה מלאה, גב ישר, נשיפה בעלייה.</div>
+
+    <div class="ph2 au"><div class="phl au">ג</div> <span>AMRAP עם שק חול/תיק 20 ק"ג (גדל לפי שבוע)</span></div>
+    <div class="pb"><strong>ש'1–3: 12 דקות | ש'4–5: 16 דקות | ש'6–7: 20 דקות</strong><br>סבב: 24 לאנץ' (12 בכל רגל) + 24 סטפ אפס על ספסל (step-ups) + 6 קפיצות ממושב הספסל הכי רחוק שאפשר.</div>
+
+    <div class="ph2 au"><div class="phl au">ד</div> <span>בטן סטטית עם שק על הגב — × 4–5</span></div>
+    <div class="pb"><strong>דקה ורבע (1:15) פלאנק קדמי</strong> עם שק חול על הגב ← <strong>45 שניות מנוחה</strong>. חוזרים 4–5 פעמים. גב ישר לחלוטין.</div>
+
+    <div class="note dk" style="margin-top:3px;"><strong>סיום שלישי:</strong> לאחר חלק ד' — <strong>מנוחה 5 דקות</strong>, ואז <strong>2 × 1,000 מטר</strong> (מנוחה 4 דקות בין לבין). מטרה: <strong>מתחת ל-4:30 בכל אחד</strong>. הגוף עייף — ממש כמו בשטח. מתרגלים לעבוד כשהגוף עייף.</div>
+  </div>
+
+  <div class="foot"><span>XPERT — כושר קרבי</span><span><strong>יוסי בדיקה</strong> | עמוד 3 מתוך 4</span><span>ראשון + שלישי</span></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 4 — ריצות ═══════════════ -->
+<div class="page">
+  <div class="topbar"></div>
+  <div class="hdr">
+    <div class="side">חמישי + שלישי</div>
+    <div class="mid">ריצות — נפח + כוח<br><span>7 שבועות · חימום חובה לפני כל ריצה</span></div>
+    <div class="side">יוסי בדיקה</div>
+  </div>
+
+  <div class="pi">
+    <div class="gb"><p><strong>כלל:</strong> לפני כל ריצת נפח — <strong>5 דקות הליכה + מתיחות דינמיות</strong>. קצב ריצת הנפח חייב להיות <strong>נעים ושיחתי</strong> — אם לא מסוגל לדבר בזמן הריצה, האטי. הריצות בונות בסיס אירובי. <strong>אל תחרוג מהנפח הקבוע — עדיף לסיים רעב מאשר לאמן יתר.</strong></p></div>
+
+    <div class="tag b">🏃 ריצת נפח שבועית — חמישי (7 שבועות)</div>
+
+    <div class="note au" style="margin-bottom:6px;"><strong>קצב יעד: 6:00 דקות לק"מ בכל ריצה.</strong> אם קלה מדי — תוסיף עצימות בשישי. הריצות ב-ש'7 (הורדת עומס) — 5 ק"מ רגיל, ללא שינוי. <strong>בסיום ריצת הנפח: 5 דקות מתיחות סטטיות חובה.</strong></div>
+
+    <table class="pt">
+      <thead>
+        <tr><th>שבוע</th><th class="w">תאריך (חמישי)</th><th class="w">מרחק</th><th class="w">קצב יעד</th><th class="w">הערה</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ש'1</td><td>17.7</td><td>4 ק"מ</td><td>6:00/ק"מ</td><td>—</td></tr>
+        <tr><td>ש'2</td><td>24.7</td><td>4 ק"מ</td><td>6:00/ק"מ</td><td>—</td></tr>
+        <tr><td>ש'3</td><td>328.7</td><td>4.5 ק"מ</td><td>6:00/ק"מ</td><td>—</td></tr>
+        <tr><td>ש'4</td><td>10.7</td><td>4.5 ק"מ</td><td>6:00/ק"מ</td><td>—</td></tr>
+        <tr><td>ש'5</td><td>17.7</td><td>5 ק"מ</td><td>6:00/ק"מ</td><td>—</td></tr>
+        <tr><td>ש'6</td><td>24.7</td><td>5 ק"מ</td><td>6:00/ק"מ</td><td>—</td></tr>
+        <tr class="hl"><td>ש'7</td><td>328.7</td><td>5 ק"מ</td><td>6:00/ק"מ</td><td>הורדת עומס</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tag b" style="margin-top:6px;">⚡ ריצות כוח — 2×1,000מ (בסיום שלישי)</div>
+
+    <div class="note b" style="margin-bottom:6px;"><strong>מתי:</strong> בסיום אימון כוח תחתון (שלישי) — לאחר 5 דקות מנוחה מלאה. <strong>2 × 1,000 מטר</strong>, מנוחה 4 דקות בין לבין. <strong>הגוף עייף — זה בכוונה.</strong> כך מתרגלים לרוץ בעייפות. הקצב נשמר ולא מתפרעים. אם לא הגעת ל-4:30 — זה בסדר, תמדוד ותשפר.</div>
+
+    <table class="pt">
+      <thead>
+        <tr><th>שבוע</th><th class="w">תאריך (שלישי)</th><th class="w">תוכנית</th><th class="w">מנוחה בין</th><th class="w">יעד</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ש'1</td><td>16.6</td><td style="text-align:right;">2 × 1,000 מטר</td><td>4 דקות</td><td>&lt; 4:30 כ"א</td></tr>
+        <tr><td>ש'2</td><td>230.6</td><td style="text-align:right;">2 × 1,000 מטר</td><td>4 דקות</td><td>&lt; 4:30 כ"א</td></tr>
+        <tr><td>ש'3</td><td>30.6</td><td style="text-align:right;">2 × 1,000 מטר</td><td>4 דקות</td><td>&lt; 4:20 כ"א</td></tr>
+        <tr><td>ש'4</td><td>7.7</td><td style="text-align:right;">2 × 1,000 מטר</td><td>4 דקות</td><td>&lt; 4:20 כ"א</td></tr>
+        <tr><td>ש'5</td><td>14.7</td><td style="text-align:right;">2 × 1,000 מטר</td><td>3:30 דקות</td><td>&lt; 4:10 כ"א</td></tr>
+        <tr><td>ש'6</td><td>228.7</td><td style="text-align:right;">2 × 1,000 מטר</td><td>3:30 דקות</td><td>&lt; 4:10 כ"א</td></tr>
+        <tr class="hl"><td>ש'7</td><td>28.7</td><td style="text-align:right;">2 × 1,000 מטר</td><td>4 דקות</td><td>&lt; 4:20 כ"א</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note dk" style="margin-top:4px;"><strong>שבוע 7 — הורדת עומס:</strong> רק XPERT + ריצת נפח 5 ק"מ + 2×1,000מ. <strong>ללא אימוני כוח.</strong> תן לגוף להתאוסס ולהטמיע. הגעת לשיא הגוש — הגוף צריך לנשום.</div>
+  </div>
+
+  <div class="foot"><span>XPERT — כושר קרבי</span><span><strong>יוסי בדיקה</strong> | עמוד 4 מתוך 4</span><span>ריצות נפח + כוח</span></div>
+</div>
+
+</body>
+</html>
