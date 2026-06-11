@@ -1,0 +1,17 @@
+# הוראות קבועות — XPERT תוכניות אימונים
+
+## טמפלייט חובה
+כל תוכנית אימונים חייבת להיבנות בטמפלייט של `alon_veil_plan.html` בלבד.
+**אסור** להשתמש בטמפלייט אחר (לא noam_nachshon, לא guy_vishninsky, לא אחר).
+
+## מבנה הטמפלייט הסטנדרטי:
+- `.ph` header: לוגו XPERT + כותרת + אייקון (base64)
+- Hero section עם רקע תמונה (jpeg base64)
+- `.topbar` גרדיאנט
+- CSS variables: `--red:#c0392b`, `--rd:#922b21`, `--green:#6b9219`, `--gd:#445e0e`, `--gl:#9bbf30`, `--gold:#c8952a`, `--go:#e8b84a`, `--dark:#0d1205`, `--pu:#7d3c98`
+
+## base64 images
+לחלץ מ-`alon_veil_plan.html` באמצעות `/tmp/harel_b64.py` או דומה.
+
+## שמירה ודחיפה
+אחרי כל תוכנית — commit + push ל-`claude/intelligent-brown-p0yycr`
