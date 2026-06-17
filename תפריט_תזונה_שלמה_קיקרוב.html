@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תפריט תזונה – שלמה קיקרוב</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f6f8;
+      color: #2c3e50;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1a7f5a, #27ae60);
+      color: white;
+      padding: 36px 40px;
+      text-align: center;
+    }
+    .header h1 { font-size: 2rem; margin-bottom: 6px; }
+    .header .subtitle { font-size: 1.1rem; opacity: 0.9; }
+    .header .goal {
+      margin-top: 14px;
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 6px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    /* Stats bar */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background: #eafaf1;
+      border-bottom: 2px solid #d5f5e3;
+      padding: 18px 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat .value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1a7f5a;
+    }
+    .stat .label {
+      font-size: 0.8rem;
+      color: #7f8c8d;
+      margin-top: 2px;
+    }
+
+    /* Content */
+    .content { padding: 30px 40px; }
+
+    /* Section title */
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1a7f5a;
+      border-right: 4px solid #27ae60;
+      padding-right: 12px;
+      margin: 28px 0 16px;
+    }
+
+    /* Meals */
+    .meal {
+      background: #f9fdfb;
+      border: 1px solid #d5f5e3;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+    .meal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .meal-name {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #1a7f5a;
+    }
+    .meal-cal {
+      background: #27ae60;
+      color: white;
+      border-radius: 12px;
+      padding: 3px 12px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+    .meal ul {
+      list-style: none;
+      padding: 0;
+    }
+    .meal ul li {
+      padding: 3px 0;
+      font-size: 0.95rem;
+      color: #4a5568;
+    }
+    .meal ul li::before {
+      content: "✓ ";
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    /* Foods table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+    th {
+      background: #1a7f5a;
+      color: white;
+      padding: 10px 14px;
+      text-align: right;
+    }
+    td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #e8f5e9;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f4fdf7; }
+
+    /* Tips */
+    .tips {
+      background: #fffde7;
+      border: 1px solid #f9e400;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 10px;
+    }
+    .tips ol {
+      padding-right: 20px;
+    }
+    .tips ol li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .tips ol li strong {
+      color: #1a7f5a;
+    }
+
+    /* Note */
+    .note {
+      margin-top: 28px;
+      background: #ebf5fb;
+      border-right: 4px solid #2980b9;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #2c3e50;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: #aaa;
+      border-top: 1px solid #eee;
+      margin-top: 30px;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>תפריט תזונה אישי</h1>
+    <div class="subtitle">שלמה קיקרוב</div>
+    <div class="goal">🎯 מטרה: עלייה מ-76 ק"ג ל-84 ק"ג</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="value">~3,200</div>
+      <div class="label">קלוריות ביום</div>
+    </div>
+    <div class="stat">
+      <div class="value">160 גרם</div>
+      <div class="label">חלבון ביום</div>
+    </div>
+    <div class="stat">
+      <div class="value">6</div>
+      <div class="label">ארוחות ביום</div>
+    </div>
+    <div class="stat">
+      <div class="value">+500</div>
+      <div class="label">עודף קלורי</div>
+    </div>
+    <div class="stat">
+      <div class="value">0.5–1 ק"ג</div>
+      <div class="label">עלייה שבועית</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Meals -->
+    <div class="section-title">ארוחות יומיות</div>
+
+    <div class="meal">
+      <div class="meal-header">
+        <div class="meal-name">☀️ ארוחת בוקר</div>
+        <div class="meal-cal">700 קל'</div>
+      </div>
+      <ul>
+        <li>4 ביצים קשות / חביתה</li>
+        <li>2 פרוסות לחם מחיטה מלאה</li>
+        <li>30 גרם גבינה צהובה</li>
+        <li>כוס חלב 3%</li>
+        <li>בננה אחת</li>
+      </ul>
+    </div>
+
+    <div class="meal">
+      <div class="meal-header">
+        <div class="meal-name">🥜 ארוחת ביניים – בוקר</div>
+        <div class="meal-cal">400 קל'</div>
+      </div>
+      <ul>
+        <li>200 גרם קוטג' 5%</li>
+        <li>30 גרם אגוזים מעורבים</li>
+        <li>2 תמרים</li>
+      </ul>
+    </div>
+
+    <div class="meal">
+      <div class="meal-header">
+        <div class="meal-name">🍗 ארוחת צהריים</div>
+        <div class="meal-cal">900 קל'</div>
+      </div>
+      <ul>
+        <li>200 גרם חזה עוף / סטייק בקר</li>
+        <li>150 גרם אורז / פסטה מלאה (משקל יבש)</li>
+        <li>ירקות מאודים בשמן זית</li>
+        <li>סלט ירקות טרי</li>
+      </ul>
+    </div>
+
+    <div class="meal">
+      <div class="meal-header">
+        <div class="meal-name">🥤 ארוחת ביניים – שייק חלבון</div>
+        <div class="meal-cal">350 קל'</div>
+      </div>
+      <ul>
+        <li>1 מנת אבקת חלבון (Whey)</li>
+        <li>כוס חלב</li>
+        <li>בננה</li>
+        <li>כפית חמאת בוטנים</li>
+      </ul>
+    </div>
+
+    <div class="meal">
+      <div class="meal-header">
+        <div class="meal-name">🐟 ארוחת ערב</div>
+        <div class="meal-cal">700 קל'</div>
+      </div>
+      <ul>
+        <li>200 גרם סלמון / טונה / קציצות בקר</li>
+        <li>בטטה בינונית אפויה</li>
+        <li>ירקות מבושלים</li>
+      </ul>
+    </div>
+
+    <div class="meal">
+      <div class="meal-header">
+        <div class="meal-name">🌙 לפני שינה</div>
+        <div class="meal-cal">200 קל'</div>
+      </div>
+      <ul>
+        <li>200 גרם יוגורט יווני</li>
+        <li>כפית דבש</li>
+      </ul>
+    </div>
+
+    <!-- Foods table -->
+    <div class="section-title">מזונות מומלצים</div>
+    <table>
+      <tr>
+        <th>קטגוריה</th>
+        <th>מזונות</th>
+      </tr>
+      <tr>
+        <td><strong>חלבונות</strong></td>
+        <td>עוף, בקר, ביצים, דגים, גבינות, קטניות</td>
+      </tr>
+      <tr>
+        <td><strong>פחמימות</strong></td>
+        <td>אורז, פסטה, לחם מלא, בטטה, שיבולת שועל</td>
+      </tr>
+      <tr>
+        <td><strong>שומנים בריאים</strong></td>
+        <td>אבוקדו, אגוזים, שמן זית, חמאת בוטנים</td>
+      </tr>
+    </table>
+
+    <!-- Tips -->
+    <div class="section-title">טיפים חשובים</div>
+    <div class="tips">
+      <ol>
+        <li><strong>אל תדלג על ארוחות</strong> — עקביות היא המפתח להצלחה</li>
+        <li><strong>שתיית מים</strong> — לפחות 3 ליטר ביום</li>
+        <li><strong>אימוני כוח</strong> — הכרחיים לעלייה בשריר ולא רק בשומן</li>
+        <li><strong>שינה מספקת</strong> — 7–8 שעות לבנייה ושיקום שרירים</li>
+        <li><strong>עלייה הדרגתית</strong> — 0.5–1 ק"ג בשבוע היא קצב בריא ומומלץ</li>
+      </ol>
+    </div>
+
+    <!-- Note -->
+    <div class="note">
+      ℹ️ <strong>הערה:</strong> תפריט זה הוא המלצה כללית בלבד. מומלץ להיוועץ בדיאטנית קלינית לתפריט אישי מותאם לצרכים, להעדפות ולוח הזמנים של שלמה.
+    </div>
+
+  </div>
+
+  <div class="footer">
+    תפריט תזונה אישי · שלמה קיקרוב · 2026
+  </div>
+
+</div>
+</body>
+</html>
