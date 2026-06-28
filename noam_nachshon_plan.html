@@ -41,6 +41,7 @@ body{background:#1a1a1a;font-family:'Heebo',sans-serif;direction:rtl;}
 .rt{width:100%;border-collapse:collapse;font-size:8px;margin-bottom:8px;}
 .rt th{background:linear-gradient(90deg,#080f02,#172208);color:var(--gl);font-size:7px;font-weight:700;padding:5px 6px;text-align:right;letter-spacing:.3px;border-bottom:1px solid rgba(107,146,25,.25);}
 .rt td{padding:4px 6px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top;line-height:1.4;}
+.rt tr.test td{background:rgba(200,149,42,.07);}
 .rt tr.dim td{color:#555;font-style:italic;}
 .gold{color:var(--gold) !important;}
 .wbadge{display:inline-block;font-size:7px;font-weight:800;padding:1px 5px;border-radius:10px;color:#fff;}
@@ -53,16 +54,17 @@ body{background:#1a1a1a;font-family:'Heebo',sans-serif;direction:rtl;}
 .scard-icon{font-size:14px;margin-bottom:2px;}
 .scard-title{font-size:8.5px;font-weight:800;color:#ddd;margin-bottom:2px;}
 .scard-body{font-size:7.5px;color:#999;line-height:1.4;}
-.sec{margin-bottom:10px;}
-.sec-title{font-size:9px;font-weight:800;color:var(--gl);border-right:3px solid var(--gl);padding-right:8px;margin-bottom:5px;}
-.sec-title.r{color:#e74c3c;border-color:var(--red);}
-.sec-title.au{color:var(--go);border-color:var(--gold);}
-.sec-title.pu{color:#c090e0;border-color:var(--pu);}
-.item{font-size:8px;padding:3px 0 3px 0;border-bottom:1px solid rgba(255,255,255,.05);color:#ccc;display:flex;align-items:baseline;gap:6px;line-height:1.5;}
-.item::before{content:"▸";color:var(--gl);font-size:7px;flex-shrink:0;}
-.item a{color:var(--gold);text-decoration:none;font-size:7px;margin-right:4px;}
+.ex-block{margin-bottom:7px;}
+.ex-title{font-size:8.5px;font-weight:800;color:var(--gl);margin-bottom:3px;padding-bottom:2px;border-bottom:1px solid rgba(107,146,25,.2);}
+.ex-title.r{color:#e74c3c;border-color:rgba(192,57,43,.2);}
+.ex-title.au{color:var(--go);border-color:rgba(200,149,42,.2);}
+.ex-title.pu{color:#c090e0;border-color:rgba(125,60,152,.2);}
+.ex-list{list-style:none;}
+.ex-list li{font-size:7.5px;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.04);color:#ccc;display:flex;align-items:baseline;gap:5px;line-height:1.5;}
+.ex-list li::before{content:"▸";color:var(--gl);font-size:7px;flex-shrink:0;}
 .note{font-size:7.5px;color:#bbb;line-height:1.6;padding:6px 10px;border-radius:4px;margin-bottom:6px;}
 .note.dark{background:#080f02;border:1px solid rgba(255,255,255,.08);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .mn-card{background:#080f02;border-right:3px solid var(--pu);border-radius:0 5px 5px 0;padding:5px 9px;margin-bottom:5px;}
 .mn-title{font-size:8px;font-weight:800;color:#c090e0;margin-bottom:2px;}
 .mn-body{font-size:7.5px;color:rgba(255,255,255,.8);line-height:1.5;}
@@ -141,49 +143,51 @@ body{background:#1a1a1a;font-family:'Heebo',sans-serif;direction:rtl;}
     ⚡ <strong>חימום:</strong> כפול 3 — 200מ׳ ריצה קלה | 20 שכיבות שמיכה | 5-8 מתח | 5-8 מקבילים | חימום מפרקים
   </div>
 
-  <div class="sec">
-    <div class="sec-title">א׳ — לחיצת חזה בשיפוע חיובי</div>
-    <div class="item">60% מהיכולת המקסימלית לחזרה אחת</div>
-    <div class="item">5 סטים × 10 חזרות | מנוחה 1:30 בין סט לסט</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=incline+barbell+bench+press+technique" target="_blank">▶ YouTube הדגמה</a></div>
+  <div class="ex-block">
+    <div class="ex-title">א׳ — לחיצת חזה בשיפוע חיובי</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title r">ב׳ — לחיצת חזה משקולות יד</div>
-    <div class="item">75% מהיכולת — 8 חזרות | מנוחה 30 שנ'</div>
-    <div class="item">מיד → 12-18 שכיבות שמיכה מושלמות | מנוחה 2 דק'</div>
-    <div class="item">כפול 5 סטים</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=dumbbell+chest+press+superset+pushups" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>60% מהיכולת המקסימלית לחזרה אחת</li>
+          <li>5 סטים × 10 חזרות | מנוחה 1:30 בין סט לסט</li>
+          <li><a href="https://www.youtube.com/results?search_query=incline+barbell+bench+press+technique" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title r">ב׳ — לחיצת חזה משקולות יד</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title au">ג׳ — טריפל סט כתפיים</div>
-    <div class="item">תרגיל 1: פשיטת משקולות יד לצדדים — 8 חזרות</div>
-    <div class="item">מיד ← תרגיל 2: פשיטת משקולות יד לפנים — 8 חזרות</div>
-    <div class="item">מיד ← תרגיל 3: לחיצת כתפיים משקל נמוך — 30שנ׳ מקסימום חזרות</div>
-    <div class="item">מנוחה 2 דק׳ | כפול 5 סטים</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=shoulder+triple+set+lateral+front+raise+press" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>75% מהיכולת — 8 חזרות | מנוחה 30 שנ'</li>
+          <li>מיד → 12-18 שכיבות שמיכה מושלמות | מנוחה 2 דק'</li>
+          <li>כפול 5 סטים</li>
+          <li><a href="https://www.youtube.com/results?search_query=dumbbell+chest+press+superset+pushups" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title au">ג׳ — טריפל סט כתפיים</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title pu">ד׳ — סופר סט ידיים</div>
-    <div class="item">יד קידמית: 12 חזרות בכל יד (משקולת יד)</div>
-    <div class="item">מיד ← יד אחורית: 12 חזרות</div>
-    <div class="item">מנוחה 1:15 | כפול 5</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=bicep+curl+tricep+extension+superset+dumbbell" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>תרגיל 1: פשיטת משקולות יד לצדדים — 8 חזרות</li>
+          <li>מיד ← תרגיל 2: פשיטת משקולות יד לפנים — 8 חזרות</li>
+          <li>מיד ← תרגיל 3: לחיצת כתפיים משקל נמוך — 30שנ׳ מקסימום חזרות</li>
+          <li>מנוחה 2 דק׳ | כפול 5 סטים</li>
+          <li><a href="https://www.youtube.com/results?search_query=shoulder+triple+set+lateral+front+raise+press" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title pu">ד׳ — סופר סט ידיים</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title">ה׳ — מקבילים עם משקל</div>
-    <div class="item">10 חזרות × 5 סטים | מנוחה 1:30 בין סט לסט</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=weighted+dips+chest+tricep" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>יד קידמית: 12 חזרות בכל יד (משקולת יד)</li>
+          <li>מיד ← יד אחורית: 12 חזרות</li>
+          <li>מנוחה 1:15 | כפול 5</li>
+          <li><a href="https://www.youtube.com/results?search_query=bicep+curl+tricep+extension+superset+dumbbell" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title">ה׳ — מקבילים עם משקל</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title r">ו׳ — בטן סטטית עם פלטה</div>
-    <div class="item">פלטה על הגב | 2-3 דקות רצוף</div>
-    <div class="item">מנוחה דקה | כפול 2-3 סטים</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=plank+with+weight+plate+on+back" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>10 חזרות × 5 סטים | מנוחה 1:30 בין סט לסט</li>
+          <li><a href="https://www.youtube.com/results?search_query=weighted+dips+chest+tricep" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title r">ו׳ — בטן סטטית עם פלטה</div>
   </div>
 </div>
 <div class="pf"><div class="ft">נועם נחשון | כוח פלג עליון</div><div class="fb">XPERT כושר קרבי | kosherkravi.co.il</div><div class="fp">2 / 7</div></div>
@@ -202,50 +206,56 @@ body{background:#1a1a1a;font-family:'Heebo',sans-serif;direction:rtl;}
   <div class="note dark" style="margin-bottom:10px;">
     ⚡ <strong>חימום:</strong> כפול 3 — 3 דק׳ ריצה קלה | 30 סקוואט + 20 שנ׳ סקוואט סטטי | מנוחה דקה בין סטים
   </div>
-
-  <div class="sec">
-    <div class="sec-title">א׳ — סקוואט EMOM</div>
-    <div class="item">כל 1:30 על השעון — 6 חזרות סקוואט</div>
-    <div class="item">למשך 12 דקות</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=squat+EMOM+every+minute+on+the+minute" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>פלטה על הגב | 2-3 דקות רצוף</li>
+          <li>מנוחה דקה | כפול 2-3 סטים</li>
+          <li><a href="https://www.youtube.com/results?search_query=plank+with+weight+plate+on+back" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title">א׳ — סקוואט EMOM</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title r">ב׳ — לאנץ׳ עם משקל EMOM</div>
-    <div class="item">כל 1:30 — 12 חזרות לאנץ׳ עם משקל (6 בכל רגל)</div>
-    <div class="item">למשך 12 דקות</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=weighted+walking+lunges+EMOM" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>כל 1:30 על השעון — 6 חזרות סקוואט</li>
+          <li>למשך 12 דקות</li>
+          <li><a href="https://www.youtube.com/results?search_query=squat+EMOM+every+minute+on+the+minute" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title r">ב׳ — לאנץ׳ עם משקל EMOM</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title au">ג׳ — סקוואט סטטי קטלבל + ג׳אמפ סקוואט</div>
-    <div class="item">להחזיק קטלבל ← סקוואט סטטי 30 שנ׳</div>
-    <div class="item">מיד ← 20 ג׳אמפ סקוואט ללא משקל</div>
-    <div class="item">מנוחה 1:15 | כפול 6</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=goblet+squat+hold+jump+squat+superset" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>כל 1:30 — 12 חזרות לאנץ׳ עם משקל (6 בכל רגל)</li>
+          <li>למשך 12 דקות</li>
+          <li><a href="https://www.youtube.com/results?search_query=weighted+walking+lunges+EMOM" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title au">ג׳ — סקוואט סטטי קטלבל + ג׳אמפ סקוואט</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title pu">ד׳ — קפיצה לקופסא + דדליפט רומני</div>
-    <div class="item">12 קפיצות לקופסא (הכי גבוה שאפשר)</div>
-    <div class="item">מיד ← 10 דדליפט רומני (מוט בלבד / משקל קל)</div>
-    <div class="item">מנוחה 1:15 | כפול 6</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=box+jump+romanian+deadlift+superset" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>להחזיק קטלבל ← סקוואט סטטי 30 שנ׳</li>
+          <li>מיד ← 20 ג׳אמפ סקוואט ללא משקל</li>
+          <li>מנוחה 1:15 | כפול 6</li>
+          <li><a href="https://www.youtube.com/results?search_query=goblet+squat+hold+jump+squat+superset" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title pu">ד׳ — קפיצה לקופסא + דדליפט רומני</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title">ה׳ — סיט אפ עם משקל + אופניים בטן</div>
-    <div class="item">20 סיט אפ עם פלטה</div>
-    <div class="item">מיד ← 40 אופניים בטן</div>
-    <div class="item">מנוחה דקה | כפול 4-6 סטים</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=situps+with+plate+bicycle+crunches+superset" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>12 קפיצות לקופסא (הכי גבוה שאפשר)</li>
+          <li>מיד ← 10 דדליפט רומני (מוט בלבד / משקל קל)</li>
+          <li>מנוחה 1:15 | כפול 6</li>
+          <li><a href="https://www.youtube.com/results?search_query=box+jump+romanian+deadlift+superset" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title">ה׳ — סיט אפ עם משקל + אופניים בטן</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title r">ו׳ — Toes to Bar</div>
-    <div class="item">100 חזרות סה"כ — לחלק איך שרוצה</div>
-    <div class="item">תלייה על מתח</div>
-    <div class="item"><a href="https://www.youtube.com/results?search_query=toes+to+bar+technique+kipping" target="_blank">▶ YouTube הדגמה</a></div>
+        <ul class="ex-list">
+          <li>20 סיט אפ עם פלטה</li>
+          <li>מיד ← 40 אופניים בטן</li>
+          <li>מנוחה דקה | כפול 4-6 סטים</li>
+          <li><a href="https://www.youtube.com/results?search_query=situps+with+plate+bicycle+crunches+superset" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title r">ו׳ — Toes to Bar</div>
   </div>
 </div>
 <div class="pf"><div class="ft">נועם נחשון | כוח פלג תחתון</div><div class="fb">XPERT כושר קרבי | kosherkravi.co.il</div><div class="fp">3 / 7</div></div>
@@ -261,52 +271,59 @@ body{background:#1a1a1a;font-family:'Heebo',sans-serif;direction:rtl;}
 </div>
 <div class="pi" style="padding-top:10px;">
   <div class="tag au">🏜️ אימוני דיונה — שישי בשבוע | חימום עצמאי 10 דק׳ עד הזעה</div>
-
-  <div class="sec">
-    <div class="sec-title">שבוע 1 | 3.7 — ספרינטים בדיונה</div>
-    <div class="item">20מ׳ הלוך + 20מ׳ חזור | מנוחה 20שנ׳ בין סט לסט</div>
-    <div class="item">25 דקות ← מנוחה 5 דק׳</div>
-    <div class="item">אותו דבר עם שק על הצוואר</div>
+        <ul class="ex-list">
+          <li>100 חזרות סה"כ — לחלק איך שרוצה</li>
+          <li>תלייה על מתח</li>
+          <li><a href="https://www.youtube.com/results?search_query=toes+to+bar+technique+kipping" target="_blank">▶ YouTube הדגמה</a></li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title">שבוע 1 | 3.7 — ספרינטים בדיונה</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title r">שבוע 2 | 10.7 — זחילות בדיונה</div>
-    <div class="item">20מ׳ הלוך + 20מ׳ חזור | מנוחה 20שנ׳ בין סט לסט</div>
-    <div class="item">25 דקות ← מנוחה 5 דק׳</div>
-    <div class="item">אותו דבר עם שק על הצוואר</div>
+        <ul class="ex-list">
+          <li>20מ׳ הלוך + 20מ׳ חזור | מנוחה 20שנ׳ בין סט לסט</li>
+          <li>25 דקות ← מנוחה 5 דק׳</li>
+          <li>אותו דבר עם שק על הצוואר</li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title r">שבוע 2 | 10.7 — זחילות בדיונה</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title au">שבוע 3 | 17.7 — מסע 70 דק׳ בחול עמוק</div>
-    <div class="item">20 ק"ג | מינימום 8 ק"מ | ניתן לבצע ריצה קלה</div>
-    <div class="item">אופציה: אלונקה סגורה עלייך</div>
+        <ul class="ex-list">
+          <li>20מ׳ הלוך + 20מ׳ חזור | מנוחה 20שנ׳ בין סט לסט</li>
+          <li>25 דקות ← מנוחה 5 דק׳</li>
+          <li>אותו דבר עם שק על הצוואר</li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title au">שבוע 3 | 17.7 — מסע 70 דק׳ בחול עמוק</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title pu">שבוע 4 | 24.7 — חפירה + ריצה/זחילה + ים</div>
-    <div class="item">10 דק׳ חפירת בור (1מ׳×1מ׳×1מ׳) ← מנוחה 3 דק׳</div>
-    <div class="item">25 דק׳: 20מ׳ ריצה בדיונה + 20מ׳ זחילה חזרה | מנוחה 20שנ׳</div>
-    <div class="item">מנוחה 4 דק׳ ← שחייה בים 20 דק׳ ברציפות</div>
+        <ul class="ex-list">
+          <li>20 ק"ג | מינימום 8 ק"מ | ניתן לבצע ריצה קלה</li>
+          <li>אופציה: אלונקה סגורה עלייך</li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title pu">שבוע 4 | 24.7 — חפירה + ריצה/זחילה + ים</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title">שבוע 5 | 31.7 — צוקון</div>
-    <div class="item">שק 100% על הצוואר | מלבן 20×30מ׳ בצוקון</div>
-    <div class="item">כמה שיותר סבבים ריצה קלה/הליכה — 25 דק׳</div>
-    <div class="item">מנוחה 5 דק׳ ← ביצוע שוב</div>
+        <ul class="ex-list">
+          <li>10 דק׳ חפירת בור (1מ׳×1מ׳×1מ׳) ← מנוחה 3 דק׳</li>
+          <li>25 דק׳: 20מ׳ ריצה בדיונה + 20מ׳ זחילה חזרה | מנוחה 20שנ׳</li>
+          <li>מנוחה 4 דק׳ ← שחייה בים 20 דק׳ ברציפות</li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title">שבוע 5 | 31.7 — צוקון</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title r">שבוע 6 | 7.8 — מסע שיא 90 דק׳</div>
-    <div class="item">20 ק"ג | מינימום 10 ק"מ | ניתן לבצע ריצה קלה</div>
-    <div class="item">אופציה: אלונקה סגורה עלייך | חול עמוק</div>
+        <ul class="ex-list">
+          <li>שק 100% על הצוואר | מלבן 20×30מ׳ בצוקון</li>
+          <li>כמה שיותר סבבים ריצה קלה/הליכה — 25 דק׳</li>
+          <li>מנוחה 5 דק׳ ← ביצוע שוב</li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title r">שבוע 6 | 7.8 — מסע שיא 90 דק׳</div>
   </div>
-
-  <div class="sec">
-    <div class="sec-title au">שבוע 7 | 14.8 — קומבינציה שיא</div>
-    <div class="item">ריצת ווסט בחול עמוק 25 דק׳ (~4 ק"מ+) ← מנוחה 4 דק׳</div>
-    <div class="item">12 סטים: ספרינט 30מ׳ → זחילה חזרה → לחיצת כתפיים שק 10 חז׳ | מנוחה 40שנ׳</div>
-    <div class="item">מנוחה 3 דק׳ ← ריצת ווסט 20 דק׳ (~3.2 ק"מ)</div>
+        <ul class="ex-list">
+          <li>20 ק"ג | מינימום 10 ק"מ | ניתן לבצע ריצה קלה</li>
+          <li>אופציה: אלונקה סגורה עלייך | חול עמוק</li>
+        </ul>
+      <div class="ex-block">
+    <div class="ex-title au">שבוע 7 | 14.8 — קומבינציה שיא</div>
   </div>
 
   <div class="note dark" style="margin-top:4px; font-size:7.5px;">
@@ -433,3 +450,9 @@ body{background:#1a1a1a;font-family:'Heebo',sans-serif;direction:rtl;}
 
 </body>
 </html>
+        <ul class="ex-list">
+          <li>ריצת ווסט בחול עמוק 25 דק׳ (~4 ק"מ+) ← מנוחה 4 דק׳</li>
+          <li>12 סטים: ספרינט 30מ׳ → זחילה חזרה → לחיצת כתפיים שק 10 חז׳ | מנוחה 40שנ׳</li>
+          <li>מנוחה 3 דק׳ ← ריצת ווסט 20 דק׳ (~3.2 ק"מ)</li>
+        </ul>
+      
