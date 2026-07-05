@@ -336,97 +336,99 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
 <div class="topbar"></div>
 <div class="ph">
   <img class="logo" src="data:image/png;base64,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" alt="Xpert">
-  <div class="htitle">מדריך תזונה | <span>אורי טאוב</span></div>
+  <div class="htitle">תפריט יומי 2,300 קלוריות | <span>אורי טאוב</span></div>
   <div class="hicon"><img src="data:image/png;base64,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" alt="X"></div>
 </div>
 <div class="pi">
+  <div class="note dk" style="margin-bottom:5px;"><strong>עיקרון:</strong> 5 ארוחות ביום, כל 3–4 שעות. <strong>לא לערבב בשר וחלב באותה ארוחה — המתן שעה לפחות בין ארוחה בשרית לחלבית.</strong> שתה 3 ליטר מים ביום.</div>
 
-  <div class="note dk" style="margin-bottom:6px;"><strong>עיקרון:</strong> אין כאן תפריט קבוע — יש מסגרת. תבנה את הארוחות שלך בתוכה. <strong>לא לערבב בשר וחלב באותה ארוחה.</strong> בין ארוחת בשר לארוחת חלב — להמתין לפחות שעה.</div>
+  <table class="rt" style="font-size:8px;">
+    <thead><tr>
+      <th style="width:14%;">ארוחה</th>
+      <th style="width:10%;">שעה</th>
+      <th style="width:38%;">תוכן</th>
+      <th class="gold" style="width:9%;">קל׳</th>
+      <th class="gold" style="width:9%;">חלבון</th>
+      <th class="gold" style="width:10%;">פחמימות</th>
+      <th class="gold" style="width:10%;">שומן</th>
+    </tr></thead>
+    <tbody>
+      <tr style="background:#eaf4cc;">
+        <td style="font-weight:800; color:var(--gd);">🌅 בוקר</td>
+        <td>07:00</td>
+        <td style="text-align:right; font-size:7.5px;">3 ביצים מקושקשות · 2 פרוסות לחם מלא · ½ אבוקדו · ירקות טריים · כפית שמן זית<br><span style="color:var(--rd); font-size:7px; font-weight:700;">🥛 חלבי לחלופין: קוטג׳ 250ג׳ + לחם + ירקות — ללא בשר</span></td>
+        <td style="font-weight:800; color:var(--gd);">530</td>
+        <td>26g</td><td>32g</td><td>28g</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800; color:var(--gold);">⚡ לפני אימון</td>
+        <td>10:00</td>
+        <td style="text-align:right; font-size:7.5px;">שיבולת שועל 50ג׳ + מים · בננה 1 · כף דבש<br><span style="color:var(--green); font-size:7px; font-weight:700;">✓ אנרגיה לאימון — לאכול 60–90 דקות לפני</span></td>
+        <td style="font-weight:800; color:var(--gold);">320</td>
+        <td>7g</td><td>65g</td><td>4g</td>
+      </tr>
+      <tr style="background:#fce8e6;">
+        <td style="font-weight:800; color:var(--rd);">💪 אחרי אימון</td>
+        <td>13:00</td>
+        <td style="text-align:right; font-size:7.5px;">חזה עוף 150ג׳ · אורז לבן מבושל 200ג׳ · ירקות מאודים · כפית שמן זית<br><span style="color:var(--rd); font-size:7px; font-weight:700;">🍗 בשרי — ללא מוצרי חלב</span></td>
+        <td style="font-weight:800; color:var(--red);">580</td>
+        <td>50g</td><td>64g</td><td>8g</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800; color:var(--rd);">🍽️ ערב</td>
+        <td>17:00</td>
+        <td style="text-align:right; font-size:7.5px;">חזה עוף / הודו / בקר רזה 180ג׳ · בטטה 200ג׳ · סלט ירקות · כף טחינה<br><span style="color:var(--rd); font-size:7px; font-weight:700;">🍗 בשרי — ללא מוצרי חלב</span></td>
+        <td style="font-weight:800;">570</td>
+        <td>52g</td><td>50g</td><td>12g</td>
+      </tr>
+      <tr style="background:#e8f4fd;">
+        <td style="font-weight:800; color:#1a5276;">🌙 לפני שינה</td>
+        <td>21:00</td>
+        <td style="text-align:right; font-size:7.5px;">קוטג׳ 3% 250ג׳ · תפוח / אגס · כף אגוזים<br><span style="color:#1a5276; font-size:7px; font-weight:700;">🥛 חלבי — לפחות שעה אחרי הארוחה הבשרית</span></td>
+        <td style="font-weight:800; color:#1a5276;">300</td>
+        <td>28g</td><td>30g</td><td>8g</td>
+      </tr>
+      <tr style="background:linear-gradient(90deg,#080f02,#172208);">
+        <td colspan="3" style="color:var(--go); font-weight:900; font-size:9px;">סה"כ יומי</td>
+        <td style="color:var(--go); font-weight:900; font-size:9px;">2,300</td>
+        <td style="color:#9bbf30; font-weight:800;">163g</td>
+        <td style="color:#9bbf30; font-weight:800;">241g</td>
+        <td style="color:#9bbf30; font-weight:800;">60g</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="tag g">🌅 ארוחת בוקר — תוך שעה מהקימה</div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:6px;">
-    <div style="background:#eaf4cc; border-right:3px solid var(--gd); border-radius:0 5px 5px 0; padding:7px 10px;">
-      <div style="font-size:8.5px; font-weight:800; color:var(--gd); margin-bottom:4px;">🥛 גרסה חלבית</div>
-      <div style="font-size:8px; line-height:1.7; color:#1a3a08;">
-        ביצים (2–3) + גבינה / קוטג׳<br>
-        לחם מלא / שיבולת שועל<br>
-        ירקות טריים<br>
-        שמן זית + טחינה
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:6px;">
+    <div>
+      <div class="tag r" style="margin-bottom:4px;">🔄 חילופים מותרים</div>
+      <div style="background:var(--gray); border:1px solid var(--mid); border-radius:5px; padding:7px 10px; font-size:8px; line-height:1.75;">
+        <strong>חזה עוף</strong> ← הודו / בקר רזה / דגים<br>
+        <strong>אורז לבן</strong> ← קינואה / בטטה / פסטה מלאה<br>
+        <strong>לחם מלא</strong> ← פיתה מלאה / עמילן קוואקר<br>
+        <strong>קוטג׳</strong> ← גבינה לבנה 5% / יוגורט יווני<br>
+        <strong>שיבולת שועל</strong> ← קורנפלקס מלא / גרנולה ללא סוכר
       </div>
     </div>
-    <div style="background:#fce8e6; border-right:3px solid var(--rd); border-radius:0 5px 5px 0; padding:7px 10px;">
-      <div style="font-size:8.5px; font-weight:800; color:var(--rd); margin-bottom:4px;">🍗 גרסה בשרית</div>
-      <div style="font-size:8px; line-height:1.7; color:#3a0510;">
-        ביצים (2–3) + עוף / טונה<br>
-        לחם מלא / שיבולת שועל<br>
-        ירקות טריים<br>
-        שמן זית + אבוקדו
+    <div>
+      <div class="tag g" style="margin-bottom:4px;">🚫 להימנע</div>
+      <div style="background:var(--gray); border:1px solid var(--mid); border-radius:5px; padding:7px 10px; font-size:8px; line-height:1.75;">
+        <strong>לא לשלב בשר + חלב</strong> באותה ארוחה<br>
+        ✗ משקאות ממותקים, שוקו, מיצים תעשייתיים<br>
+        ✗ חטיפים מלוחים, וופלים, בורקס<br>
+        ✗ מטוגן — להחליף בצלייה / אפייה / בישול<br>
+        ✗ לדלג על ארוחות — הגוף צריך עקביות
       </div>
-    </div>
-  </div>
-
-  <div class="tag r">🏋️ לפני אימון — 60–90 דקות קודם</div>
-  <div style="background:#fff8e6; border-right:3px solid var(--gold); border-radius:0 5px 5px 0; padding:7px 10px; margin-bottom:6px; font-size:8px; line-height:1.7; color:#4a3500;">
-    <strong style="color:#7a4a08;">פחמימות + חלבון קל — בלי שומן כבד לפני אימון:</strong><br>
-    לחם מלא + ביצה / טונה &nbsp;|&nbsp; שיבולת שועל + בננה &nbsp;|&nbsp; אורז + חזה עוף קל<br>
-    <strong style="color:#7a4a08;">⚠️ להימנע לפני אימון:</strong> מוצרי חלב שמנים, בשר כבד, מטוגן, סלטים עם שמן רב
-  </div>
-
-  <div class="tag g">💪 אחרי אימון — תוך 30–45 דקות</div>
-  <div style="background:#eaf4cc; border-right:3px solid var(--gd); border-radius:0 5px 5px 0; padding:7px 10px; margin-bottom:6px; font-size:8px; line-height:1.7; color:#1a3a08;">
-    <strong style="color:var(--gd);">חלבון + פחמימות לשיקום שרירים:</strong><br>
-    חזה עוף / טונה / ביצים + אורז / לחם מלא / תפוח אדמה<br>
-    <span style="color:var(--gd); font-weight:700;">לא לשלב חלב עם בשר —</span> אם אכלת בשר באימון, קוטג׳/שייק חלבי — רק אחרי שעה
-  </div>
-
-  <div class="tag au">🍽️ ארוחת צהריים + ערב — המנה הגדולה</div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:6px;">
-    <div style="background:#fff8e6; border:1px solid #e8c87a; border-radius:5px; padding:7px 10px;">
-      <div style="font-size:8.5px; font-weight:800; color:#7a4a08; margin-bottom:4px;">🍗 ארוחה בשרית</div>
-      <div style="font-size:8px; line-height:1.7; color:#4a3500;">
-        חזה עוף / הודו / בקר רזה<br>
-        אורז / בטטה / קינואה<br>
-        ירקות מאודים / סלט<br>
-        <span style="color:var(--rd); font-weight:700;">ללא מוצרי חלב באותה ארוחה</span>
-      </div>
-    </div>
-    <div style="background:#e8f4fd; border:1px solid #7ab8e8; border-radius:5px; padding:7px 10px;">
-      <div style="font-size:8.5px; font-weight:800; color:#1a5276; margin-bottom:4px;">🥛 ארוחה חלבית</div>
-      <div style="font-size:8px; line-height:1.7; color:#1a3a5c;">
-        דגים / ביצים / גבינה<br>
-        פסטה מלאה / אורז / לחם<br>
-        ירקות מאודים / סלט<br>
-        <span style="color:#1a5276; font-weight:700;">ללא בשר באותה ארוחה</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="tag dk" style="background:linear-gradient(90deg,#0d1205,#1a2a06); border-left:3px solid var(--gl);">💧 כללים קבועים</div>
-  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:5px; margin-top:5px;">
-    <div style="background:#0d1205; border:1px solid var(--gl); border-radius:6px; padding:7px 9px; text-align:center;">
-      <div style="font-size:16px; margin-bottom:3px;">💧</div>
-      <div style="font-size:8px; font-weight:800; color:var(--go); margin-bottom:2px;">3 ליטר מים/יום</div>
-      <div style="font-size:7.5px; color:rgba(255,255,255,.7);">לפחות חצי ליטר לפני כל אימון</div>
-    </div>
-    <div style="background:#0d1205; border:1px solid var(--gl); border-radius:6px; padding:7px 9px; text-align:center;">
-      <div style="font-size:16px; margin-bottom:3px;">🥗</div>
-      <div style="font-size:8px; font-weight:800; color:var(--go); margin-bottom:2px;">4–5 ארוחות/יום</div>
-      <div style="font-size:7.5px; color:rgba(255,255,255,.7);">לא לדלג על ארוחות — הגוף בונה בהתמדה</div>
-    </div>
-    <div style="background:#0d1205; border:1px solid var(--gl); border-radius:6px; padding:7px 9px; text-align:center;">
-      <div style="font-size:16px; margin-bottom:3px;">😴</div>
-      <div style="font-size:8px; font-weight:800; color:var(--go); margin-bottom:2px;">ארוחה לפני שינה</div>
-      <div style="font-size:7.5px; color:rgba(255,255,255,.7);">חלבון קל: ביצה / גבינה / קוטג׳ / טונה</div>
     </div>
   </div>
 
 </div>
 <div class="pf">
-  <div class="ft">אורי טאוב | מדריך תזונה</div>
+  <div class="ft">אורי טאוב | תפריט 2,300 קלוריות</div>
   <div class="fb">XPERT כושר קרבי | kosherkravi.co.il</div>
   <div class="fp">עמוד 5 מתוך 5</div>
 </div>
 </div>
+
 
 </body>
 </html>
