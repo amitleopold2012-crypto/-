@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>תוכנית תזונה – רז פשה 12 שבועות | Xpert כושר קרבי</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+:root {
+  --green:#6b9219; --green-dark:#445e0e; --green-light:#9bbf30; --green-pale:#eaf4cc;
+  --red:#c0392b; --red-dark:#922b21;
+  --gold:#c8952a; --gold-light:#e8b84a;
+  --white:#fff; --gray-light:#f5f5f3; --gray-mid:#e0e0d8; --text:#222;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Heebo',Arial,sans-serif; background:#b0b8a8; color:var(--text); direction:rtl; }
+
+/* עמוד A4 עם שוליים מוגדרים */
+.page {
+  width:210mm;
+  min-height:297mm;
+  margin:8mm auto;
+  background:var(--white);
+  box-shadow:0 4px 32px rgba(0,0,0,.3);
+  page-break-after:always;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.page-inner {
+  padding: 12px 20px 10px 20px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar { height:6px; background:linear-gradient(90deg,#922b21 0%,#c0392b 20%,#445e0e 45%,#6b9219 65%,#9bbf30 82%,#c8952a 100%); flex-shrink:0; }
+
+.page-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px 20px;
+  background:linear-gradient(90deg,#0d1a05 0%,#1a2a08 100%);
+  border-bottom:3px solid var(--green);
+  flex-shrink:0;
+}
+.page-header .logo-img { height:32px; }
+.header-title { font-size:11px; font-weight:700; color:var(--white); letter-spacing:1px; text-align:center; }
+.header-title span { color:var(--gold-light); }
+.header-icon { width:36px; height:36px; border-radius:6px; overflow:hidden; }
+.header-icon img { width:100%; height:100%; object-fit:cover; }
+
+/* HERO */
+.hero {
+  background:linear-gradient(135deg,#0a1203 0%,#1a2a08 60%,#0d1a05 100%);
+  padding:16px 20px 14px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:2px solid var(--green-dark);
+  position:relative; overflow:hidden; flex-shrink:0;
+}
+.hero::before { content:''; position:absolute; inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(107,146,25,.04) 12px,rgba(107,146,25,.04) 24px); }
+.hero-left { position:relative; z-index:1; }
+.hero-badge { display:inline-block; background:linear-gradient(135deg,var(--green-dark),var(--green));
+  color:var(--white); font-size:8px; font-weight:800; letter-spacing:3px;
+  padding:2px 10px; border-radius:20px; margin-bottom:6px; text-transform:uppercase; }
+.hero-name { font-size:28px; font-weight:900; color:var(--white); line-height:1.0; letter-spacing:-1px; }
+.hero-name .accent { color:var(--green-light); }
+.hero-sub { font-size:10px; color:rgba(255,255,255,.65); margin-top:4px; font-weight:400; }
+.hero-stats { display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; }
+.hero-stat { background:rgba(255,255,255,.08); border:1px solid rgba(155,191,48,.25);
+  border-radius:8px; padding:5px 12px; text-align:center; }
+.hero-stat .val { font-size:18px; font-weight:900; color:var(--gold-light); line-height:1.0; }
+.hero-stat .lbl { font-size:7.5px; color:rgba(255,255,255,.55); font-weight:500; letter-spacing:1px; margin-top:1px; }
+.hero-stat.goal .val { color:var(--green-light); }
+.hero-right { position:relative; z-index:1; text-align:center; flex-shrink:0; }
+.hero-kcal-ring { width:80px; height:80px; border-radius:50%;
+  background:conic-gradient(var(--green-dark) 0% 33%,var(--green) 33% 66%,var(--gold) 66% 100%);
+  display:flex; align-items:center; justify-content:center; position:relative; }
+.hero-kcal-ring::before { content:''; position:absolute; width:62px; height:62px;
+  border-radius:50%; background:#0d1a05; }
+.hero-kcal-inner { position:relative; z-index:1; text-align:center; }
+.hero-kcal-inner .num { font-size:14px; font-weight:900; color:var(--gold-light); line-height:1.0; }
+.hero-kcal-inner .unit { font-size:7px; color:rgba(255,255,255,.6); font-weight:600; }
+.hero-kcal-lbl { font-size:8px; color:rgba(255,255,255,.55); margin-top:5px; font-weight:500; }
+
+/* SECTION TAG */
+.section-tag { display:inline-flex; align-items:center; gap:6px;
+  background:linear-gradient(90deg,var(--green-dark) 0%,var(--green) 100%);
+  color:var(--white); font-size:9.5px; font-weight:800;
+  padding:3px 13px; border-radius:0 20px 20px 0;
+  margin-right:-20px; margin-bottom:8px; letter-spacing:1px; }
+.section-tag.red-tag { background:linear-gradient(90deg,var(--red-dark) 0%,var(--red) 100%); }
+.section-tag.gold-tag { background:linear-gradient(90deg,#8a6010 0%,var(--gold) 100%); }
+
+/* PRINCIPLES */
+.principles { background:#0d1a05; border-right:4px solid var(--green);
+  padding:8px 14px; margin-bottom:10px; }
+.principle-row { display:flex; align-items:flex-start; gap:8px;
+  padding:3px 0; font-size:10px; color:rgba(255,255,255,.85);
+  border-bottom:1px solid rgba(255,255,255,.07); }
+.principle-row:last-child { border-bottom:none; }
+.principle-row .emoji { flex-shrink:0; font-size:11px; }
+.principle-row strong { color:var(--gold-light); }
+
+/* TABLES */
+.meal-table { width:100%; border-collapse:collapse; font-size:9.5px; }
+.meal-table thead tr { background:linear-gradient(90deg,#111 0%,#1a2a08 100%); }
+.meal-table thead th { color:var(--white); padding:6px 9px; font-size:8.5px; font-weight:700; text-align:right; }
+.meal-table thead th:last-child { color:var(--gold-light); }
+.meal-table tbody tr { border-bottom:1px solid var(--gray-mid); }
+.meal-table tbody tr:nth-child(even) { background:var(--gray-light); }
+.meal-table td { padding:6px 9px; vertical-align:top; }
+.meal-label { display:inline-flex; align-items:center; gap:4px;
+  font-weight:700; font-size:9.5px; color:var(--green-dark); white-space:nowrap; }
+.meal-label .meal-icon { font-size:12px; }
+.meal-main { font-size:10px; font-weight:600; color:#111; }
+.meal-sub { font-size:8.5px; color:#555; margin-top:2px; line-height:1.4; }
+.kcal-val { font-weight:800; font-size:11px; color:var(--green); }
+.protein-val { font-weight:700; font-size:10px; color:#666; }
+.total-row td { background:linear-gradient(90deg,#111 0%,#1a2a08 100%) !important;
+  color:var(--white); font-weight:800; font-size:10px; border-bottom:none; }
+.total-row td .kcal-val { color:var(--gold-light); font-size:12px; }
+.total-row td .protein-val { color:rgba(255,255,255,.8); }
+
+.timing-table { width:100%; border-collapse:collapse; font-size:9.5px; margin-bottom:8px; }
+.timing-table thead th { background:linear-gradient(90deg,#111 0%,#1a2a08 100%);
+  color:var(--white); padding:5px 9px; text-align:right; font-size:8.5px; }
+.timing-table tbody tr { border-bottom:1px solid var(--gray-mid); }
+.timing-table tbody tr:nth-child(even) { background:var(--gray-light); }
+.timing-table td { padding:6px 9px; font-size:9.5px; }
+.timing-status { font-weight:700; font-size:9.5px; }
+.timing-status.before { color:var(--red); }
+.timing-status.after  { color:var(--green); }
+.timing-status.rest   { color:var(--gold); }
+
+/* OPTIONS */
+.options-block { background:var(--green-pale); border-right:4px solid var(--green);
+  border-radius:0 6px 6px 0; padding:8px 12px; margin-bottom:8px; }
+.options-block .options-title { font-size:9.5px; font-weight:800; color:var(--green-dark); margin-bottom:5px; }
+.option-row { display:flex; gap:5px; align-items:flex-start; padding:2.5px 0;
+  font-size:9px; border-bottom:1px dashed rgba(107,146,25,.25); }
+.option-row:last-child { border-bottom:none; }
+.option-num { background:var(--green-dark); color:var(--white); font-size:7.5px; font-weight:800;
+  min-width:15px; height:15px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; flex-shrink:0; margin-top:1px; }
+.option-text { flex:1; color:#333; line-height:1.45; }
+.option-text strong { color:var(--green-dark); }
+
+/* WEIGHT TABLE */
+.weight-table { width:100%; border-collapse:collapse; font-size:9.5px; margin-bottom:8px; }
+.weight-table thead th { background:linear-gradient(90deg,var(--green-dark) 0%,var(--green) 60%,var(--gold) 100%);
+  color:var(--white); padding:6px 9px; text-align:right; font-size:8.5px; }
+.weight-table tbody tr { border-bottom:1px solid var(--gray-mid); }
+.weight-table tbody tr:nth-child(even) { background:var(--gray-light); }
+.weight-table td { padding:6px 9px; font-size:9.5px; }
+.week-badge { display:inline-block; background:var(--green-dark); color:var(--white);
+  font-size:7.5px; font-weight:800; padding:2px 7px; border-radius:10px; }
+.week-badge.mid { background:var(--green); }
+.week-badge.final { background:var(--gold); color:#222; }
+
+/* NOTES */
+.note { border-radius:0 6px 6px 0; padding:7px 12px; margin-bottom:7px;
+  font-size:9px; border-right:3px solid var(--green);
+  background:var(--green-pale); color:#2a3a0a; line-height:1.55; }
+.note.warn { background:#fff8e6; border-right-color:var(--gold); color:#4a3500; }
+.note.red  { background:#fce8e6; border-right-color:var(--red); color:#4a1010; }
+.note strong { color:var(--green-dark); }
+.note.warn strong { color:#8a6010; }
+.note.red strong { color:var(--red-dark); }
+
+/* PHASE BLOCKS */
+.phase-block { border:1px solid var(--gray-mid); border-radius:6px; margin-bottom:8px; overflow:hidden; }
+.phase-header { padding:6px 12px; display:flex; align-items:center; justify-content:space-between; }
+.phase-header.p1 { background:linear-gradient(90deg,var(--green-dark),var(--green)); }
+.phase-header.p2 { background:linear-gradient(90deg,#1a5080,#2a80c0); }
+.phase-header.p3 { background:linear-gradient(90deg,#8a6010,var(--gold)); }
+.phase-title { color:var(--white); font-size:10px; font-weight:800; }
+.phase-weeks { color:rgba(255,255,255,.8); font-size:9px; }
+.phase-body { padding:8px 12px; background:#fafaf8; font-size:9px; color:#333; line-height:1.6; }
+.phase-body ul { padding-right:14px; }
+.phase-body li { margin-bottom:2px; }
+.phase-body strong { color:var(--green-dark); }
+
+/* TWO COLUMN LAYOUT */
+.two-col { display:flex; gap:10px; margin-bottom:8px; }
+.col { flex:1; }
+
+/* FOOTER */
+.page-footer { padding:6px 20px;
+  background:linear-gradient(90deg,#0d1a05 0%,#1a2a08 100%);
+  display:flex; align-items:center; justify-content:space-between;
+  border-top:2px solid var(--green-dark); flex-shrink:0; }
+.footer-text { font-size:7.5px; color:rgba(255,255,255,.5); }
+.footer-brand { font-size:8.5px; color:var(--gold-light); font-weight:700; }
+
+@media print {
+  body { background:white; }
+  .page { margin:0; box-shadow:none; width:210mm; min-height:297mm; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<div class="topbar"></div>
+<div class="page-header">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Xpert כושר קרבי">
+  <div class="header-title">תוכנית תזונה – ביצועים וכושר <span>רז פשה</span></div>
+  <div class="header-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="X"></div>
+</div>
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">PERFORMANCE NUTRITION · 12 WEEKS</div>
+    <div class="hero-name"><span class="accent">רז פשה</span></div>
+    <div class="hero-sub">תוכנית תזונת ביצועים | 12 שבועות | 67 ק"ג</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="val">67</div><div class="lbl">משקל נוכחי ק"ג</div></div>
+      <div class="hero-stat goal"><div class="val">71</div><div class="lbl">משקל יעד ק"ג</div></div>
+      <div class="hero-stat"><div class="val">12</div><div class="lbl">שבועות</div></div>
+      <div class="hero-stat"><div class="val">~3,600</div><div class="lbl">קק"ל ביום</div></div>
+      <div class="hero-stat"><div class="val">~170</div><div class="lbl">חלבון יומי גרם</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-kcal-ring">
+      <div class="hero-kcal-inner"><div class="num">3,600</div><div class="unit">קק"ל</div></div>
+    </div>
+    <div class="hero-kcal-lbl">יעד קלורי יומי</div>
+  </div>
+</div>
+<div class="page-inner">
+  <div class="section-tag">⚡ עקרונות התזונה</div>
+  <div class="principles">
+    <div class="principle-row"><span class="emoji">📈</span><span><strong>עודף קלורי מבוקר</strong> – 3,000 קק"ל ביום. עודף של כ-300 קק"ל מעל השריפה היומית שלך</span></div>
+    <div class="principle-row"><span class="emoji">💪</span><span><strong>חלבון גבוה</strong> – 170 גרם ביום. חלבון בונה שריר, לא רק קלוריות</span></div>
+    <div class="principle-row"><span class="emoji">🍽️</span><span>4 ארוחות ביום – בוקר, צהריים, ערב, וחטיף לפני שינה. לא לדלג על אף ארוחה</span></div>
+    <div class="principle-row"><span class="emoji">📊</span><span>כל שבוע לשקול בבוקר – <strong>לאחר שירותים, לפני אכילה</strong>. לשלוח לי את המשקל</span></div>
+    <div class="principle-row"><span class="emoji">🔄</span><span><strong>גמישות מלאה בתפריט</strong> – ניתן לשנות את האוכל כל שבוע. ראה עמוד 3 לאפשרויות</span></div>
+  </div>
+
+  <div class="section-tag red-tag">🍽️ 4 ארוחות יומיות – תפריט מודל</div>
+  <table class="meal-table">
+    <thead><tr>
+      <th style="width:13%">ארוחה</th><th>מה אוכלים</th>
+      <th style="width:13%">קלוריות</th><th style="width:12%">חלבון</th>
+    </tr></thead>
+    <tbody>
+    <tr>
+      <td><div class="meal-label"><span class="meal-icon">🌅</span> בוקר</div></td>
+      <td><div class="meal-main">5 ביצים שלמות (חביתה או מקושקשת) + 3 פרוסות לחם מלא</div>
+          <div class="meal-sub">+ גביע קוטג' 3% (250 גרם) + בננה + 2 כפות חמאת בוטנים</div></td>
+      <td><span class="kcal-val">~1,000</span></td>
+      <td><span class="protein-val">~65 גרם</span></td>
+    </tr>
+    <tr>
+      <td><div class="meal-label"><span class="meal-icon">☀️</span> צהריים</div></td>
+      <td><div class="meal-main">300 גרם חזה עוף / בשר בקר + 250 גרם אורז לבן מבושל</div>
+          <div class="meal-sub">+ סלט ירקות + 3 כפות טחינה + 2 פרוסות לחם + שמן זית</div></td>
+      <td><span class="kcal-val">~1,400</span></td>
+      <td><span class="protein-val">~75 גרם</span></td>
+    </tr>
+    <tr>
+      <td><div class="meal-label"><span class="meal-icon">🌙</span> ערב</div></td>
+      <td><div class="meal-main">250 גרם עוף / דגים / בשר + 200 גרם פסטה / אורז / תפוח אדמה</div>
+          <div class="meal-sub">+ 2 ביצים קשות + ירקות מבושלים + שמן זית + גבינה צהובה</div></td>
+      <td><span class="kcal-val">~1,050</span></td>
+      <td><span class="protein-val">~65 גרם</span></td>
+    </tr>
+    <tr>
+      <td><div class="meal-label"><span class="meal-icon">🌜</span> לפני שינה</div></td>
+      <td><div class="meal-main">קוטג' 3% (250 גרם) + 2 כפות חמאת בוטנים + 2 פרוסות לחם מלא</div>
+          <div class="meal-sub">אפשרות: יוגורט יווני 5% + שיבולת שועל 50 גרם + כפית דבש</div></td>
+      <td><span class="kcal-val">~550</span></td>
+      <td><span class="protein-val">~35 גרם</span></td>
+    </tr>
+    <tr class="total-row">
+      <td colspan="2"><strong>סה"כ – 4 ארוחות מלאות לבניית שריר</strong></td>
+      <td><span class="kcal-val">~3,000</span></td>
+      <td><span class="protein-val">~240 גרם</span></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="section-tag gold-tag" style="margin-top:8px">⏱️ תזמון ארוחות ביחס לאימונים</div>
+  <table class="timing-table">
+    <thead><tr><th style="width:20%">מצב</th><th>מה לאכול</th><th style="width:24%">מתי</th></tr></thead>
+    <tbody>
+    <tr><td><span class="timing-status before">לפני אימון</span></td>
+        <td>ארוחה מלאה עם פחמימות וחלבון – אורז / לחם / פסטה + עוף / ביצים</td>
+        <td>60–90 דקות לפני</td></tr>
+    <tr><td><span class="timing-status after">אחרי אימון</span></td>
+        <td>הארוחה הגדולה ביותר של היום – צהריים או ערב. לא לפספס!</td>
+        <td>עד 60 דקות אחרי</td></tr>
+    <tr><td><span class="timing-status rest">ימי מנוחה</span></td>
+        <td>לאכול אותה כמות בדיוק – השריר נבנה בימי מנוחה, לא רק באימון</td>
+        <td>אותם זמנים</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page-footer">
+  <div class="footer-text">רז פשה | תפריט יומי</div>
+  <div class="footer-brand">XPERT כושר קרבי | kosherkravi.co.il</div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="topbar"></div>
+<div class="page-header">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Xpert כושר קרבי">
+  <div class="header-title">תוכנית 12 שבועות – <span>שלבי ההתקדמות</span></div>
+  <div class="header-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="X"></div>
+</div>
+<div class="page-inner">
+  <div class="note"><strong>תוכנית 12 שבועות – ביצועים ואנרגיה</strong><br>
+    שמור על יציבות: שקל אחת לשבוע בבוקר ושלח לי. מטרה — ביצועים גבוהים עם אנרגיה מיטבית.</div>
+
+  <div class="section-tag">📅 שלב 1 – הסתגלות (שבועות 1–3)</div>
+  <div class="phase-block">
+    <div class="phase-header p1">
+      <div class="phase-title">שלב 1 – כיוון והסתגלות</div>
+      <div class="phase-weeks">שבועות 1–3 | מטרה: הסתגלות לתפריט</div>
+    </div>
+    <div class="phase-body">
+      <ul>
+        <li>הגוף מתרגל לתפריט החדש – תחושת אנרגיה מיטבית</li>
+        <li><strong>קלוריות:</strong> 3,000 קק"ל ביום, חלבון 160–170 גרם</li>
+        <li><strong>אכילה:</strong> 4 ארוחות קבועות בשעות קבועות – בוקר, צהריים, ערב, לפני שינה</li>
+        <li><strong>סימן הצלחה:</strong> עלייה של 0.3–0.5 ק"ג לשבוע, תחושת שובע, אנרגיה טובה באימונים</li>
+        <li><strong>אם לא עולה:</strong> הוסף חמאת בוטנים נוספת (2 כפות = 200 קק"ל) לארוחת הבוקר</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-tag">📅 שלב 2 – בנייה (שבועות 4–8)</div>
+  <div class="phase-block">
+    <div class="phase-header p2">
+      <div class="phase-title">שלב 2 – בנייה ועלייה</div>
+      <div class="phase-weeks">שבועות 4–8 | מטרה: ביצועים גבוהים</div>
+    </div>
+    <div class="phase-body">
+      <ul>
+        <li><strong>קלוריות:</strong> עלייה ל-3,000–3,100 קק"ל אם הקצב נעצר. חלבון 170–180 גרם</li>
+        <li><strong>הוספת כמויות:</strong> אורז בצהריים מ-250 ל-300 גרם. ביצה נוספת בבוקר</li>
+        <li><strong>חטיפים מותרים:</strong> בוטנים / חמאת בוטנים / קוטג' בין ארוחות – עד 300 קק"ל לחטיף</li>
+        <li><strong>סימן הצלחה:</strong> עלייה יציבה, שריר מורגש, כוח באימונים עולה</li>
+        <li><strong>אם עולה מעל 0.7 ק"ג בשבוע:</strong> לשלוח לי – ננזלל קצת את הקלוריות</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-tag gold-tag">📅 שלב 3 – סיום ושמירה (שבועות 9–12)</div>
+  <div class="phase-block">
+    <div class="phase-header p3">
+      <div class="phase-title">שלב 3 – סיום ויציבות</div>
+      <div class="phase-weeks">שבועות 9–12 | יעד: 67 ק"ג</div>
+    </div>
+    <div class="phase-body">
+      <ul>
+        <li><strong>קלוריות:</strong> ממשיכים ב-2,900–3,100 קק"ל. חלבון 170–180 גרם</li>
+        <li><strong>מיקוד:</strong> שמירה על איכות השריר, לא רק על המספר במשקל</li>
+        <li><strong>בסוף שבוע 12:</strong> הגעת ל-67 ק"ג – נחליט יחד מה הלאה</li>
+        <li><strong>אם עדיין לא ב-71:</strong> מאריכים עוד 2–4 שבועות באותו מסלול</li>
+        <li><strong>הצלחה מלאה:</strong> 67 ק"ג עם ביצועים גדולים יותר באימונים</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-tag red-tag" style="margin-top:4px">📉 מעקב משקל שבועי – 12 שבועות</div>
+  <table class="weight-table">
+    <thead><tr>
+      <th style="width:16%">שבוע</th>
+      <th style="width:20%">שלב</th>
+      <th style="width:26%">משקל יעד</th>
+      <th>הערה</th>
+    </tr></thead>
+    <tbody>
+    <tr><td><span class="week-badge">1</span></td><td>הסתגלות</td><td>67 ק"ג</td><td>שבוע כיוון, הגוף מתרגל</td></tr>
+    <tr><td><span class="week-badge">2</span></td><td>הסתגלות</td><td>67 ק"ג</td><td>עלייה ראשונה אפשרית</td></tr>
+    <tr><td><span class="week-badge">3</span></td><td>הסתגלות</td><td>67 ק"ג</td><td>שמור על עקביות בארוחות</td></tr>
+    <tr><td><span class="week-badge mid">4</span></td><td>בנייה</td><td>67 ק"ג</td><td>שמירה על ביצועים</td></tr>
+    <tr><td><span class="week-badge mid">5</span></td><td>בנייה</td><td>67 ק"ג</td><td>לשמור על קצב אחיד</td></tr>
+    <tr><td><span class="week-badge mid">6</span></td><td>בנייה</td><td>67 ק"ג</td><td>אנרגיה מיטבית, כוח גבוה</td></tr>
+    <tr><td><span class="week-badge mid">7</span></td><td>בנייה</td><td>67 ק"ג</td><td>לשלוח לי עדכון ביצועים</td></tr>
+    <tr><td><span class="week-badge mid">8</span></td><td>בנייה</td><td>67 ק"ג</td><td>חצי תוכנית – נבדוק יחד</td></tr>
+    <tr><td><span class="week-badge final">9</span></td><td>סיום</td><td>67 ק"ג</td><td>ממשיכים חזק</td></tr>
+    <tr><td><span class="week-badge final">10</span></td><td>סיום</td><td>67 ק"ג</td><td>שמירה על עקביות</td></tr>
+    <tr><td><span class="week-badge final">11</span></td><td>סיום</td><td>67 ק"ג</td><td>שמירה על הביצועים</td></tr>
+    <tr><td><span class="week-badge final">12</span></td><td>סיום</td><td>67 ק"ג</td><td>סיום התוכנית! נחליט על המשך</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page-footer">
+  <div class="footer-text">רז פשה | תוכנית 12 שבועות</div>
+  <div class="footer-brand">XPERT כושר קרבי | kosherkravi.co.il</div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="topbar"></div>
+<div class="page-header">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Xpert כושר קרבי">
+  <div class="header-title">אפשרויות גמישות – <span>ארוחת בוקר וצהריים</span></div>
+  <div class="header-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="X"></div>
+</div>
+<div class="page-inner">
+  <div class="note"><strong>גמישות מלאה בתפריט</strong> – ניתן לשנות את האוכל כל שבוע לפי מה שמתחשק. כל אפשרות מותאמת לאותן כמויות קלוריות וחלבון.</div>
+
+  <div class="section-tag">🌅 אפשרויות לארוחת בוקר (כ-1,000 קק"ל)</div>
+  <div class="options-block">
+    <div class="options-title">בחר אחת מהאפשרויות:</div>
+    <div class="option-row"><div class="option-num">1</div><div class="option-text"><strong>קלאסי:</strong> 5 ביצים חביתה + 3 פרוסות לחם מלא + קוטג' 3% (250 גרם) + בננה + חמאת בוטנים</div></div>
+    <div class="option-row"><div class="option-num">2</div><div class="option-text"><strong>כבד ומשביע:</strong> שקשוקה 5 ביצים + 4 פרוסות לחם + גבינה בולגרית 100 גרם + עגבנייה</div></div>
+    <div class="option-row"><div class="option-num">3</div><div class="option-text"><strong>ארוחת ספורטאים:</strong> שיבולת שועל 80 גרם + חלב 3% (300 מ"ל) + 2 בננות + 2 כפות חמאת בוטנים + 3 ביצים קשות</div></div>
+    <div class="option-row"><div class="option-num">4</div><div class="option-text"><strong>אוריינטלי:</strong> חומוס 200 גרם + 4 ביצים קשות + פיתה מלאה + סלט ירקות + שמן זית</div></div>
+    <div class="option-row"><div class="option-num">5</div><div class="option-text"><strong>יוגורט ופירות:</strong> יוגורט יווני 5% (500 גרם) + שיבולת שועל 60 גרם + בננה + 3 כפות חמאת בוטנים + 3 ביצים קשות</div></div>
+    <div class="option-row"><div class="option-num">6</div><div class="option-text"><strong>לחם עשיר:</strong> 5 פרוסות לחם מלא + גבינה לבנה 5% + גבינה צהובה + 4 ביצים קשות + עגבנייה + מלפפון</div></div>
+  </div>
+
+  <div class="section-tag red-tag">☀️ אפשרויות לארוחת צהריים (כ-1,400 קק"ל)</div>
+  <div class="options-block" style="border-right-color:var(--red);background:#fff5f4;">
+    <div class="options-title" style="color:var(--red-dark);">בחר אחת מהאפשרויות:</div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">1</div><div class="option-text"><strong>עוף ואורז:</strong> 300 גרם חזה עוף על הגריל + 250 גרם אורז + סלט + 3 כפות טחינה + 2 פרוסות לחם</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">2</div><div class="option-text"><strong>בשר ופסטה:</strong> 300 גרם בשר טחון / פירגית + 250 גרם פסטה + רוטב עגבניות + סלט + לחם</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">3</div><div class="option-text"><strong>סטייק ותפוח אדמה:</strong> 300 גרם סטייק בקר + 300 גרם תפוח אדמה אפוי + ירקות צלויים + חמאה</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">4</div><div class="option-text"><strong>שווארמה ביתית:</strong> 300 גרם עוף פרוס + 3 פיתות מלאות + חומוס + ירקות + טחינה</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">5</div><div class="option-text"><strong>דגים ואורז:</strong> 350 גרם סלמון / טונה טרייה + 250 גרם אורז + ירקות מוקפצים בשמן זית</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">6</div><div class="option-text"><strong>קציצות ואורז:</strong> 6–7 קציצות בקר / עוף (250 גרם) + 250 גרם אורז + סלט + לחם + טחינה</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">7</div><div class="option-text"><strong>מרק עוף עשיר:</strong> מרק עוף עם ירקות + 300 גרם עוף / בקר + אטריות + 3 פרוסות לחם</div></div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-text">רז פשה | אפשרויות בוקר וצהריים</div>
+  <div class="footer-brand">XPERT כושר קרבי | kosherkravi.co.il</div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="topbar"></div>
+<div class="page-header">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Xpert כושר קרבי">
+  <div class="header-title">אפשרויות גמישות – <span>ארוחת ערב ולפני שינה</span></div>
+  <div class="header-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="X"></div>
+</div>
+<div class="page-inner">
+  <div class="section-tag gold-tag">🌙 אפשרויות לארוחת ערב (כ-1,050 קק"ל)</div>
+  <div class="options-block" style="border-right-color:var(--gold);background:#fff9ee;">
+    <div class="options-title" style="color:#6a4c10;">בחר אחת מהאפשרויות:</div>
+    <div class="option-row"><div class="option-num" style="background:#8a6010;">1</div><div class="option-text"><strong>עוף ופסטה:</strong> 250 גרם עוף על הגריל + 200 גרם פסטה + 2 ביצים קשות + סלט + שמן זית</div></div>
+    <div class="option-row"><div class="option-num" style="background:#8a6010;">2</div><div class="option-text"><strong>בשר וקינואה:</strong> 250 גרם בשר / המבורגר ביתי + 200 גרם קינואה + ירקות צלויים + גבינה</div></div>
+    <div class="option-row"><div class="option-num" style="background:#8a6010;">3</div><div class="option-text"><strong>דג ותפוח אדמה:</strong> 280 גרם דג אפוי + 220 גרם תפוח אדמה + ירקות + לימון + שמן זית</div></div>
+    <div class="option-row"><div class="option-num" style="background:#8a6010;">4</div><div class="option-text"><strong>ביצים ולחם:</strong> 6 ביצים חביתה + 4 פרוסות לחם מלא + קוטג' + גבינה צהובה + סלט</div></div>
+    <div class="option-row"><div class="option-num" style="background:#8a6010;">5</div><div class="option-text"><strong>שניצל ואורז:</strong> 250 גרם שניצל עוף + 200 גרם אורז + 2 ביצים קשות + ירקות + טחינה</div></div>
+    <div class="option-row"><div class="option-num" style="background:#8a6010;">6</div><div class="option-text"><strong>טונה ופסטה:</strong> 2 קופסאות טונה במים + 200 גרם פסטה + שמן זית + עגבנייה + ביצה קשה + גבינה</div></div>
+  </div>
+
+  <div class="section-tag">🌜 אפשרויות לחטיף לפני שינה (כ-550 קק"ל)</div>
+  <div class="options-block">
+    <div class="options-title">חשוב לאכול לפני שינה – הגוף בונה שריר בלילה:</div>
+    <div class="option-row"><div class="option-num">1</div><div class="option-text"><strong>קוטג' ולחם:</strong> קוטג' 3% (250 גרם) + 2 פרוסות לחם + 2 כפות חמאת בוטנים</div></div>
+    <div class="option-row"><div class="option-num">2</div><div class="option-text"><strong>יוגורט ושיבולת שועל:</strong> יוגורט יווני 5% (300 גרם) + שיבולת שועל 50 גרם + כפית דבש + אגוזים</div></div>
+    <div class="option-row"><div class="option-num">3</div><div class="option-text"><strong>ביצים ולחם:</strong> 3 ביצים קשות + 2 פרוסות לחם מלא + גבינה צהובה + קוטג' קטן</div></div>
+    <div class="option-row"><div class="option-num">4</div><div class="option-text"><strong>חלב ושיבולת שועל:</strong> חלב 3% (300 מ"ל) + שיבולת שועל 70 גרם + 2 כפות חמאת בוטנים + בננה</div></div>
+  </div>
+
+  <div class="section-tag red-tag" style="margin-top:4px">🍫 חטיפים בין ארוחות – מומלצים לעלייה במסה</div>
+  <div class="options-block" style="border-right-color:var(--red);background:#fff5f4;">
+    <div class="options-title" style="color:var(--red-dark);">עד פעמיים ביום, 200–300 קק"ל כל אחד:</div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">1</div><div class="option-text"><strong>בוטנים / שקדים:</strong> קומץ גדול 40–50 גרם – כ-250 קק"ל, 8 גרם חלבון</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">2</div><div class="option-text"><strong>חמאת בוטנים ובננה:</strong> 2 כפות חמאת בוטנים + בננה – כ-280 קק"ל, 8 גרם חלבון</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">3</div><div class="option-text"><strong>קוטג' ופרי:</strong> קוטג' 3% (250 גרם) + בננה – כ-230 קק"ל, 28 גרם חלבון</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">4</div><div class="option-text"><strong>לחם וחמאת בוטנים:</strong> 2 פרוסות לחם מלא + 2 כפות חמאת בוטנים + כפית דבש – כ-300 קק"ל</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">5</div><div class="option-text"><strong>יוגורט יווני:</strong> 200 גרם 5% + כפית ריבה + שיבולת שועל 30 גרם – כ-250 קק"ל, 18 גרם חלבון</div></div>
+  </div>
+
+  <div class="note warn"><strong>מה חשוב לזכור לעלייה במסה:</strong><br>
+    לאכול גם אם לא רעב – העודף הקלורי הוא כלי עבודה • לא לדלג על ארוחת לפני שינה – הגוף בונה שריר בלילה • להרבות בפחמימות לפני האימון • עלייה של 0.3–0.5 ק"ג בשבוע = הקצב הנכון</div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-text">רז פשה | אפשרויות ערב ולפני שינה</div>
+  <div class="footer-brand">XPERT כושר קרבי | kosherkravi.co.il</div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="topbar"></div>
+<div class="page-header">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Xpert כושר קרבי">
+  <div class="header-title">מעקב משקל – <span>12 שבועות</span></div>
+  <div class="header-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="X"></div>
+</div>
+<div class="page-inner">
+  <div class="note"><strong>כיצד לעקוב נכון:</strong> כל שבוע לשקול בבוקר – לאחר שירותים, לפני אכילה, עם אותם בגדים או בלי בגדים. לשלוח לי את המשקל <strong>כל שבוע ביום קבוע</strong> (מומלץ: ראשון בבוקר).</div>
+
+  <div class="section-tag">📈 יעדי משקל שבועיים מפורטים</div>
+  <table class="weight-table">
+    <thead><tr>
+      <th style="width:14%">שבוע</th>
+      <th style="width:20%">שלב</th>
+      <th style="width:26%">משקל יעד</th>
+      <th>הערה ומה לעשות</th>
+    </tr></thead>
+    <tbody>
+    <tr><td><span class="week-badge">1</span></td><td>הסתגלות</td><td>67 ק"ג</td><td>שבוע כיוון, הגוף מתחיל להתרגל</td></tr>
+    <tr><td><span class="week-badge">2</span></td><td>הסתגלות</td><td>67 ק"ג</td><td>עלייה ראשונה אפשרית – סימן טוב</td></tr>
+    <tr><td><span class="week-badge">3</span></td><td>הסתגלות</td><td>67 ק"ג</td><td>שמור על עקביות בארוחות לבוקר</td></tr>
+    <tr><td><span class="week-badge mid">4</span></td><td>בנייה</td><td>67 ק"ג</td><td>תחילת שלב הבנייה הרצינית</td></tr>
+    <tr><td><span class="week-badge mid">5</span></td><td>בנייה</td><td>67 ק"ג</td><td>לשמור על קצב אחיד</td></tr>
+    <tr><td><span class="week-badge mid">6</span></td><td>בנייה</td><td>67 ק"ג</td><td>שריר מורגש, כוח באימונים עולה</td></tr>
+    <tr><td><span class="week-badge mid">7</span></td><td>בנייה</td><td>67 ק"ג</td><td>לשלוח תמונה להשוואה למתחיל</td></tr>
+    <tr><td><span class="week-badge mid">8</span></td><td>בנייה</td><td>67 ק"ג</td><td>חצי תוכנית – נבדוק יחד את ההתקדמות</td></tr>
+    <tr><td><span class="week-badge final">9</span></td><td>סיום</td><td>67 ק"ג</td><td>ממשיכים חזק, לשמור על הקצב</td></tr>
+    <tr><td><span class="week-badge final">10</span></td><td>סיום</td><td>67 ק"ג</td><td>קצב יציב, לא לשנות כלום</td></tr>
+    <tr><td><span class="week-badge final">11</span></td><td>סיום</td><td>67 ק"ג</td><td>שמירה על הביצועים – ממשיכים</td></tr>
+    <tr><td><span class="week-badge final">12</span></td><td>סיום</td><td>67 ק"ג</td><td>הגעת ל-67 ק"ג! נחליט על שלב הבא</td></tr>
+    </tbody>
+  </table>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="note red"><strong>סימני אזהרה – שלח לי מיד:</strong><br>
+        עלייה מעל 1 ק"ג בשבוע – חלק מהעלייה שומן<br>
+        ירידה במשקל – העודף הקלורי לא מספיק<br>
+        אין שינוי שלושה שבועות ברציפות</div>
+    </div>
+    <div class="col">
+      <div class="note warn"><strong>מפתח הצלחה:</strong><br>
+        עקביות בארוחות > כל תוסף<br>
+        שינה של 7–8 שעות = בנייה<br>
+        מתח גבוה = פחות שריר</div>
+    </div>
+  </div>
+
+  <div class="section-tag gold-tag" style="margin-top:2px">💧 שתייה ושינה</div>
+  <div class="options-block" style="border-right-color:var(--gold);background:#f0f7ff;">
+    <div class="options-title" style="color:#1a4a8a;">הנחיות שתייה ושינה:</div>
+    <div class="option-row"><div class="option-num" style="background:#1a5080;">1</div><div class="option-text"><strong>מים:</strong> לפחות 3 ליטר ביום – הידרציה טובה = ביצועים טובים יותר</div></div>
+    <div class="option-row"><div class="option-num" style="background:#1a5080;">2</div><div class="option-text"><strong>חלב:</strong> מותר 1–2 כוסות חלב 3% ביום – חלבון + קלוריות + סידן</div></div>
+    <div class="option-row"><div class="option-num" style="background:#1a5080;">3</div><div class="option-text"><strong>לפני אימון:</strong> 500 מ"ל מים לפחות שעה לפני – ביצועים טובים יותר</div></div>
+    <div class="option-row"><div class="option-num" style="background:#1a5080;">4</div><div class="option-text"><strong>שינה:</strong> 7–8 שעות בלילה חובה – 80% מבניית השריר קורה בשינה</div></div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-text">רז פשה | מעקב 12 שבועות</div>
+  <div class="footer-brand">XPERT כושר קרבי | kosherkravi.co.il</div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="topbar"></div>
+<div class="page-header">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Xpert כושר קרבי">
+  <div class="header-title">כללים חשובים – <span>מה לאכול ומה לא</span></div>
+  <div class="header-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="X"></div>
+</div>
+<div class="page-inner">
+  <div class="section-tag">✅ מה כן לאכול – מזונות שמסייעים לבנייה</div>
+  <div class="two-col">
+    <div class="col">
+      <div class="options-block">
+        <div class="options-title">מקורות חלבון מצוינים:</div>
+        <div class="option-row"><div class="option-num">1</div><div class="option-text"><strong>עוף:</strong> חזה עוף, פירגית, שוקיים – בגריל / תנור / מוקפץ</div></div>
+        <div class="option-row"><div class="option-num">2</div><div class="option-text"><strong>ביצים:</strong> ניתן לאכול 4–6 ביצים ביום, כולל החלמון</div></div>
+        <div class="option-row"><div class="option-num">3</div><div class="option-text"><strong>בשר בקר:</strong> סטייק, קציצות, בשר טחון – 2–3 פעמים בשבוע</div></div>
+        <div class="option-row"><div class="option-num">4</div><div class="option-text"><strong>דגים:</strong> סלמון, טונה, דג לבן – עשיר באומגה 3</div></div>
+        <div class="option-row"><div class="option-num">5</div><div class="option-text"><strong>מוצרי חלב:</strong> קוטג', גבינה צהובה, יוגורט יווני</div></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="options-block">
+        <div class="options-title">פחמימות איכותיות:</div>
+        <div class="option-row"><div class="option-num">1</div><div class="option-text"><strong>אורז לבן / מלא:</strong> המקור הטוב ביותר לפחמימות לספורטאים</div></div>
+        <div class="option-row"><div class="option-num">2</div><div class="option-text"><strong>לחם מלא:</strong> 3–5 פרוסות ביום, עם חמאת בוטנים או ביצה</div></div>
+        <div class="option-row"><div class="option-num">3</div><div class="option-text"><strong>פסטה:</strong> פעם-פעמיים בשבוע, עם בשר / עוף</div></div>
+        <div class="option-row"><div class="option-num">4</div><div class="option-text"><strong>תפוח אדמה:</strong> אפוי עם עוף – ארוחה מצוינת</div></div>
+        <div class="option-row"><div class="option-num">5</div><div class="option-text"><strong>בננה:</strong> פחמימה מהירה – מצוין לפני / אחרי אימון</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-tag red-tag">❌ מה לא לאכול – מזונות שפוגעים בבנייה</div>
+  <div class="options-block" style="border-right-color:var(--red);background:#fff5f4;">
+    <div class="options-title" style="color:var(--red-dark);">להימנע ככל האפשר:</div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">1</div><div class="option-text"><strong>אוכל מעובד ומטוגן:</strong> צ'יפס, נקניקיות, שניצל קנוי – שומן גבוה, חלבון נמוך</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">2</div><div class="option-text"><strong>שתייה ממותקת:</strong> קולה, מיצים, אנרגיה – 200+ קק"ל ריקות, ללא חלבון</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">3</div><div class="option-text"><strong>גנק פוד:</strong> חטיפים, עוגיות, ממתקים – קלוריות ריקות שלא בונות שריר</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">4</div><div class="option-text"><strong>דילוג על ארוחות:</strong> לא לדלג על ארוחה – כל ארוחה חשובה לתהליך הבנייה</div></div>
+    <div class="option-row"><div class="option-num" style="background:var(--red-dark);">5</div><div class="option-text"><strong>אלכוהול:</strong> פוגע בשחרור הורמון גדילה ובבנייה, להגביל מאוד</div></div>
+  </div>
+
+  <div class="section-tag gold-tag" style="margin-top:4px">📋 סיכום – מה לעשות כל יום</div>
+  <div class="phase-block">
+    <div class="phase-header p1">
+      <div class="phase-title">רשימת מטלות יומית לרז פשה</div>
+      <div class="phase-weeks">12 שבועות | 67 → 67 ק"ג</div>
+    </div>
+    <div class="phase-body">
+      <ul>
+        <li><strong>בוקר:</strong> לאכול ארוחת בוקר מלאה – לא לצאת מהבית בלי לאכול</li>
+        <li><strong>צהריים:</strong> הארוחה הגדולה ביותר – לא לחסוך בכמות</li>
+        <li><strong>ערב:</strong> ארוחה מסודרת, לא ארוחה קלה</li>
+        <li><strong>לפני שינה:</strong> קוטג' / יוגורט – חובה, הגוף בונה שריר בלילה</li>
+        <li><strong>שתייה:</strong> 3 ליטר מים לפחות, כל היום</li>
+        <li><strong>שינה:</strong> 7–8 שעות – חלק בלתי נפרד מהתוכנית</li>
+        <li><strong>כל יום ראשון:</strong> לשקול ולשלוח לי את המשקל</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note"><strong>שאלות? לא בטוח מה לאכול?</strong> לשלוח לי הודעה – אני כאן בשבילך לכל השאלות לאורך כל 12 השבועות.</div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-text">רז פשה | כללים וסיכום</div>
+  <div class="footer-brand">XPERT כושר קרבי | kosherkravi.co.il</div>
+</div>
+</div>
+</body>
+</html>
