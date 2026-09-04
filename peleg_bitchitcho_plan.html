@@ -14,17 +14,19 @@ body{font-family:'Arial',sans-serif;background:#1a1a1a;direction:rtl}
 .ph-mid p{font-size:10px;color:#ccc}
 .ph img.icon{height:36px}
 .topbar{height:6px;background:linear-gradient(90deg,var(--rd),var(--red),var(--gold),var(--go));flex-shrink:0}
-.hero{position:relative;height:130px;flex-shrink:0;overflow:hidden}
+.hero{position:relative;height:120px;flex-shrink:0;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center top}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,18,5,.82) 55%,rgba(200,149,42,.18))}
-.hero-content{position:relative;z-index:2;padding:14px 18px;color:#fff}
+.hero-content{position:relative;z-index:2;padding:12px 18px;color:#fff}
 .hero-content h2{font-size:22px;color:var(--go);text-shadow:0 2px 8px #000}
 .hero-content p{font-size:11px;color:#ddd;margin-top:3px}
-.pi{flex:1;overflow:hidden;padding:8px 12px;display:flex;flex-direction:column;gap:6px}
-.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#fff;margin-bottom:2px}
-.tag.r{background:var(--red)} .tag.g{background:var(--green)} .tag.au{background:var(--gold)} .tag.pu{background:var(--pu)}
-.goal-box{background:linear-gradient(135deg,#1a2a0a,#0d1205);border:1.5px solid var(--green);border-radius:8px;padding:8px 12px;color:#ddd;font-size:10.5px;line-height:1.6}
+.pi{flex:1;overflow:hidden;padding:7px 12px;display:flex;flex-direction:column;gap:5px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;color:#fff;margin-bottom:1px}
+.tag.r{background:var(--red)} .tag.g{background:var(--green)} .tag.au{background:var(--gold)} .tag.pu{background:var(--pu)} .tag.dark{background:#333}
+.goal-box{background:linear-gradient(135deg,#1a2a0a,#0d1205);border:1.5px solid var(--green);border-radius:8px;padding:7px 12px;color:#ddd;font-size:10px;line-height:1.55}
 .goal-box strong{color:var(--gl)}
+.goal-box.r{border-color:var(--red);background:linear-gradient(135deg,#2a0a0a,#1a0505)}
+.goal-box.r strong{color:var(--go)}
 .section-hdr{background:linear-gradient(90deg,var(--rd),var(--red));color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;margin-top:2px;flex-shrink:0}
 .section-hdr.g{background:linear-gradient(90deg,var(--gd),var(--green))}
 .section-hdr.au{background:linear-gradient(90deg,#a07010,var(--gold))}
@@ -40,35 +42,33 @@ body{font-family:'Arial',sans-serif;background:#1a1a1a;direction:rtl}
 .warmup{background:#eef5e4;border:1px solid var(--gl);border-radius:6px;padding:5px 8px;font-size:9.5px;color:#333}
 .warmup strong{color:var(--gd)}
 .yt-link{color:var(--red);font-size:9px;text-decoration:none;font-weight:700;margin-right:4px}
-.yt-link:hover{text-decoration:underline}
 .run-table{width:100%;border-collapse:collapse;font-size:9.5px}
 .run-table th{background:var(--dark);color:var(--go);padding:3px 5px;text-align:center}
 .run-table td{border:1px solid #ddd;padding:3px 5px;text-align:center}
 .run-table tr:nth-child(even) td{background:#f5f5f0}
 .week-table{width:100%;border-collapse:collapse;font-size:9px}
-.week-table th{background:var(--dark);color:var(--go);padding:2px 4px;text-align:center}
-.week-table td{border:1px solid #ddd;padding:2px 4px;text-align:center;font-size:9px}
+.week-table th{background:var(--dark);color:var(--go);padding:3px 5px;text-align:center}
+.week-table td{border:1px solid #ddd;padding:3px 5px;text-align:center;line-height:1.4}
 .week-table tr:nth-child(even) td{background:#f9f9f0}
+.week-table .exam{background:#fff3cd!important;font-weight:700;color:#7a4f00}
 .scard{display:flex;gap:4px;flex-wrap:wrap}
-.sd{flex:1;min-width:60px;background:var(--dark);border-radius:6px;padding:4px 5px;text-align:center}
+.sd{flex:1;min-width:58px;background:var(--dark);border-radius:6px;padding:4px 5px;text-align:center}
 .sd .day{font-size:9px;color:var(--go);font-weight:700}
 .sd .act{font-size:8px;color:#ccc;margin-top:2px}
-.sd.rest{background:#2a2a2a}
-.sd.rest .day{color:#888}
-.sd.rest .act{color:#666}
+.sd.rest{background:#2a2a2a} .sd.rest .day{color:#888} .sd.rest .act{color:#666}
+.sd.opt{background:#1a1040} .sd.opt .day{color:#b8a0e0} .sd.opt .act{color:#888}
+.bonus-box{background:linear-gradient(135deg,#0a1a2a,#050d1a);border:1.5px solid var(--gold);border-radius:8px;padding:7px 12px;color:#ddd;font-size:10px;line-height:1.55}
+.bonus-box strong{color:var(--go)}
 .foot{background:var(--dark);color:#888;font-size:8px;text-align:center;padding:3px;flex-shrink:0}
 </style>
 </head>
 <body>
 
-<!-- PAGE 1 -->
+<!-- PAGE 1 — שער + לוח שבועי + נפח -->
 <div class="page">
   <div class="ph">
     <img class="logo" src="data:image/png;base64,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" alt="XPERT">
-    <div class="ph-mid">
-      <h1>XPERT — תוכנית אימון אישית</h1>
-      <p>פלג ביצ'צ'ו · שנת שירות · 2026–2027</p>
-    </div>
+    <div class="ph-mid"><h1>XPERT — תוכנית אימון אישית</h1><p>פלג ביצ'צ'ו · שנת שירות · 2026–2027</p></div>
     <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo3Y2RkZTcwYS0wZDM1LTM5NDEtOWVhYi04MjZmMzM1NTcyYWEiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDozM2FjMzEyOC1hNTgwLTdlNDctYjAyMS00MjRmN2I0MTc0MjIiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjMzYWMzMTI4LWE1ODAtN2U0Ny1iMDIxLTQyNGY3YjQxNzQyMiIgc3RFdnQ6d2hlbj0iMjAyMC0wOS0xMFQxNDo0NjoxNyswMzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKFdpbmRvd3MpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgiIHN0RXZ0OndoZW49IjIwMjAtMDktMTBUMTQ6NDc6MjYrMDM6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMS4wIChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7reAeYAAAACXBIWXMAAAsTAAALEwEAmpwYAAACClBMVEVHcEydn6Kdn6Kdn6Kdn6Kdn6Kdn6KmqKudn6Kdn6LNztCdn6LBwsWdn6LP0NKdn6LR0tSeoKOdn6Kdn6Kqq66oqqydn6LR0tTQ0dPHyMrR0tSipKegoqWlp6q7vL/Q0dPQ0dOeoKPo6OnQ0dPDxMaqrK/8/Pydn6LQ0dPR0tTDxMa7vL++v8KqrK6dn6LMzc/R0tS8vcC8vcCytLetr7KeoKPNztCdn6LOz9GeoKPR0tTR0tTR0tT9/f7Q0dO/wcOztbeusLO7vL/Jysy6u762uLqusLO8vcDR0tTP0NK8vcDNzs/R0tS7vL/FxsiipKepq668vcC8vcC8vcC8vcC8vcC8vcCdn6LHyMqztLfOztDGyMrKy827vL+7vL+lp6rIycudn6Kdn6K8vcC8vcC+v8K8vcC8vcC7vL+8vcDR0tS8vcC8vcC7vL/Oz9HBwsW7vL+dn6K8vcCmqKvBwsW8vcC6u76+v8K8vcC8vcC8vcCmqKu9vsG8vcDJysy8vcC7vL+9vsHDxce8vcC8vcCtr7Kxs7W8vcCdn6Kdn6LR0tTLzM7HyMrDxMbAwcO9v8G7vL+5ur2wsrSfoaSlp6qmqKvP0NKipKetr7Koqq3NztDQ0dPOz9HNzc/Ky83JyszExcfFxsjBwsS3uLu0trmytLa4uLyrra+ho6a2t7qztbexs7WqrK+rrbAa85nFAAAAiXRSTlMAZ/irs9juCHrnAkcdG304rDCeIRNdy9ggCRBAcucNyyhPAbXmOQPGRpYYKkXkmdu56SPb5fLDhzLd31OLBfHR7Gjh6tT19k766QIw9nDD9/aCFRMSARCE5qSltKG2VPRwuYopDy8eDiwdAiIDK+IGAZEMBwUWJA0lBgsGpqBBQjv2Pz/zSLh9iNCP4roAAAT1SURBVGje7dv5VxNXFAfwFyLJAAOESIwBEpAsCiEESFCsIjsICIj7rlVbl1Zbl+6t2mqXiYgo4Nq6dXFr/0cRkpTMPN69M3PnJ70/cDieM3x8883MvLnvhbF3rNyOAnX5/f5YLJns7Ozubm4OhUJ7enrODg4Oemso3eIPFVVN352Zvf/83u2///rz1tTNyRtPJh5df3AnlUo1+Sjh8mVYN7WR9EyXu7Hu5g2kcKQR6aY+II2YOd1IlzjiXFjkEkecAwtd4oiZsxHnUkfMnOdwbqopQAsXrsO51BEzthvnUkecGTHkkkechkE3FSSOmNWuQ7mpEmZBxgh3ywZyWMK49BEzVoVxHwZ99PAYwv2dPmJWhXE3rbEARrh/xOGIy6skdRWL4a2we31/O8AG1DMoRbE7xYd0bYXdx0DEyzUzRmVFOXSKPP2w+3RAOFFdrWELyuCMPf2gOxFqEYxWyyo2zIfL0wm6T/cHdIxWaSxEfao9faB7Y1zHaOFw03WoD3QnB9Csowx9HR9qhtxn3S1INs+m4wbS0Ay5kwe1EZflK4bDzcKQe3McxaLDzcAhyL02gGAdpXrv1Q0hwJ3KjZjL6go3CwPurYM+gFUajTydGvYA7j/ji9hpgnDT1RYH3L5MxJXrX0xThJuu4bjYfZlYiLjSf5fn2gxPBIbjYvfVL855dobnumuNz0DavGL39a9zbGyW564oNjP1GfaK3f6fw7H7PNdwuNwRa9zbyeS/XNfGTFZbtdC99x/XNRNuulZW63cNXrlLwkjXbLgaGOnaGE3VVOty3YVEbnbEKNfclauC16JdonDTVR/EujZGWvVNOJcu3HRVBDEuyZWrOdWgSxtu9lSDro1ZURVBwCUPNwPvE7oWhJt5lz8gcAtKmWVVInDzi61jhecZamMY7mOWAJ8ryaLRQtdRXpEFamQjfN/IX07O+uow90nyiNvrcM8F4ogjdcjnIG3E86PFPX8pI/bV6Zjn0EWcYZHzOqqIAy5981iiiCtceuftJBEvYtHvKQQRL2bx72USKctx+/luaxEly3G7uvjvv+YiloNAn2Hv27UBbp/BbmKqJa8F+ioJ+W3D+jC3r1Jl4qUI6CN1XlnolB/mua2VhkcL9M1ejmRa9GO8/pXB6ZY8CvUJ92avUs8Yr09o6CqWR6G+aG/9okWJVl5f1EDELaNQH7jvas5qiIPXB9YdcbQD6ntPjeQeUcSD9UYc7QD7/D+owysqMB1xtBdc1+io1xzFhSVdLLiO8+NlznG8U63jKo72gutWz0a4R/JGjI44moDX6b6PMDRsj6DYcAJel+yQlzq6cr3BiMMJeB2256eljy/Vwg7EszichNedJ46I/gJnRQeOOBxDrLMfED9ZObC9FmIR+wqqZeA/zznVvwlvH2E/Yh9FzyUwrFL7MlXZRbOeVX7M/o0jiA+nU10Bp4jF7FfZZ37hQMU6MPuC4jI5i9mPRL47Z5UDtf8K3o30+fzP099+tWv7tm07jp/Y9cWpr499dOa7uX+8cPKT7VoW47oi+JEMDQ0t/LLzmx0ff/nZ3C8Xz3+6U8siXO9K2pNsy0PtJ9yyxgoWdkssYUHX5bOEhVyvbA0LuMTh/s8CLm24Uh5yv7ernZTF7qsnDbdWwn6PgPa2LGG/N0EbroT+noie2zJUhRL6ezGkt+WjCta1Ykfs+3pfpPUGcH4SJirb4U0AAAAASUVORK5CYII=" alt="">
   </div>
   <div class="topbar"></div>
@@ -77,301 +77,276 @@ body{font-family:'Arial',sans-serif;background:#1a1a1a;direction:rtl}
     <div class="hero-ov"></div>
     <div class="hero-content">
       <h2>פלג ביצ'צ'ו</h2>
-      <p>שנת שירות | תוכנית אימונים מקיפה · ספטמבר 2026</p>
+      <p>שנת שירות | תוכנית כוח, מהירות וסיבולת · ספטמבר 2026</p>
     </div>
   </div>
   <div class="pi">
     <span class="tag r">📅 לוח שבועי</span>
     <div class="scard">
-      <div class="sd"><div class="day">ראשון</div><div class="act">כוח עליון</div></div>
-      <div class="sd"><div class="day">שני</div><div class="act">ריצת נפח</div></div>
-      <div class="sd"><div class="day">שלישי</div><div class="act">כוח תחתון</div></div>
-      <div class="sd"><div class="day">רביעי</div><div class="act">פק"ל כוח</div></div>
-      <div class="sd"><div class="day">חמישי</div><div class="act">אינטרוואלים</div></div>
+      <div class="sd"><div class="day">ראשון</div><div class="act">ריצה 1<br>שיפור 3000</div></div>
+      <div class="sd"><div class="day">שני</div><div class="act">כוח 1<br>ווסט</div></div>
+      <div class="sd"><div class="day">שלישי</div><div class="act">ריצה 2<br>נפח</div></div>
+      <div class="sd"><div class="day">רביעי</div><div class="act">כוח 2<br>שק חול</div></div>
+      <div class="sd opt"><div class="day">חמישי</div><div class="act">זריזות<br>אופציונלי</div></div>
       <div class="sd rest"><div class="day">שישי</div><div class="act">מנוחה</div></div>
       <div class="sd"><div class="day">שבת</div><div class="act">דיונה</div></div>
     </div>
 
-    <span class="tag g">🏃 ריצת נפח — לוח שבועות</span>
+    <span class="tag g">🏃 ריצה 2 — נפח שבועי (קצב 4:45/ק"מ)</span>
     <table class="run-table">
-      <tr><th>שבוע</th><th>תאריך</th><th>מרחק</th><th>קצב</th><th>זמן משוער</th></tr>
-      <tr><td>1</td><td>7.9</td><td>6 ק"מ</td><td>4:45/ק"מ</td><td>~28 דק׳</td></tr>
-      <tr><td>2</td><td>14.9</td><td>7 ק"מ</td><td>4:45/ק"מ</td><td>~33 דק׳</td></tr>
-      <tr><td>3</td><td>21.9</td><td>8 ק"מ</td><td>4:45/ק"מ</td><td>~38 דק׳</td></tr>
-      <tr><td>4</td><td>28.9</td><td>9 ק"מ</td><td>4:45/ק"מ</td><td>~43 דק׳</td></tr>
-      <tr><td>5</td><td>5.10</td><td>10 ק"מ</td><td>4:45/ק"מ</td><td>~47 דק׳</td></tr>
-      <tr><td>6</td><td>12.10</td><td>10 ק"מ</td><td>4:45/ק"מ</td><td>~47 דק׳</td></tr>
-      <tr><td>7</td><td>19.10</td><td>10 ק"מ</td><td>4:45/ק"מ</td><td>~47 דק׳</td></tr>
-      <tr><td>8</td><td>26.10</td><td>8 ק"מ</td><td>4:45/ק"מ</td><td>שבוע הורדה</td></tr>
+      <tr><th>שבוע</th><th>תאריך (שלישי)</th><th>מרחק</th><th>קצב</th><th>זמן משוער</th></tr>
+      <tr><td>1</td><td>8.9</td><td>6 ק"מ</td><td>4:45/ק"מ</td><td>~28 דק׳</td></tr>
+      <tr><td>2</td><td>15.9</td><td>7 ק"מ</td><td>4:45/ק"מ</td><td>~33 דק׳</td></tr>
+      <tr><td>3</td><td>22.9</td><td>8 ק"מ</td><td>4:45/ק"מ</td><td>~38 דק׳</td></tr>
+      <tr><td>4</td><td>29.9</td><td>9 ק"מ</td><td>4:45/ק"מ</td><td>~43 דק׳</td></tr>
+      <tr><td>5</td><td>6.10</td><td>10 ק"מ</td><td>4:45/ק"מ</td><td>~47 דק׳</td></tr>
+      <tr><td>6</td><td>13.10</td><td>10 ק"מ</td><td>4:45/ק"מ</td><td>~47 דק׳</td></tr>
+      <tr><td>7</td><td>20.10</td><td>10 ק"מ</td><td>4:45/ק"מ</td><td>~47 דק׳</td></tr>
+      <tr><td>8</td><td>27.10</td><td>7 ק"מ</td><td>4:45/ק"מ</td><td>שבוע הורדה</td></tr>
     </table>
 
     <div class="goal-box">
-      <strong>🎯 מטרת התוכנית:</strong> לבנות כושר גופני מקיף לשנת שירות — כוח גוף עליון ותחתון, סיבולת ריצה עד 10 ק"מ בקצב 4:45, ומוכנות לאימוני שדה.<br>
-      <strong>עקרון:</strong> 5 אימונים בשבוע + דיונה בסוף שבוע. שבוע 8 — הורדת עומס.
+      <strong>🎯 מטרת התוכנית:</strong> לשמור על ריצת 3,000מ׳ מתחת ל-12 דק׳, לבנות סיבולת עד 10 ק"מ בקצב 4:45, ולפתח כוח מתפרץ ועוצמה — ב-5 אימונים בשבוע + דיונה.<br>
+      <strong>שבוע 8:</strong> הורדת עומס — הגוף מטמיע ומתחזק.
     </div>
   </div>
   <div class="foot">עמוד 1 מתוך 6 | XPERT Combat Fitness | פלג ביצ'צ'ו</div>
 </div>
 
-<!-- PAGE 2 — כוח עליון (ללא ציוד) -->
+<!-- PAGE 2 — ריצה 1: שיפור 3000 -->
 <div class="page">
   <div class="ph">
     <img class="logo" src="data:image/png;base64,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" alt="XPERT">
-    <div class="ph-mid"><h1>כוח עליון — ללא ציוד</h1><p>פלג ביצ'צ'ו · ראשון בשבוע</p></div>
+    <div class="ph-mid"><h1>ריצה 1 — שיפור ריצת 3,000מ׳</h1><p>פלג ביצ'צ'ו · ראשון בשבוע · חימום 10 דק׳ לפני תמיד</p></div>
     <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="">
   </div>
   <div class="topbar"></div>
   <div class="pi">
-    <div class="warmup">
-      <strong>חימום (5 דק׳):</strong>
-      <ul>
-        <li>500מ׳ ריצה קלה</li>
-        <li>10 שכ"ש · 10 בורפי · 15 שרפנל</li>
-      </ul>
+    <span class="tag r">📋 לוח אימוני ריצה 1 — שיפור 3,000מ׳</span>
+    <table class="week-table">
+      <tr><th>שבוע</th><th>תאריך (ראשון)</th><th>אימון</th><th>מנוחה</th></tr>
+      <tr><td>1</td><td>7.9</td><td>1,000מ׳ × 4</td><td>4 דק׳ בין לבין</td></tr>
+      <tr><td>2</td><td>14.9</td><td>1,000מ׳ × 2 ← 500מ׳ × 4</td><td>2 דק׳ תמיד</td></tr>
+      <tr><td>3</td><td>21.9</td><td>1,000מ׳ × 3 · מנוחה 20 שנ׳ בין לבין<br>+ שחרור 15 דק׳ ריצה קלה</td><td>20 שנ׳</td></tr>
+      <tr class="exam"><td>4</td><td>28.9</td><td>⚡ בוחן 3,000מ׳</td><td>—</td></tr>
+      <tr><td>5</td><td>5.10</td><td>200מ׳ × 10 ← 1,000מ׳ × 2</td><td>200מ׳: דקה · 1,000מ׳: 4 דק׳</td></tr>
+      <tr class="exam"><td>6</td><td>12.10</td><td>⚡ בוחן 3,000מ׳ — מטרה: מתחת 12:00</td><td>—</td></tr>
+      <tr><td>7</td><td>19.10</td><td>1,000מ׳ × 5</td><td>4 דק׳ בין לבין</td></tr>
+      <tr><td>8</td><td>26.10</td><td>1,000מ׳ × 3 — שבוע הורדה</td><td>4 דק׳</td></tr>
+    </table>
+
+    <div class="bonus-box">
+      <strong>🔥 סט השלמה — אחרי כל אימון אינטרוואלים (אפשר גם אחרי אחרים)</strong><br>
+      <strong>100 מתח · 200 שכבס · 300 שכיבות שמיכה</strong><br>
+      אפשר עם ווסט, אפשר לפעמים בלי · לחלק כרצונך · <strong>בזמן הקצר ביותר שאפשר</strong>
     </div>
 
-    <div class="section-hdr">חלק א׳ — סופר סט שכ"ש | 5 סטים</div>
-    <div class="part-block">
-      <div class="part-title">שכ"ש רגיל + מחיאת כף <a class="yt-link" href="https://www.youtube.com/watch?v=Eh00_rniF8E">▶ YouTube</a></div>
-      15 שכיבות שמיכה רגילות · <em>מנוחה 10 שנ׳</em> ← 8 שכ"ש עם מחיאת כף · מנוחה 1:30 בין סטים
-    </div>
-
-    <div class="section-hdr">חלק ב׳ — טריפל סט כתפיים | 4 סטים</div>
-    <div class="part-block">
-      <div class="part-title">פייק פוש-אפ + שכ"ש צר + שרפנל <a class="yt-link" href="https://www.youtube.com/watch?v=t7PSQO-eZ7k">▶ YouTube</a></div>
-      12 פייק פוש-אפ (דחיקת כתפיים) · <em>מנוחה 10 שנ׳</em><br>
-      ← 12 שכ"ש יהלום צר · <em>מנוחה 10 שנ׳</em><br>
-      ← 20 שרפנל ידיים · מנוחה 2:00 בין סטים
-    </div>
-
-    <div class="section-hdr g">חלק ג׳ — סופר סט ליבה | 4 סטים</div>
-    <div class="part-block g">
-      <div class="part-title g">בננה + פלאנק <a class="yt-link" href="https://www.youtube.com/watch?v=p7j02V1fIzU">▶ YouTube</a></div>
-      25 בננה רצוף · <em>מנוחה 15 שנ׳</em> ← 45 שניות פלאנק · מנוחה 1:30 בין סטים
-    </div>
-
-    <div class="section-hdr au">חלק ד׳ — טאבאטה שכ"ש | 4 סטים</div>
-    <div class="part-block au">
-      <div class="part-title au">טאבאטה — 20 שנ׳ עבודה / 10 שנ׳ מנוחה <a class="yt-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">▶ YouTube</a></div>
-      8 מחזורים: 20 שנ׳ שכ"ש מקסימום · 10 שנ׳ מנוחה · מנוחה 2:00 בין סטים
-    </div>
-
-    <div class="section-hdr pu">חלק ה׳ — AMRAP 10 דקות (ללא ציוד)</div>
-    <div class="part-block pu">
-      <div class="part-title pu">AMRAP כוח עליון <a class="yt-link" href="https://www.youtube.com/watch?v=XSkkrxgMDWE">▶ YouTube</a></div>
-      10 שכ"ש · 10 שכ"ש יהלום · 10 שכ"ש רחב · חוזר על עצמו 10 דקות ללא הפסקה
-    </div>
-
-    <div class="goal-box">
-      <strong>💪 מטרת האימון:</strong> חיזוק פלג גוף עליון ללא ציוד — חזה, כתפיים, טריצפס, ליבה.<br>
-      <strong>משבוע 3:</strong> הוסף סט אחד לחלקים א׳ ו-ב׳.
+    <div class="goal-box r">
+      <strong>🎯 מטרה:</strong> לרדת מתחת ל-12:00 בריצת 3,000מ׳ (בוחן שבוע 6).<br>
+      <strong>חימום חובה 10 דק׳</strong> לפני כל אימון — ריצה קלה + מתיחות דינמיות.<br>
+      <strong>שבועות 4 ו-6:</strong> בוחן אמיתי — לרוץ את הכי טוב שאפשר.
     </div>
   </div>
   <div class="foot">עמוד 2 מתוך 6 | XPERT Combat Fitness | פלג ביצ'צ'ו</div>
 </div>
 
-<!-- PAGE 3 — כוח תחתון (ללא ציוד) -->
+<!-- PAGE 3 — כוח 1 -->
 <div class="page">
   <div class="ph">
     <img class="logo" src="data:image/png;base64,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" alt="XPERT">
-    <div class="ph-mid"><h1>כוח תחתון — ללא ציוד</h1><p>פלג ביצ'צ'ו · שלישי בשבוע</p></div>
+    <div class="ph-mid"><h1>כוח 1 — עם ווסט</h1><p>פלג ביצ'צ'ו · שני בשבוע</p></div>
     <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="">
   </div>
   <div class="topbar"></div>
   <div class="pi">
     <div class="warmup">
-      <strong>חימום (5 דק׳):</strong>
-      <ul>
-        <li>500מ׳ ריצה קלה</li>
-        <li>20 סקאווט · 20 שרפנל ← 15 לאנץ' × 2</li>
-      </ul>
+      <strong>חימום — 3 סיבובים (כל סיבוב מגביר קצב):</strong>
+      400מ׳ ריצה (כל סבב מהיר יותר) · 10 סמוקום · 20 סקאווט · 30 בטן
     </div>
 
-    <div class="section-hdr">חלק א׳ — AMRAP 15 דקות</div>
+    <div class="section-hdr">חלק א׳ — EMOM 12 דקות | עם ווסט</div>
     <div class="part-block">
-      <div class="part-title">סקאווט · לאנץ' · ג'אמפינג לאנץ' <a class="yt-link" href="https://www.youtube.com/watch?v=ultWZbUMPL8">▶ YouTube</a></div>
-      15 סקאווט · 10 לאנץ' בכל רגל · 10 ג'אמפינג לאנץ' · חוזר על עצמו 15 דקות<br>
-      <em>משבוע 3: 20 דקות</em>
+      <div class="part-title">מתח עם ווסט/משקולת — כל דקה 8 חזרות <a class="yt-link" href="https://www.youtube.com/shorts/aFb65fs0Y4c">▶ YouTube</a></div>
+      בכל דקה (12 פעמים): 8 מתח עם ווסט — מה שלא הושלם בדקה נוסף למנוחה.<br>
+      <em>זה קשה — נבנה עם השבועות. בצע כמה שיותר בדקה.</em>
     </div>
 
-    <div class="section-hdr">חלק ב׳ — 4 סטים</div>
+    <div class="section-hdr">חלק ב׳ — 5 סטים | שכ"ש מחיאת כף</div>
     <div class="part-block">
-      <div class="part-title">בולגרי ספליט סקאווט + סקאווט ג'אמפ <a class="yt-link" href="https://www.youtube.com/watch?v=2C-uNgKwPLE">▶ YouTube</a></div>
-      12 בולגרי בכל רגל · <em>מנוחה 30 שנ׳</em> ← 10 סקאווט ג'אמפ · מנוחה 1:30 בין סטים<br>
-      <em>משבוע 3: 5 סטים</em>
+      <div class="part-title">שכיבות שמיכה עם מחיאת כף <a class="yt-link" href="https://www.youtube.com/watch?v=Eh00_rniF8E">▶ YouTube</a></div>
+      12–16 חזרות × 5 סטים · מנוחה כמה שצריך כדי לבצע
     </div>
 
-    <div class="section-hdr g">חלק ג׳ — 4 סטים</div>
+    <div class="section-hdr g">חלק ג׳ — 5 סטים | שכ"ש אקצנטרי</div>
     <div class="part-block g">
-      <div class="part-title g">סטפ אפ + גלידה <a class="yt-link" href="https://www.youtube.com/watch?v=dFzF80RQLMU">▶ YouTube</a></div>
-      15 סטפ אפ בכל רגל (על מדרגה/כסא) · <em>מנוחה 20 שנ׳</em><br>
-      ← 30 שניות גלידה (קופאים בתחתית לאנץ') · מנוחה 1:30 בין סטים
+      <div class="part-title g">שכיבות שמיכה אקצנטרי <a class="yt-link" href="https://www.youtube.com/watch?v=0PKjrhUGiWU">▶ YouTube</a></div>
+      3 שניות ירידה → עצירה שנייה למטה → עלייה מהירה · 12 חזרות × 5 סטים<br>
+      מנוחה כמה שצריך כדי לבצע
     </div>
 
-    <div class="section-hdr au">חלק ד׳ — טאבאטה רגליים | 3 סטים</div>
+    <div class="section-hdr au">חלק ד׳ — AMRAP 12 דקות</div>
     <div class="part-block au">
-      <div class="part-title au">טאבאטה — סקאווט ג'אמפ + בורפי <a class="yt-link" href="https://www.youtube.com/watch?v=TU8QYVW0gDU">▶ YouTube</a></div>
-      8 מחזורים: 20 שנ׳ סקאווט ג'אמפ · 10 שנ׳ מנוחה · מנוחה 1:30 ← 3 מחזורים
+      <div class="part-title au">סיבוב כוח + ליבה <a class="yt-link" href="https://www.youtube.com/shorts/EJ-UDPj_IgQ">▶ YouTube</a></div>
+      6 מקבילים · 12 סמוקום · 20 שנ׳ בננה סטטי · 20 שנ׳ מצב 2 סטטי<br>
+      <em>כמה שיותר סיבובים ב-12 דק׳</em>
     </div>
 
-    <div class="section-hdr pu">חלק ה׳ — ליבה | 3 סטים</div>
+    <div class="section-hdr pu">חלק ה׳ — בטן סטטית עם ווסט | 3–4 דק׳ סה"כ</div>
     <div class="part-block pu">
-      <div class="part-title pu">בננה + V-UP + פלאנק בוקיים <a class="yt-link" href="https://www.youtube.com/watch?v=p7j02V1fIzU">▶ YouTube</a></div>
-      20 בננה · <em>מנוחה 10 שנ׳</em> ← 15 V-UP · <em>מנוחה 10 שנ׳</em> ← 40 שנ׳ פלאנק · מנוחה 1:30
-    </div>
-
-    <div class="goal-box">
-      <strong>💪 מטרת האימון:</strong> חיזוק ארבע ראשי, ישבן, שרירי אחורי ירך וליבה — ללא ציוד.<br>
-      <strong>משבוע 3:</strong> הוסף סט לחלקים ב׳ ו-ג׳.
+      <div class="part-title pu">פלאנק עם ווסט <a class="yt-link" href="https://www.youtube.com/shorts/0G_OI6oVzLA">▶ YouTube</a></div>
+      פלאנק עם ווסט — מנוחה כמה שצריך · מינימום זמן לסה"כ 3–4 דקות
     </div>
   </div>
   <div class="foot">עמוד 3 מתוך 6 | XPERT Combat Fitness | פלג ביצ'צ'ו</div>
 </div>
 
-<!-- PAGE 4 — פק"ל כוח -->
+<!-- PAGE 4 — כוח 2 -->
 <div class="page">
   <div class="ph">
     <img class="logo" src="data:image/png;base64,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" alt="XPERT">
-    <div class="ph-mid"><h1>פק"ל כוח — אימון קצר</h1><p>פלג ביצ'צ'ו · רביעי בשבוע</p></div>
-    <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo3Y2RkZTcwYS0wZDM1LTM5NDEtOWVhYi04MjZmMzM1NTcyYWEiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDozM2FjMzEyOC1hNTgwLTdlNDctYjAyMS00MjRmN2I0MTc0MjIiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjMzYWMzMTI4LWE1ODAtN2U0Ny1iMDIxLTQyNGY3YjQxNzQyMiIgc3RFdnQ6d2hlbj0iMjAyMC0wOS0xMFQxNDo0NjoxNyswMzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKFdpbmRvd3MpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgiIHN0RXZ0OndoZW49IjIwMjAtMDktMTBUMTQ6NDc6MjYrMDM6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMS4wIChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7reAeYAAAACXBIWXMAAAsTAAALEwEAmpwYAAACClBMVEVHcEydn6Kdn6Kdn6Kdn6Kdn6Kdn6KmqKudn6Kdn6LNztCdn6LBwsWdn6LP0NKdn6LR0tSeoKOdn6Kdn6Kqq66oqqydn6LR0tTQ0dPHyMrR0tSipKegoqWlp6q7vL/Q0dPQ0dOeoKPo6OnQ0dPDxMaqrK/8/Pydn6LQ0dPR0tTDxMa7vL++v8KqrK6dn6LMzc/R0tS8vcC8vcCytLetr7KeoKPNztCdn6LOz9GeoKPR0tTR0tTR0tT9/f7Q0dO/wcOztbeusLO7vL/Jysy6u762uLqusLO8vcDR0tTP0NK8vcDNzs/R0tS7vL/FxsiipKepq668vcC8vcC8vcC8vcC8vcC8vcCdn6LHyMqztLfOztDGyMrKy827vL+7vL+lp6rIycudn6Kdn6K8vcC8vcC+v8K8vcC8vcC7vL+8vcDR0tS8vcC8vcC7vL/Oz9HBwsW7vL+dn6K8vcCmqKvBwsW8vcC6u76+v8K8vcC8vcC8vcCmqKu9vsG8vcDJysy8vcC7vL+9vsHDxce8vcC8vcCtr7Kxs7W8vcCdn6Kdn6LR0tTLzM7HyMrDxMbAwcO9v8G7vL+5ur2wsrSfoaSlp6qmqKvP0NKipKetr7Koqq3NztDQ0dPOz9HNzc/Ky83JyszExcfFxsjBwsS3uLu0trmytLa4uLyrra+ho6a2t7qztbexs7WqrK+rrbAa85nFAAAAiXRSTlMAZ/irs9juCHrnAkcdG304rDCeIRNdy9ggCRBAcucNyyhPAbXmOQPGRpYYKkXkmdu56SPb5fLDhzLd31OLBfHR7Gjh6tT19k766QIw9nDD9/aCFRMSARCE5qSltKG2VPRwuYopDy8eDiwdAiIDK+IGAZEMBwUWJA0lBgsGpqBBQjv2Pz/zSLh9iNCP4roAAAT1SURBVGje7dv5VxNXFAfwFyLJAAOESIwBEpAsCiEESFCsIjsICIj7rlVbl1Zbl+6t2mqXiYgo4Nq6dXFr/0cRkpTMPN69M3PnJ70/cDieM3x8883MvLnvhbF3rNyOAnX5/f5YLJns7Ozubm4OhUJ7enrODg4Oemso3eIPFVVN352Zvf/83u2///rz1tTNyRtPJh5df3AnlUo1+Sjh8mVYN7WR9EyXu7Hu5g2kcKQR6aY+II2YOd1IlzjiXFjkEkecAwtd4oiZsxHnUkfMnOdwbqopQAsXrsO51BEzthvnUkecGTHkkkechkE3FSSOmNWuQ7mpEmZBxgh3ywZyWMK49BEzVoVxHwZ99PAYwv2dPmJWhXE3rbEARrh/xOGIy6skdRWL4a2we31/O8AG1DMoRbE7xYd0bYXdx0DEyzUzRmVFOXSKPP2w+3RAOFFdrWELyuCMPf2gOxFqEYxWyyo2zIfL0wm6T/cHdIxWaSxEfao9faB7Y1zHaOFw03WoD3QnB9Csowx9HR9qhtxn3S1INs+m4wbS0Ay5kwe1EZflK4bDzcKQe3McxaLDzcAhyL02gGAdpXrv1Q0hwJ3KjZjL6go3CwPurYM+gFUajTydGvYA7j/ji9hpgnDT1RYH3L5MxJXrX0xThJuu4bjYfZlYiLjSf5fn2gxPBIbjYvfVL855dobnumuNz0DavGL39a9zbGyW564oNjP1GfaK3f6fw7H7PNdwuNwRa9zbyeS/XNfGTFZbtdC99x/XNRNuulZW63cNXrlLwkjXbLgaGOnaGE3VVOty3YVEbnbEKNfclauC16JdonDTVR/EujZGWvVNOJcu3HRVBDEuyZWrOdWgSxtu9lSDro1ZURVBwCUPNwPvE7oWhJt5lz8gcAtKmWVVInDzi61jhecZamMY7mOWAJ8ryaLRQtdRXpEFamQjfN/IX07O+uow90nyiNvrcM8F4ogjdcjnIG3E86PFPX8pI/bV6Zjn0EWcYZHzOqqIAy5981iiiCtceuftJBEvYtHvKQQRL2bx72USKctx+/luaxEly3G7uvjvv+YiloNAn2Hv27UBbp/BbmKqJa8F+ioJ+W3D+jC3r1Jl4qUI6CN1XlnolB/mua2VhkcL9M1ejmRa9GO8/pXB6ZY8CvUJ92avUs8Yr09o6CqWR6G+aG/9okWJVl5f1EDELaNQH7jvas5qiIPXB9YdcbQD6ntPjeQeUcSD9UYc7QD7/D+owysqMB1xtBdc1+io1xzFhSVdLLiO8+NlznG8U63jKo72gutWz0a4R/JGjI44moDX6b6PMDRsj6DYcAJel+yQlzq6cr3BiMMJeB2256eljy/Vwg7EszichNedJ46I/gJnRQeOOBxDrLMfED9ZObC9FmIR+wqqZeA/zznVvwlvH2E/Yh9FzyUwrFL7MlXZRbOeVX7M/o0jiA+nU10Bp4jF7FfZZ37hQMU6MPuC4jI5i9mPRL47Z5UDtf8K3o30+fzP099+tWv7tm07jp/Y9cWpr499dOa7uX+8cPKT7VoW47oi+JEMDQ0t/LLzmx0ff/nZ3C8Xz3+6U8siXO9K2pNsy0PtJ9yyxgoWdkssYUHX5bOEhVyvbA0LuMTh/s8CLm24Uh5yv7ernZTF7qsnDbdWwn6PgPa2LGG/N0EbroT+noie2zJUhRL6ezGkt+WjCta1Ykfs+3pfpPUGcH4SJirb4U0AAAAASUVORK5CYII=" alt="">
-  </div>
-  <div class="topbar"></div>
-  <div class="pi">
-    <div class="goal-box">
-      <strong>📌 מבנה האימון:</strong> 20 דקות ריצה בקצב נוח (5:00–5:30/ק"מ) → מיד לאחר מכן סיבובי פק"ל כוח.<br>
-      <strong>עיקרון:</strong> אימון קצר שתמיד אפשר לעשות — 40–50 דקות סה"כ. אין צורך בציוד מלבד הגוף.
-    </div>
-
-    <div class="section-hdr dark">שלב א׳ — ריצה 20 דקות</div>
-    <div class="part-block dark">
-      <div class="part-title dark">ריצה 20 דקות רצוף <a class="yt-link" href="https://www.youtube.com/watch?v=kVnyY17VS9Y">▶ YouTube</a></div>
-      קצב 5:00–5:30/ק"מ · נשימה דרך האף · לא לעצור
-    </div>
-
-    <div class="section-hdr">שלב ב׳ — פק"ל כוח | 4 סיבובים</div>
-    <div class="part-block">
-      <div class="part-title">פק"ל כוח — ללא הפסקה בתוך הסיבוב <a class="yt-link" href="https://www.youtube.com/watch?v=Eh00_rniF8E">▶ YouTube</a></div>
-      <strong>20 שכ"ש</strong> (אם אפשר עם מחיאת כף)<br>
-      ← <strong>20 סקאווט</strong><br>
-      ← <strong>10 בורפי</strong><br>
-      ← <strong>20 בננה</strong><br>
-      ← <strong>20 שרפנל</strong><br>
-      מנוחה 1:30–2:00 בין סיבובים · משבוע 3: 5 סיבובים
-    </div>
-
-    <div class="section-hdr g">שלב ג׳ — ליבה סיום | 2 סטים</div>
-    <div class="part-block g">
-      <div class="part-title g">סיום חזק <a class="yt-link" href="https://www.youtube.com/watch?v=p7j02V1fIzU">▶ YouTube</a></div>
-      30 שניות פלאנק · <em>מנוחה 15 שנ׳</em> ← 20 V-SIT (V-UP) · מנוחה 60 שנ׳ בין סטים
-    </div>
-
-    <div class="goal-box">
-      <strong>⏱ זמן כולל:</strong> ~45–55 דקות.<br>
-      <strong>הוראות:</strong> אין לדלג על הריצה לפני הפק"ל — זה חלק מהאימון. הגוף ילמד לעבוד תחת עייפות.
-    </div>
-  </div>
-  <div class="foot">עמוד 4 מתוך 6 | XPERT Combat Fitness | פלג ביצ'צ'ו</div>
-</div>
-
-<!-- PAGE 5 — אינטרוואלים 400מ' -->
-<div class="page">
-  <div class="ph">
-    <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAABmCAMAAADVlnw3AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJcEhZcwAACxMAAAsTAQCanBgAAAMAUExURUxpcZ2fory9wJ2fory9wLS2uLy9wJGhPZGhPZGhPby9wJ2for6/wZGhPby9wJ2fory9wJ2foqisnZ2fopudoLy9wLy9wL6+wby9wJ2fop2fory9wL6/ws7P0by9wLq8vp+hpJqgh7u8v7y9wLy9wLy9wLy9wJ2foqGjptDR09DR076/wry9wLy9wJ2fopGhPZGhPc/Q0tHS1NHS1J2fop2for6/wrq7vr7Awry9wJ2fopGhPZ2fotHS1J2fotHS1NHS1J2fop2fop2fory9wM3O0J2fotHS1NHS1NHS1LGzta6ws52forCytZOkPsXGyLi5vLy9wLu8v7y9wMbHyZ2fopGhPZGhPdHS1KWnqqmrrsbHydHS1NHS1MzNz7u9wK6ws8LDxby9wLy9wLi5vLCytaaoq9HS1JGhPZGhPZ6go6SmqZ2for/Aw7a4uqutsKWnqrq7vre5u5GhPdHS1JGhPaKkp56go5GhPaKkp6aoq6iqrcvLzbCxtMzMzrCytaSmqamrrsXFyKWnqry9wJGhPdHS1JGhPc7O0J2fosvMzqmqrZmggoycO6SmqZGhPZ2fotHS1AAAALy9wMnKzMfIysLDxpCgPbm7vbe4u7S2uJ2vQp+hpKKkp6CyQ87P0aiqrby9wNDR0szNz87O0MzMzsTFxhAOB52uQsTGyHuINAsFBb7AwomWOsHBxJqsQQUAA76/wZSkPrGztq+xtJKiPZanP6yusaCipZ+xQ6qsr7W3unJ9MKOlqAEAAaWnqqeprAMAAZmqQLCytY6dPKK1RJutQZyuQamrrqyusK6wsxYVCp6wQpWlPnqGNIKPNoqZOp2wQiEgDg8KB4+fPAcBBBwcDBsZDJCePA0MBpamPyMjD3F8L0tQH4iWOQoIBGx1LaGzQ4yaO4WTOB8eDXR+MGNtKltjJoeUOX6LNVBVIWZwK3iDMiYmEDEzFUZLHiwtExMRCHaBMm95L2dwLCgpEYCNNVRcIzk9GTY5F6q+R67CSV9oKKe7RWRuKkJHHLVwnxUAAACPdFJOUwAcRew5BDc6/JKhogjBsvcihAFscO6AGo+74hJsXr4MJhNUxD78LegXpZ7UqTB4CDIq6JFKPpddKeog05cwsPrzQ8vDzGzcS9J9zn5V9ZT1a1CI8p8wY6A2N81Z93D29mytMzFKn6FAefCRqfL19vZseJ8l11KJ1Yrc7ufQIuq5ka629uHq2rXf+XJXR/19xGoPiwAACvBJREFUeNrtnHl8E8cVx9cGO8QYx7iA8YFtfBubw1zmCkcgJOGGJE04Ag1HSwgQoEnI2RwkbfPX2iPIkmyj9tOmtWtKpIquGrWuUm1lqa3kyDGW8YVt2RyGmsM2hwOk6UjWane12lnJKbW06e8PyX779vhq5s28nd0ZDPv2atHI7/C1b9++70GtWbMmGepBp54aJ0v06cXF9/F06NCh555buXLv3i1b9qxevXrz5s2bSqYWypJ9RTFPP/vos7/+6Y9/OPHhB0cVv3v/N0cO/+rnJSUlD6fKs9zfk0YvyZNnuM/YLY1eIs9wxxbtlkbfdL/s2cXQSx6Olmmdz5FEL5kg0+59/W5JdLmGO/Z4oiS6XMMde3yIFLpsw91d7ih02YZ7PzsSXbbhjqUlSqEvLJQr+5yDEujyDXdY7hLoJdNke/sedlAC/ZeyDXcs7WUJ9M2F8i33DWj0j1+TCPewOWEcpaWFEHvuBjT6rx9D7j4pZwhX943CQoodjX5kI2LnkfxBn+IHQmt8J2kDEv3w6ll+kyfmhlq8L0OiH8mP8JO8eFHItXWpbyDRfzvTT/KRIdjOpy5Dor+/0S/yhJDs41JTkOh7YoW77PImz8nFQpQdhf5JhiDc53mTF08P1dwmNQWF/vuxkuQjsZBVxNModEW6BHkCFsKKfhuFPjsWSZ4TFtL5fMTTCPSjGXEex+HF8gl0hv1tBPoH6xivZz+VU6AzVHkI9D+7w/3Zjz6VVaAzykOgr3zdVeZ/EaDnzJHFDfwEcfQTyyKwiLc+E6JPxzD5sfPQP/zb8tS3fiFEf1E2Azd54ugrl/1diJ4QJ59Bqwmi6P/8hxB9SBgmI00LBH0Fs9f4e4JTUyYPiF0a3dOjTx6BDwtG4cPm7hwIuyT6Yk+gr8KDVz+ZHDi7FDob6N91nYOgrVYtQVAmsswjktQScIuGFNooM8cGrSoNwbtkvoPnQFaVcxtuspJOf0LrOmcVaTXhBLyAMu89oF4KvNyl0D2B/sNnXKegqjs6jBSFH+887lFLi8pE4FRtS4vARrRw/I4f7zTqGmu56BTBPxBthjsZWzqqXVurOzprKejU3tHRTlHGzo5qioL/cA7Y0kmTLtdnpgTC/ogf6Gygz3WdoZHua229aTW3n2ko5ejqBXO9uYdnarhuI2tVNgvfaDnd2Mgtdy+Hhkufk/Xk2dLWS5SGUBmbWhsqdDhedrq19aJOea2htcZIk32tvCM29fSzP4EFyo5GX+zxvbf/UrWqqwCcVn5R3Qo40oM6qpFsBnxbDV5luqEHXrrooDjoZr6DHljatTp4oFOaKsJk7Aag14Hj1q8BuOKoPAdAt5FWXvU6TWmnMzrwEVig7Ej0IZ7U/QWcQb8Mr15X1m4xHPPIYFeDZqX5rN3O2tR2tf5sGW0r5fhB6zHQRNMcdJOtVM1utsMDXdORFWpQA9FVxlNA36zEcfKK8+d2/Av+wkba+iXgHtBuB3ccRODokB2JPt0r0Bl0pYa48Hk5o447x/SgzaFpZ03ltraTensFSdWXd3GsnV/DukBx0TW15ex2W7NFD87pvkChaylbD+c0Fd16cF45EHTsERT6LsYrbgTOR8cps5VkVKmqAfo2h7OFZ1RWSdYA+1nSWHX79m2dmTHf7gWgSUPzW3j2QA7HdaCXQq+ldex5lF/B6j9AdOxBcfTFnkHal3AvdG644o14kxOd12dp8TNO9KrqmxdvtngaNuU1b3SeqjSXpNF5naPG/A3QsXE/EkFfOoffo4ujEzUi6GbVDQPQl5vuHrrpm6DHi6GzAzNPcNGvw8tw+I1uOwlOXlAFJ3rhT0UrvKdPHz+XvTrt+b6+NpUc0O+fimjmPA38lGEeJsLkcNC1BE6rPNLRMNYrbtEUIY5ONJpNJtWtXn/Rm0iSrtTWAX3XLRV96zSvmYNHcktFfnV5oOiFU1EtfE6Yj2iH9M7PemM9I019DTC0ldWjSp0ydrS0VGsuAq/OzSd6swF0l2sJuv0UMPSS9RR+mYOOt8MjMSJslgF2boVT0f26z3B35Z/t10/VsTppt1vqmmxmcXTH+dJui8ViPwZqaOlSB2p76Zm6M3Uwx7HAbwvMW0473CkN2ddg8egUPDM4P4CU5smpUomsdwrPiOQnsga1Gn7e0HHRYYlVkAw6VXmx3xGAm/w2ko/eBMA5ZRVVA9Qud5gS9n/Dim9W/hsAiyCRVYNWmypgdCe51O3LImG4u1Lv9m5gZ6VWq+3wEqwcdMICABf9JjBAR0PrFbqKEEevgeiOWtIGGw8DlF7v+oL1/46VcKPrLgMDK5j0t/X/4oGg/2ChH3duvsMd1+AwQeWrq7xew7kZxXvamqs1TvRSZ4XXtPS4nGxWrSg5TlFdbb2dVThh0nb1VrBqrjhupQhNdVfPBUJTVd7G3XTW6P7BdwZY5tL3677DnaCsSh1fSh13FILArZXKKqOJSWlqtQ6Xk1VDoAZbyEqHttZZaZQOJUcOM+w9ahuVDtLZxVTyNqlw1xHnTg6wzP0YoBILd79Ed/Zd/rJDe/cHqN6dEjC5H8OSbLgP4JIomqapu08+wn/yhxb6PyLLhvsLq+4NWKtWDWCnALXzHv/j/KGAHkHI4imroMz9Qi+eJB/yBeLP3N7Y/qqPx42L5EK+SfxJ68rXsfWvCNETx8uCfBzi1YITRdBh/avC5+uyCPeNqBdKdrhc1r8ifKFEBuE+DvUa0TL3YFzay8LXiGaEfJmjXh7bm824peUI0BNzQ5s8GfXK4NEi1jFtqYB9fmiTI18UPcB1TUssllO4JyNfD17Cn/jko9xDN9yTkS+F78n2cg87KJtwX4OcCvBJkWCHOUtlEu770RNAfE1+yX1AFuG+HD3tJ9/n7LWwpTII9+XoyV5iE90E5Z4Tcsn8cvQUvyOis5kF7KEW7svREzsPIya1CthDK9xflJjO+xpqmmrqYi/2FSFE/qbEJG6JCey5oyaN4mjkitB5V/hNian7Hwe6bEHIoO+SWrBBtmvTzJNapkO2S5TMk1qcRbAOVXb4UEaZkUkuUzxrGjo0PBZaoiMzWa9trgGOiK2ZHC/GOngaLrUkj3A5onwFR/muKVDruCZFFLTM4lmWTISmpEd5NsU7SYNNLoEuXGIyg7n2LOfH7CQ3elYWY3dm+7Me5XnFONFHBxF63HDJ5beeF15fNlNvI4fuz1JkOW9lxygUKZGRvit8ZGYUrBywckdvL0pPT1+7BP4Qa+EfReERg1zmaPQF6AXnomcrtrjRo8S9MmGNZzELFIoxg93ARc+XXGqv5Cnsv44eo1CMHWTyiATpBRZ9riUbuT3crcwxbIXPHws1cx0TH6nhHq/wgv4KHzToTJmj0J/3mbpn8BorVzM3xvMvc28by2/OY7DgQY9OkF5MVSTQeej5a7F+9NkpUBkx8T7QR2elxAYPesR86SV0xQIdoq+LnejStuz+egHRC+KwuDi2WsfCniw9dlY2BJ29Nomb1A8y+vjFfiycLLZoNET3HqEUNnNOdFcnB0mXxGNBg86/wxZB/3GqOHqyED0mnlFskht9qyt3gKjvbAsWdK9xFd/oC57EAkLPGs0oK8od61v7WxVnnZ8YHOjeT4x8o4v36DCH3+9lGstrzlPcOXyku11JgX+v9fim9Ge6g6IZCcP5+j7Ujh07DhyIiop6DGrChLy8aeJDUmMKCsK9TOkxUawKnHUifmZBFNOsb40qyFjj8U2OKSjC/q//sf4DioqpHko6/WYAAAAASUVORK5CYII=" alt="XPERT">
-    <div class="ph-mid"><h1>אינטרוואלים 400מ׳</h1><p>פלג ביצ'צ'ו · חמישי בשבוע</p></div>
+    <div class="ph-mid"><h1>כוח 2 — שק חול / תיק 20 ק"ג</h1><p>פלג ביצ'צ'ו · רביעי בשבוע</p></div>
     <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="">
   </div>
   <div class="topbar"></div>
   <div class="pi">
     <div class="warmup">
-      <strong>חימום (8 דק׳):</strong>
-      <ul>
-        <li>800מ׳ ריצה קלה</li>
-        <li>10 שכ"ש · 10 סקאווט · 2×50מ׳ בוקסינג + סקיפינג</li>
-      </ul>
+      <strong>חימום 10 דק׳ — 3 סיבובים:</strong>
+      20 הליכת לאנץ׳ · 20 צעדי הליכת ברווז · 250מ׳ ריצה
     </div>
 
-    <span class="tag r">🔴 לוח אינטרוואלים — מנוחה 2 דקות בין כל 400מ׳</span>
-    <table class="week-table">
-      <tr><th>שבוע</th><th>תאריך</th><th>חזרות</th><th>מטרת קצב</th><th>זמן כולל (משוער)</th></tr>
-      <tr><td>1–2</td><td>11.9–18.9</td><td>6 × 400מ׳</td><td>1:50–2:00 ל-400מ׳</td><td>~24 דק׳</td></tr>
-      <tr><td>3–4</td><td>25.9–2.10</td><td>8 × 400מ׳</td><td>1:50–2:00 ל-400מ׳</td><td>~30 דק׳</td></tr>
-      <tr><td>5–7</td><td>9.10–23.10</td><td>10 × 400מ׳</td><td>1:45–1:55 ל-400מ׳</td><td>~37 דק׳</td></tr>
-      <tr><td>8</td><td>30.10</td><td>6 × 400מ׳</td><td>שבוע הורדה</td><td>~22 דק׳</td></tr>
-    </table>
-
-    <div class="section-hdr">הנחיות ביצוע</div>
+    <div class="section-hdr">חלק א׳ — 6 סטים | סקאווט סטטי עם שק</div>
     <div class="part-block">
-      <div class="part-title">כיצד לרוץ 400מ׳ <a class="yt-link" href="https://www.youtube.com/watch?v=dE5BaalL2yM">▶ YouTube</a></div>
-      כל 400מ׳ — מאמץ גבוה (85–95% מהמקסימום). לא לצאת מהר מדי בהתחלה.<br>
-      מנוחה: 2 דקות הליכה בין כל חזרה.<br>
-      <strong>לא</strong> לרוץ 2 ימים רצופים של ריצה (נפח + אינטרוואלים).
+      <div class="part-title">סקאווט סטטי + שק חול/תיק 20 ק"ג <a class="yt-link" href="https://www.youtube.com/watch?v=ultWZbUMPL8">▶ YouTube</a></div>
+      דקה וחצי סקאווט סטטי עם שק · מנוחה דקה · כפול 6 סטים
     </div>
 
-    <div class="section-hdr g">סיום האימון — ליבה 3 סטים</div>
+    <div class="section-hdr g">חלק ב׳ — 3 סטים | סקאווט עם שק</div>
     <div class="part-block g">
-      <div class="part-title g">פלאנק + V-UP לאחר האינטרוואלים</div>
-      45 שנ׳ פלאנק · <em>מנוחה 15 שנ׳</em> ← 15 V-UP · מנוחה 60 שנ׳
+      <div class="part-title g">40 סקאווט עם שק חול/תיק <a class="yt-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">▶ YouTube</a></div>
+      40 סקאווט · מנוחה 45 שניות · כפול 3 סטים
+    </div>
+
+    <div class="section-hdr au">חלק ג׳ — AMRAP עם שק | שבועות 1–3: 8 דק׳</div>
+    <div class="part-block au">
+      <div class="part-title au">לאנץ׳ + סטפ אפ עם שק חול <a class="yt-link" href="https://www.youtube.com/watch?v=dFzF80RQLMU">▶ YouTube</a></div>
+      24 לאנץ׳ (12 בכל רגל) · 24 סטפ אפ על ספסל · כמה שיותר סיבובים<br>
+      <strong>שבועות 4–5: 12 דק׳ · שבועות 6–7: 16 דק׳</strong>
+    </div>
+
+    <div class="section-hdr pu">חלק ד׳ — 4–5 סטים | בטן סטטית עם שק</div>
+    <div class="part-block pu">
+      <div class="part-title pu">דקה ורבע בטן סטטית עם שק על הגב <a class="yt-link" href="https://www.youtube.com/shorts/0G_OI6oVzLA">▶ YouTube</a></div>
+      75 שניות פלאנק עם שק · מנוחה 45 שניות · כפול 4–5 סטים
     </div>
 
     <div class="goal-box">
-      <strong>🎯 מטרה:</strong> פיתוח מהירות וכושר אנאירובי. האינטרוואלים ישפרו את קצב הריצה הכללי ואת הסיבולת.<br>
-      <strong>שבוע 8:</strong> הורדת עומס — 6 חזרות בלבד.
+      <strong>💪 מטרת האימון:</strong> כוח תחתוני ואנאירובי עם עומס חיצוני — בניית חוזק שרירי הרגליים והליבה תחת עייפות.<br>
+      <strong>חלק ג׳ מתארך עם השבועות</strong> — 8→12→16 דק׳.
+    </div>
+  </div>
+  <div class="foot">עמוד 4 מתוך 6 | XPERT Combat Fitness | פלג ביצ'צ'ו</div>
+</div>
+
+<!-- PAGE 5 — זריזות (אופציונלי) -->
+<div class="page">
+  <div class="ph">
+    <img class="logo" src="data:image/png;base64,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" alt="XPERT">
+    <div class="ph-mid"><h1>אימון זריזות — אופציונלי</h1><p>פלג ביצ'צ'ו · חמישי בשבוע (אם הגוף מרגיש טוב)</p></div>
+    <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="">
+  </div>
+  <div class="topbar"></div>
+  <div class="pi">
+    <div class="goal-box r">
+      <strong>🎯 מטרת האימון:</strong> עבודה על <strong>כוח מתפרץ וזריזות</strong> — מתאים ל"סדרי הגעה" ואימוני שדה.<br>
+      <strong>חימום 10 דק׳ חובה לפני.</strong> לבצע רק אם הגוף מרגיש מסוגל — לא לכפות לאחר יום קשה.
+    </div>
+
+    <div class="warmup">
+      <strong>חימום (10 דק׳):</strong>
+      <ul>
+        <li>500מ׳ ריצה קלה</li>
+        <li>10 בורפי · 15 סקאווט · 2×30מ׳ ספרינט בינוני</li>
+        <li>מתיחות דינמיות — פתיחות ירך, בטיסות ידיים</li>
+      </ul>
+    </div>
+
+    <div class="section-hdr">האימון — שעון רץ 20 דקות | מציאת עלייה ~20מ׳</div>
+    <div class="part-block">
+      <div class="part-title">סמוקום + ספרינט הלוך-חזור <a class="yt-link" href="https://www.youtube.com/watch?v=TU8QYVW0gDU">▶ YouTube</a></div>
+      בכל סט: <strong>3 סמוקום</strong> → <strong>ספרינט 20מ׳ הלוך + 20מ׳ חזור</strong><br>
+      מנוחה 10 שניות בין סט לסט<br>
+      <strong>המטרה: כמה שיותר סטים ב-20 דקות</strong><br><br>
+      <em>משבוע 3: אפשר להאריך ל-25–30 דקות בהתאם לרמת העייפות</em>
+    </div>
+
+    <div class="section-hdr g">סיום — ליבה 3 סטים</div>
+    <div class="part-block g">
+      <div class="part-title g">פלאנק + V-UP לאחר האימון</div>
+      45 שנ׳ פלאנק · <em>מנוחה 15 שנ׳</em> ← 15 V-UP · מנוחה 60 שנ׳ בין סטים
+    </div>
+
+    <div class="goal-box">
+      <strong>⏱ זמן כולל:</strong> ~35–40 דקות.<br>
+      <strong>ניטור:</strong> לרשום כמה סטים בוצעו — המטרה לשפר כל שבוע.
+    </div>
+
+    <div class="section-hdr dark" style="margin-top:4px">🏖 אימון דיונה — שבת</div>
+    <div class="part-block dark" style="font-size:9.5px">
+      <div class="part-title dark">מבנה האימון (60–75 דק׳)</div>
+      <strong>חימום 10 דק׳</strong> — ריצה קלה על החול + 10 שכ"ש + 10 סקאווט<br>
+      <strong>חלק א׳:</strong> 6 ספרינטים עלייה בדיונה (מנוחה 1:30) · <em>משבוע 3: 8 · משבוע 5: 10</em><br>
+      <strong>חלק ב׳ — 3 סיבובים:</strong> 30מ׳ Bear Crawl · 15 סקאווט ג'אמפ · 8 בורפי · מנוחה 2:00<br>
+      <strong>חלק ג׳:</strong> ריצת חוף 15–20 דק׳ קצב 5:00–5:30/ק"מ · <em>משבוע 4: 25–30 דק׳</em><br>
+      <strong>חלק ד׳ — 3 סטים:</strong> 45 שנ׳ פלאנק · 20 בננה · 15 V-UP · מנוחה 60 שנ׳
     </div>
   </div>
   <div class="foot">עמוד 5 מתוך 6 | XPERT Combat Fitness | פלג ביצ'צ'ו</div>
 </div>
 
-<!-- PAGE 6 — דיונה -->
+<!-- PAGE 6 — סיכום + מטרות -->
 <div class="page">
   <div class="ph">
     <img class="logo" src="data:image/png;base64,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" alt="XPERT">
-    <div class="ph-mid"><h1>אימון דיונה — סוף שבוע</h1><p>פלג ביצ'צ'ו · שבת</p></div>
+    <div class="ph-mid"><h1>סיכום תוכנית + מדדי מטרה</h1><p>פלג ביצ'צ'ו · שנת שירות 2026–2027</p></div>
     <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="">
   </div>
   <div class="topbar"></div>
   <div class="pi">
+    <span class="tag r">🏆 מדדי מטרה לסוף התוכנית</span>
+    <table class="run-table">
+      <tr><th>מדד</th><th>מצב עכשיו</th><th>מטרה (שבוע 7–8)</th></tr>
+      <tr><td>ריצת 3,000מ׳</td><td>—</td><td>מתחת ל-12:00</td></tr>
+      <tr><td>ריצת נפח</td><td>—</td><td>10 ק"מ בקצב 4:45/ק"מ</td></tr>
+      <tr><td>מתח רצוף (EMOM)</td><td>—</td><td>8 × 12 בדקות עם ווסט</td></tr>
+      <tr><td>סקאווט סטטי עם שק</td><td>—</td><td>6 × 1.5 דק׳ ← 20 ק"ג</td></tr>
+      <tr><td>סט השלמה</td><td>—</td><td>100+200+300 בזמן קצוב</td></tr>
+    </table>
+
+    <span class="tag g">📌 עקרונות מנחים</span>
     <div class="goal-box">
-      <strong>🏖 אימון דיונה:</strong> אימון עצימות גבוהה על חול — מחזק את שרירי הרגליים, הליבה והסיבולת הלבבית. החול מגדיל את ההתנגדות ומשפר כושר שדה.<br>
-      <strong>מיקום מומלץ:</strong> חוף הים / דיונות חול טבעיות.
+      <strong>🔥 עומס מתקדם:</strong> כל שבוע מעט יותר — אל תקפא על עצמך.<br>
+      <strong>🛌 שינה ותזונה:</strong> לפחות 7–8 שעות שינה. חלבון לאחר כל אימון.<br>
+      <strong>⚡ בוחנים:</strong> שבועות 4 ו-6 — ריצת 3,000מ׳ מלאה. לא להתחמם לפני ← תנוח היטב יום לפני.<br>
+      <strong>🎒 ציוד:</strong> ווסט לכוח 1 (EMOM + בטן), שק חול/תיק 20 ק"ג לכוח 2.<br>
+      <strong>🔄 שבוע 8:</strong> הורדת עומס מלאה — הגוף מטמיע ומגיע ל-peak.
     </div>
 
-    <div class="section-hdr dark">חימום (10 דק׳)</div>
-    <div class="part-block dark">
-      <div class="part-title dark">ריצה קלה על החול + תרגילי שחרור</div>
-      5 דק׳ ריצה קלה על החול הרטוב · 10 סקאווט · 10 שכ"ש · 10 שרפנל
+    <span class="tag dark">🗓 לוח בדיקות ביניים</span>
+    <table class="week-table">
+      <tr><th>שבוע</th><th>בדיקה</th><th>מטרה</th></tr>
+      <tr class="exam"><td>4 (28.9)</td><td>בוחן 3,000מ׳ ראשון</td><td>לדעת איפה אנחנו עומדים</td></tr>
+      <tr class="exam"><td>6 (12.10)</td><td>בוחן 3,000מ׳ שני</td><td>מתחת ל-12:00</td></tr>
+      <tr><td>5 (6.10)</td><td>ריצת נפח 10 ק"מ ראשונה</td><td>לסיים בקצב 4:45</td></tr>
+    </table>
+
+    <div class="bonus-box">
+      <strong>🔥 סט השלמה — תזכורת יומית (אחרי כל אימון אינטרוואלים / ריצה)</strong><br>
+      <strong>100 מתח + 200 שכבס + 300 שכיבות שמיכה</strong> — בזמן הקצר ביותר · אפשר לחלק · אפשר עם ווסט
     </div>
 
-    <div class="section-hdr">חלק א׳ — ריצות דיונה | 6 × עלייה</div>
-    <div class="part-block">
-      <div class="part-title">ספרינט עלייה בדיונה <a class="yt-link" href="https://www.youtube.com/watch?v=OyBG_2c_T2c">▶ YouTube</a></div>
-      6 ספרינטים עלייה בדיונה במאמץ מקסימום · ירידה הליכה · מנוחה 1:30 בין ספרינטים<br>
-      <em>משבוע 3: 8 ספרינטים · משבוע 5: 10 ספרינטים</em>
-    </div>
-
-    <div class="section-hdr g">חלק ב׳ — סיבוב דיונה | 3 סיבובים</div>
-    <div class="part-block g">
-      <div class="part-title g">Bear Crawl + סקאווט ג'אמפ + בורפי <a class="yt-link" href="https://www.youtube.com/watch?v=TU8QYVW0gDU">▶ YouTube</a></div>
-      30מ׳ Bear Crawl על החול (על ידיים ורגליים) ·<em>מנוחה 15 שנ׳</em><br>
-      ← 15 סקאווט ג'אמפ · <em>מנוחה 15 שנ׳</em><br>
-      ← 8 בורפי · מנוחה 2:00 בין סיבובים
-    </div>
-
-    <div class="section-hdr au">חלק ג׳ — ריצת חוף | 1 פעם</div>
-    <div class="part-block au">
-      <div class="part-title au">ריצת חוף 15–20 דקות <a class="yt-link" href="https://www.youtube.com/watch?v=kVnyY17VS9Y">▶ YouTube</a></div>
-      ריצה רציפה על קו המים (חול קשה) · קצב נוח 5:00–5:30/ק"מ<br>
-      <em>משבוע 4: 25–30 דקות</em>
-    </div>
-
-    <div class="section-hdr pu">חלק ד׳ — ליבה דיונה | 3 סטים</div>
-    <div class="part-block pu">
-      <div class="part-title pu">פלאנק על החול + V-UP + בננה</div>
-      45 שנ׳ פלאנק · <em>מנוחה 15 שנ׳</em> ← 20 בננה · <em>מנוחה 15 שנ׳</em> ← 15 V-UP · מנוחה 60 שנ׳
-    </div>
-
-    <div class="goal-box">
-      <strong>⏱ זמן כולל:</strong> 60–75 דקות.<br>
-      <strong>חשוב:</strong> להביא מים מרובים. לשתות בין כל סיבוב. לא לתכנן אימון אחר באותו יום.
+    <div class="goal-box" style="margin-top:2px">
+      <strong>💬 מסר:</strong> שנת שירות היא הזדמנות לצאת ממנה טוב יותר מכשנכנסת.<br>
+      5 אימונים בשבוע, עקביות, ועוד 8 שבועות — <strong>תגיע למטרה.</strong>
     </div>
   </div>
   <div class="foot">עמוד 6 מתוך 6 | XPERT Combat Fitness | פלג ביצ'צ'ו</div>
