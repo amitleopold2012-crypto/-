@@ -12,7 +12,7 @@
   --white:#fff; --gray:#f5f5f3; --mid:#e0e0d8; --text:#222;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--text); direction:rtl; font-size:8.5px; }
+body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--text); direction:rtl; font-size:10px; }
 .page { width:210mm; height:297mm; margin:0 auto; background:var(--white);
   page-break-after:always; overflow:hidden; display:flex; flex-direction:column; }
 .page:last-child { page-break-after:avoid; }
@@ -26,7 +26,7 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
 .ph .htitle span { color:var(--go); }
 .ph .hicon { width:30px; height:30px; border-radius:5px; overflow:hidden; }
 .ph .hicon img { width:100%; height:100%; object-fit:cover; }
-.hero-p1 { flex-shrink:0; position:relative; height:170px; overflow:hidden; }
+.hero-p1 { flex-shrink:0; position:relative; height:145px; overflow:hidden; }
 .hero-bg { position:absolute; inset:0; background-size:cover; background-position:center 25%;
   opacity:.5; filter:saturate(.7) brightness(.85); }
 .hero-ov { position:absolute; inset:0;
@@ -46,23 +46,23 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
 .hstat .l { font-size:6.5px; color:rgba(255,255,255,.5); font-weight:500; margin-top:1px; }
 .hstat.g .v { color:var(--gl); }
 .hstat.r .v { color:#e05a4a; }
-.pi { flex:1; padding:9px 17px 7px; display:flex; flex-direction:column; overflow:hidden; justify-content: space-between; }
+.pi { flex:1; padding:14px 17px 10px; display:flex; flex-direction:column; overflow:hidden; gap: 6px; }
 .tag { display:inline-flex; align-items:center; gap:4px;
-  color:#fff; font-size:8.5px; font-weight:800; letter-spacing:1px;
-  padding:2px 12px 2px 8px; border-radius:0 15px 15px 0;
-  margin-right:-17px; margin-bottom:6px; }
+  color:#fff; font-size:10px; font-weight:800; letter-spacing:1px;
+  padding:4px 14px 4px 10px; border-radius:0 15px 15px 0;
+  margin-right:-17px; margin-bottom:0; }
 .tag.g  { background:linear-gradient(90deg,var(--gd),var(--green)); }
 .tag.r  { background:linear-gradient(90deg,var(--rd),var(--red)); }
 .tag.au { background:linear-gradient(90deg,#7a4a08,var(--gold)); }
 .tag.dk { background:linear-gradient(90deg,#080f02,#172208); border-left:3px solid var(--green); }
-.goal-box { background:#080f02; border-right:4px solid var(--green); padding:7px 12px; margin-bottom:8px; border-radius:0 5px 5px 0; }
-.goal-box p { font-size:9px; color:rgba(255,255,255,.88); line-height:1.6; }
+.goal-box { background:#080f02; border-right:4px solid var(--green); padding:12px 14px; margin-bottom:0; border-radius:0 5px 5px 0; }
+.goal-box p { font-size:11px; color:rgba(255,255,255,.88); line-height:1.8; }
 .goal-box strong { color:var(--go); }
 .sched-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:8px; }
-.scard { background:var(--gray); border:1px solid var(--mid); border-radius:6px; padding:6px 9px; }
-.scard-icon { font-size:16px; margin-bottom:2px; }
-.scard-title { font-size:8.5px; font-weight:800; color:var(--rd); margin-bottom:2px; }
-.scard-body { font-size:7.5px; color:#444; line-height:1.5; }
+.scard { background:var(--gray); border:1px solid var(--mid); border-radius:6px; padding:13px 14px; min-height:80px; }
+.scard-icon { font-size:20px; margin-bottom:4px; }
+.scard-title { font-size:10px; font-weight:800; color:var(--rd); margin-bottom:4px; }
+.scard-body { font-size:9px; color:#444; line-height:1.6; }
 .scard.dark { background:#0d1a05; border-color:#2a3a0a; }
 .scard.dark .scard-title { color:var(--gl); }
 .scard.dark .scard-body { color:rgba(255,255,255,.75); }
@@ -71,28 +71,28 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
 .scard.pu .scard-body { color:rgba(255,255,255,.7); }
 .train-table { width:100%; border-collapse:collapse; font-size:8.5px; margin-bottom:8px; }
 .train-table thead tr { background:linear-gradient(90deg,#080f02,#172208); }
-.train-table thead th { color:#fff; padding:4px 8px; font-size:8px; font-weight:700; text-align:right; }
+.train-table thead th { color:#fff; padding:6px 8px; font-size:9px; font-weight:700; text-align:right; }
 .train-table thead th.gold { color:var(--go); }
 .train-table tbody tr { border-bottom:1px solid var(--mid); }
 .train-table tbody tr:nth-child(even) { background:var(--gray); }
-.train-table td { padding:4px 8px; vertical-align:top; }
+.train-table td { padding:7px 8px; vertical-align:top; }
 .train-table td strong { color:var(--rd); }
 .train-table td a { color:var(--green); font-size:7.5px; text-decoration:none; }
-.part-hdr { background:linear-gradient(90deg,#0d1a05,#1c2e08); color:#fff; padding:4px 10px;
-  font-size:9px; font-weight:800; display:flex; align-items:center; gap:5px;
+.part-hdr { background:linear-gradient(90deg,#0d1a05,#1c2e08); color:#fff; padding:7px 12px;
+  font-size:10px; font-weight:800; display:flex; align-items:center; gap:5px;
   border-right:4px solid var(--green); margin-bottom:0; }
 .part-body { background:var(--gray); border:1px solid var(--mid); border-top:none;
-  padding:6px 11px; margin-bottom:6px; font-size:8.5px; line-height:1.6; }
+  padding:10px 13px; margin-bottom:6px; font-size:10px; line-height:1.7; }
 .part-body strong { color:var(--rd); }
 .part-body em { color:var(--gd); font-style:normal; font-weight:700; }
 .part-body a { color:var(--green); font-size:8px; }
-.warmup { background:#080f02; border-right:4px solid var(--go); padding:7px 11px; margin-bottom:7px; border-radius:0 4px 4px 0; }
+.warmup { background:#080f02; border-right:4px solid var(--go); padding:12px 14px; margin-bottom:0; border-radius:0 4px 4px 0; }
 .warmup-title { font-size:8.5px; font-weight:800; color:var(--go); margin-bottom:3px; }
 .warmup ul { list-style:none; }
 .warmup ul li { font-size:8.5px; color:rgba(255,255,255,.85); padding:1.5px 0;
   border-bottom:1px solid rgba(255,255,255,.06); display:flex; gap:5px; }
 .warmup ul li:last-child { border-bottom:none; }
-.note { border-radius:0 5px 5px 0; padding:6px 10px; margin-bottom:7px;
+.note { border-radius:0 5px 5px 0; padding:10px 12px; margin-bottom:0;
   font-size:8.5px; line-height:1.5; }
 .note.g { background:#eaf4cc; border-right:3px solid var(--gd); color:#2a3a0a; }
 .note.g strong { color:var(--gd); }
@@ -102,7 +102,7 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
 .note.au strong { color:#7a4a08; }
 .rt { width:100%; border-collapse:collapse; font-size:8.5px; margin-bottom:8px; }
 .rt thead tr { background:linear-gradient(90deg,#080f02,#172208); }
-.rt thead th { color:#fff; padding:4px 8px; font-size:8px; font-weight:700; text-align:right; }
+.rt thead th { color:#fff; padding:6px 8px; font-size:9px; font-weight:700; text-align:right; }
 .rt thead th.gold { color:var(--go); }
 .rt tbody tr { border-bottom:1px solid var(--mid); }
 .rt tbody tr:nth-child(even) { background:var(--gray); }
@@ -110,14 +110,14 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
 .rt tbody tr.test td { color:#fff; font-weight:700; }
 .rt tbody tr.rest { background:var(--gray) !important; }
 .rt tbody tr.rest td { color:#999; font-style:italic; }
-.rt td { padding:4px 8px; font-size:8.5px; vertical-align:top; }
+.rt td { padding:7px 8px; font-size:10px; vertical-align:top; }
 .rt td strong { color:var(--rd); }
 .two-col { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:7px; }
 .tracker-table { width:100%; border-collapse:collapse; font-size:8px; }
 .tracker-table thead tr { background:linear-gradient(90deg,#080f02,#172208); }
-.tracker-table thead th { color:#fff; padding:5px 7px; font-weight:700; text-align:right; font-size:7.5px; }
+.tracker-table thead th { color:#fff; padding:7px 8px; font-weight:700; text-align:right; font-size:9px; }
 .tracker-table thead th.gold { color:var(--go); }
-.tracker-table tbody tr { border-bottom:1px solid var(--mid); height:26px; }
+.tracker-table tbody tr { border-bottom:1px solid var(--mid); height:44px; }
 .tracker-table tbody tr:nth-child(even) { background:var(--gray); }
 .tracker-table td { padding:4px 7px; }
 .wbadge { display:inline-block; color:#fff; font-size:7px; font-weight:800; padding:2px 7px; border-radius:10px; }
@@ -163,7 +163,7 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
     </div>
   </div>
 </div>
-<div class="pi">
+<div class="pi" style="justify-content:space-evenly;">
   <div class="tag g">🎯 מטרה</div>
   <div class="goal-box" style="margin-bottom:7px;">
     <p>לגדול, להתחזק, להגיע <strong>מוכן יותר לשנה הבאה</strong>. להיות הגרסא הכי טובה של עצמך.<br>
@@ -197,7 +197,6 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
       <div class="scard-title">שבוע 8 — הורדת עומס</div>
       <div class="scard-body">הפחתת נפחים<br>שחזור ומנוחה אקטיבית</div>
     </div>
-  </div>
   <div class="tag au">⚡ חימום קבוע לאימוני כוח</div>
   <div class="warmup">
     <div class="warmup-title">חימום לפני כל אימון כוח — ×4 סבבים</div>
@@ -394,34 +393,34 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
     <strong>⚠️ אופציונאלי לחלוטין.</strong> חוזרים על הסדר כל 7 שבועות. לשלב פעם בשבוע לפי הזמינות — עדיפות לשחייה בים.
   </div>
 
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:7px;">
-    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:8px 10px;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:7px; grid-auto-rows:1fr; flex:1;">
+    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:12px 14px;">
       <div style="font-weight:800; color:#1a5276; margin-bottom:4px; font-size:9px;">🏊 אימון 1 — שבוע 1</div>
-      <div style="font-size:8.5px; line-height:31.10;">25מ × 10 חתירה | מנוחה 30 שנ׳<br>מנוחה 3 דק׳<br>200מ × 3 חתירה | זמן מינימלי</div>
+      <div style="font-size:8.5px; line-height:1.6;">25מ × 10 חתירה | מנוחה 30 שנ׳<br>מנוחה 3 דק׳<br>200מ × 3 חתירה | זמן מינימלי</div>
     </div>
-    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:8px 10px;">
+    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:12px 14px;">
       <div style="font-weight:800; color:#1a5276; margin-bottom:4px; font-size:9px;">🏊 אימון 2 — שבוע 2</div>
-      <div style="font-size:8.5px; line-height:31.10;">200מ × 3–4 חתירה | מנוחה 45 שנ׳<br>50מ × 10 חזה | מנוחה 30 שנ׳</div>
+      <div style="font-size:8.5px; line-height:1.6;">200מ × 3–4 חתירה | מנוחה 45 שנ׳<br>50מ × 10 חזה | מנוחה 30 שנ׳</div>
     </div>
-    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:8px 10px;">
+    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:12px 14px;">
       <div style="font-weight:800; color:#1a5276; margin-bottom:4px; font-size:9px;">🏊 אימון 3 — שבוע 3</div>
-      <div style="font-size:8.5px; line-height:31.10;">1 ק"מ ללא הפסקה<br>מנוחה 5 דק׳<br>25מ × 10 חתירה | מנוחה 30 שנ׳</div>
+      <div style="font-size:8.5px; line-height:1.6;">1 ק"מ ללא הפסקה<br>מנוחה 5 דק׳<br>25מ × 10 חתירה | מנוחה 30 שנ׳</div>
     </div>
-    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:8px 10px;">
+    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:12px 14px;">
       <div style="font-weight:800; color:#1a5276; margin-bottom:4px; font-size:9px;">🏊 אימון 4 — שבוע 4</div>
-      <div style="font-size:8.5px; line-height:31.10;">8×50מ (25 ספרינט + 25 קל) | 40 שנ׳<br>8×50מ (25 קל + 25 ספרינט) | 40 שנ׳<br>3×400מ (200 קל + 200 מתגבר) | 2 דק׳</div>
+      <div style="font-size:8.5px; line-height:1.6;">8×50מ (25 ספרינט + 25 קל) | 40 שנ׳<br>8×50מ (25 קל + 25 ספרינט) | 40 שנ׳<br>3×400מ (200 קל + 200 מתגבר) | 2 דק׳</div>
     </div>
-    <div style="background:#d5f5e3; border:1px solid #27ae60; border-radius:6px; padding:8px 10px;">
+    <div style="background:#d5f5e3; border:1px solid #27ae60; border-radius:6px; padding:12px 14px;">
       <div style="font-weight:800; color:#1a5229; margin-bottom:4px; font-size:9px;">🏁 אימון 5 — שבוע 5 | בוחן 1 ק"מ</div>
-      <div style="font-size:8.5px; line-height:31.10;">4×100מ גב | מנוחה 90 שנ׳<br><strong>⭐ בוחן 1 ק"מ — לשלוח זמן לעמית</strong><br>3×25מ (3 נשימות) | 3×25מ (2 נשימות)</div>
+      <div style="font-size:8.5px; line-height:1.6;">4×100מ גב | מנוחה 90 שנ׳<br><strong>⭐ בוחן 1 ק"מ — לשלוח זמן לעמית</strong><br>3×25מ (3 נשימות) | 3×25מ (2 נשימות)</div>
     </div>
-    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:8px 10px;">
+    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:12px 14px;">
       <div style="font-weight:800; color:#1a5276; margin-bottom:4px; font-size:9px;">🏊 אימון 6 — שבוע 6</div>
-      <div style="font-size:8.5px; line-height:31.10;">8×25מ (2 נשימות מקסימום)<br>2×200מ (100 חתירה + 50 גב + 50 חזה)<br>7×1 דק׳ עבודת רגליים | 1–2 דק׳</div>
+      <div style="font-size:8.5px; line-height:1.6;">8×25מ (2 נשימות מקסימום)<br>2×200מ (100 חתירה + 50 גב + 50 חזה)<br>7×1 דק׳ עבודת רגליים | 1–2 דק׳</div>
     </div>
-    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:8px 10px; grid-column:1 / -1;">
+    <div style="background:#e8f4fd; border:1px solid #2980b9; border-radius:6px; padding:12px 14px; grid-column:1 / -1;">
       <div style="font-weight:800; color:#1a5276; margin-bottom:4px; font-size:9px;">🏊 אימון 7 — שבוע 7</div>
-      <div style="font-size:8.5px; line-height:31.10; display:flex; gap:20px;">
+      <div style="font-size:8.5px; line-height:1.6; display:flex; gap:20px;">
         <span>3×100מ חזה + 3×100מ חתירה | 45 שנ׳</span>
         <span>10×50מ חזה | 30 שנ׳</span>
         <span>8×25מ ללא נשימה | 30 שנ׳</span>
@@ -434,7 +433,7 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
 <div class="pf">
   <div class="ft">איתמר קדוש | שחייה שבועית</div>
   <div class="fb">XPERT כושר קרבי | kosherkravi.co.il</div>
-  <div class="fp">עמוד 6 מתוך 7</div>
+  <div class="fp">עמוד 5 מתוך 6</div>
 </div>
 </div>
 <div class="page">
@@ -447,7 +446,7 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
 </div>
 <div class="pi">
   <div class="tag g">📊 טבלת מעקב שבועית</div>
-  <table class="tracker-table">
+  <table class="tracker-table" style="flex:1;">
     <thead><tr>
       <th>שבוע</th><th>תאריך</th>
       <th>XPERT ש׳</th><th>XPERT ר׳</th>
@@ -466,8 +465,9 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
     </tbody>
   </table>
 
-  <div class="tag au" style="margin-top:6px;">🧠 אתגרים מנטליים — 7 שבועות</div>
-  <table class="tracker-table">
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:space-around; margin-top:6px;">
+  <div class="tag au">🧠 אתגרים מנטליים — 7 שבועות</div>
+  <table class="tracker-table" style="flex:1;">
     <thead><tr>
       <th>שבוע</th><th>האתגר המנטלי</th><th>בוצע</th>
     </tr></thead>
@@ -481,12 +481,13 @@ body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--tex
       <tr><td><span class="wbadge wb7">7</span></td><td>לסיים את שבוע 7 המלא — השבוע הכי קשה. אתה יכול.</td><td>☐</td></tr>
     </tbody>
   </table>
+  </div>
 </div>
 
 <div class="pf">
   <div class="ft">איתמר קדוש | מעקב שבועי</div>
   <div class="fb">XPERT כושר קרבי | kosherkravi.co.il</div>
-  <div class="fp">עמוד 7 מתוך 7</div>
+  <div class="fp">עמוד 6 מתוך 6</div>
 </div>
 </div>
 </body>
