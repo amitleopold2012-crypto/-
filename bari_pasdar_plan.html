@@ -56,7 +56,7 @@ body { font-family:'Heebo',Arial,sans-serif; background:#6a7060; color:var(--tex
 .hstat.red .v { color:var(--rl); }
 .hstat.g .v { color:var(--gl); }
 /* INNER */
-.pi { flex:1; padding:9px 17px 7px; display:flex; flex-direction:column; overflow:hidden; }
+.pi { flex:1; padding:10px 17px 8px; display:flex; flex-direction:column; overflow:hidden; gap:4px; }
 /* TAG */
 .tag { display:inline-flex; align-items:center; gap:5px;
   color:#fff; font-size:9px; font-weight:800; letter-spacing:1px;
@@ -213,8 +213,7 @@ body { font-family:'Heebo',Arial,sans-serif; background:#6a7060; color:var(--tex
     </div>
   </div>
 </div>
-</div>
-<div class="pi">
+<div class="pi" style="justify-content:flex-start;">
   <div class="tag au">📅 סקירת שבוע אימונים</div>
   <div class="sched-grid">
     <div class="scard"><div class="scard-icon">💪</div><div class="scard-title">ראשון</div><div class="scard-body">כוח עליון<br>6 חלקים</div></div>
@@ -243,52 +242,54 @@ body { font-family:'Heebo',Arial,sans-serif; background:#6a7060; color:var(--tex
   <div class="tag r">💪 ראשון — אימון כוח פלג גוף עליון</div>
   <div class="note" style="margin-bottom:4px"><strong>חימום:</strong> 5 דק׳ ריצה קלה → 5 מתח + 10 שכ"מ + 15 סקאווט × 2 סבבים + חימום מפרקים</div>
 
-  <div>
+  <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag r" style="font-size:8px;padding:3px 8px">חלק א׳ — שכיבות שמיכה עד כשל | 5 סטים</div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       <strong>שכיבות שמיכה עד כשל</strong> — לא מחפש חזרות, מחפש כשל אמיתי. מנוחה 1:20 בין סטים × 5 סטים.<br>
       <span style="color:#888;font-size:7.5px">* מספר החזרות ירד מסט לסט — זה תקין ורצוי.</span>
     </div>
   </div>
 
-  <div style="margin-top:4px">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag r" style="font-size:8px;padding:3px 8px">חלק ב׳ — סופר סט: 12 מתח + 12-16 מקבילים | 5 סטים</div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       <strong>12 מתח</strong> + מיד <strong>12–16 מקבילים</strong> (מינימום מנוחה בין התרגילים).<br>
       מנוחה 1:30–2:00 בין סטים × 5 סטים.
     </div>
   </div>
 
-  <div style="margin-top:4px">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag r" style="font-size:8px;padding:3px 8px">חלק ג׳ — אינוורטד רו עד כשל | 5 סטים <a href="https://www.youtube.com/watch?v=5W8F6MzZ8Rk" style="color:var(--red);font-size:7px">▶ YT</a></div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       <strong>אינוורטד רו עד כשל</strong> — רגליים ישרות כמו בסרטון. מנוחה 1:20 × 5 סטים.
     </div>
   </div>
 
-  <div style="margin-top:4px">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag r" style="font-size:8px;padding:3px 8px">חלק ד׳ — צ׳ין אפס + החזקה | 4 סטים</div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       <strong>10 חזרות צ׳ין אפס</strong> (מתח הפוך) + <strong>30 שניות החזקה סטטית</strong> (ידיים ישרות).<br>
       מנוחה 1:00–1:30 × 4 סטים.
     </div>
   </div>
 
-  <div style="margin-top:4px">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag r" style="font-size:8px;padding:3px 8px">חלק ה׳ — סטאר פלאנק | 4 סטים <a href="https://www.youtube.com/watch?v=-9toG6869YY" style="color:var(--red);font-size:7px">▶ YT</a></div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       <strong>20–30 שניות</strong> לכל צד. מנוחה 1:00 × 4 סטים.
     </div>
   </div>
 
-  <div style="margin-top:4px">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag r" style="font-size:8px;padding:3px 8px">חלק ו׳ — ברכיים לחזה במתח + החזקה | 4–5 סטים <a href="https://www.youtube.com/watch?v=_DUlB4YpZRw" style="color:var(--red);font-size:7px">▶ YT</a></div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       <strong>ברכיים לחזה במתח</strong> + <strong>20 שניות החזקה</strong> (ברכיים צמוד לחזה).<br>
       מנוחה 1:00 × 4–5 סטים.
     </div>
   </div>
 
+  </div>
 </div>
 <div class="pf"><div class="ft">בארי פסדר | מזכרת בתיה</div><div class="fb">XPERT כושר קרבי | kosherkravi.co.il</div><div class="fp">עמוד 2 מתוך 4</div></div>
 </div>
@@ -304,9 +305,10 @@ body { font-family:'Heebo',Arial,sans-serif; background:#6a7060; color:var(--tex
 <div class="pi">
   <div class="tag g">🦵 שלישי — אימון כוח פלג גוף תחתון</div>
 
-  <div style="margin-bottom:4px">
+  <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag g" style="font-size:8px;padding:3px 8px">חימום — 9 דק׳ | בכל דקה: עבוד את הזמן הרשום, יתרת הדקה — מנוחה</div>
-    <div class="part-body" style="display:flex;gap:6px;flex-wrap:wrap">
+    <div class="part-body" style="flex:1;" style="display:flex;gap:6px;flex-wrap:wrap">
       <span style="background:rgba(107,146,25,.15);border-radius:4px;padding:2px 6px;font-size:7.5px"><strong>דק׳ 1</strong> — 30 שנ׳ ספרינט</span>
       <span style="background:rgba(107,146,25,.15);border-radius:4px;padding:2px 6px;font-size:7.5px"><strong>דק׳ 2</strong> — 30 שנ׳ סקאווטים כמה שיותר</span>
       <span style="background:rgba(107,146,25,.15);border-radius:4px;padding:2px 6px;font-size:7.5px"><strong>דק׳ 3</strong> — 45 שנ׳ בטן סטטית</span>
@@ -314,9 +316,9 @@ body { font-family:'Heebo',Arial,sans-serif; background:#6a7060; color:var(--tex
     </div>
   </div>
 
-  <div style="margin-bottom:4px">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag g" style="font-size:8px;padding:3px 8px">חלק א׳ — AMRAP | 12 דק׳ (מש׳3: 16 דק׳) | ללא ווסט</div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       כמה שיותר סבבים ב-12 דק׳ (מש׳ 3 → 16 דק׳):
       <ul style="margin:3px 0 0 14px;padding:0;font-size:7.5px">
         <li><strong>45 שנ׳</strong> סקאווטים — כמה שיותר</li>
@@ -326,31 +328,32 @@ body { font-family:'Heebo',Arial,sans-serif; background:#6a7060; color:var(--tex
     </div>
   </div>
 
-  <div style="margin-bottom:4px">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag g" style="font-size:8px;padding:3px 8px">חלק ב׳ — 4 סטים (מש׳3: 5 סטים) | עם ווסט <a href="https://www.youtube.com/watch?v=dQqApCGd5Ss" style="color:var(--green);font-size:7px">▶ YT סקאווט</a></div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       <strong>40 סקאווט</strong> עם ווסט → <em>30 שנ׳ מנוחה</em> → <strong>45 שנ׳ לאנץ׳ סטטי עם ווסט</strong> בכל רגל → <em>מנוחה 1:30</em>.<br>
       <span style="color:#888;font-size:7.5px">מש׳ 3: עולים ל-5 סטים.</span>
     </div>
   </div>
 
-  <div style="margin-bottom:4px">
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag g" style="font-size:8px;padding:3px 8px">חלק ג׳ — 3 סטים (מש׳3: 4 סטים) | עם ווסט <a href="https://www.youtube.com/watch?v=dERDrMxVNbQ" style="color:var(--green);font-size:7px">▶ YT סטפ אפ</a></div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       <strong>24 חזרות סטפ אפ על ספסל</strong> עם ווסט (12 בכל רגל) → <em>15 שנ׳ מנוחה</em> → <strong>45 שנ׳ סקאווט סטטי עם ווסט</strong> (לרדת לאמצע, צמוד לקיר) → <em>מנוחה 1:30</em>.<br>
       <span style="color:#888;font-size:7.5px">מש׳ 3: עולים ל-4 סטים.</span>
     </div>
   </div>
 
-  <div>
+  <div style="flex:1;display:flex;flex-direction:column;">
     <div class="tag g" style="font-size:8px;padding:3px 8px">חלק ד׳ — טאבאטה | 3 סטים (מש׳3: 4 סטים) | עם ווסט</div>
-    <div class="part-body">
+    <div class="part-body" style="flex:1;">
       סבב אחד = 40 שנ׳ רצוף ללא מנוחה בין חלקי הסבב:<br>
       <strong>20 שנ׳ בטן סטטי</strong> (עם ווסט) → ישר <strong>20 שנ׳ בננה סטטי</strong> (עם ווסט) → ישר לסבב הבא.<br>
       <span style="color:#888;font-size:7.5px">* אין מנוחה בין הסבבים — הולך ישר מבטן לבננה ובחזרה. זה המהות של טאבאטה.</span>
     </div>
   </div>
 
+  </div>
 </div>
 <div class="pf"><div class="ft">בארי פסדר | מזכרת בתיה</div><div class="fb">XPERT כושר קרבי | kosherkravi.co.il</div><div class="fp">עמוד 3 מתוך 4</div></div>
 </div>
