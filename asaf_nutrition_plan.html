@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>תוכנית תזונה – אסף | Xpert כושר קרבי</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+@page { size: A4 portrait; margin: 0mm; }
+:root {
+  --green:#6b9219; --green-dark:#445e0e; --green-light:#9bbf30; --green-pale:#eaf4cc;
+  --red:#c0392b; --red-dark:#922b21;
+  --gold:#c8952a; --gold-light:#e8b84a;
+  --white:#fff; --gray-light:#f5f5f3; --gray-mid:#e0e0d8; --text:#222;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Heebo',Arial,sans-serif; background:#b0b8a8; color:var(--text); direction:rtl; font-size:8.5px; }
+.page {
+  width:210mm; height:297mm;
+  margin:8mm auto;
+  background:var(--white);
+  box-shadow:0 4px 32px rgba(0,0,0,.3);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.topbar { height:5px; background:linear-gradient(90deg,#922b21 0%,#c0392b 20%,#445e0e 45%,#6b9219 65%,#9bbf30 82%,#c8952a 100%); flex-shrink:0; }
+.page-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:5px 16px; background:linear-gradient(90deg,#0d1a05 0%,#1a2a08 100%);
+  border-bottom:3px solid var(--green); flex-shrink:0;
+}
+.page-header .logo-img { height:26px; }
+.header-title { font-size:10px; font-weight:700; color:var(--white); letter-spacing:1px; text-align:center; }
+.header-title span { color:var(--gold-light); }
+.header-icon { width:28px; height:28px; border-radius:5px; overflow:hidden; }
+.header-icon img { width:100%; height:100%; object-fit:cover; }
+
+/* HERO COMPACT */
+.hero {
+  background:linear-gradient(135deg,#0a1203 0%,#1a2a08 60%,#0d1a05 100%);
+  padding:7px 16px 6px; display:flex; align-items:center; justify-content:space-between;
+  border-bottom:2px solid var(--green-dark); flex-shrink:0;
+}
+.hero-left { flex:1; }
+.hero-badge { display:inline-block; background:linear-gradient(135deg,var(--red-dark),var(--red));
+  color:var(--white); font-size:7px; font-weight:800; letter-spacing:2px;
+  padding:1px 8px; border-radius:20px; margin-bottom:3px; text-transform:uppercase; }
+.hero-name { font-size:22px; font-weight:900; color:var(--white); line-height:1.0; letter-spacing:-1px; }
+.hero-name .accent { color:var(--green-light); }
+.hero-sub { font-size:8.5px; color:rgba(255,255,255,.6); margin-top:2px; }
+.hero-stats { display:flex; gap:6px; margin-top:6px; }
+.hero-stat { background:rgba(255,255,255,.08); border:1px solid rgba(155,191,48,.25);
+  border-radius:6px; padding:3px 10px; text-align:center; }
+.hero-stat .val { font-size:15px; font-weight:900; color:var(--gold-light); line-height:1.0; }
+.hero-stat .lbl { font-size:6.5px; color:rgba(255,255,255,.5); font-weight:500; letter-spacing:1px; }
+.hero-stat.goal .val { color:var(--green-light); }
+.hero-right { text-align:center; flex-shrink:0; }
+.hero-kcal-ring { width:62px; height:62px; border-radius:50%;
+  background:conic-gradient(var(--green) 0% 46%,var(--red-dark) 46% 75%,var(--gold) 75% 100%);
+  display:flex; align-items:center; justify-content:center; position:relative; }
+.hero-kcal-ring::before { content:''; position:absolute; width:48px; height:48px; border-radius:50%; background:#0d1a05; }
+.hero-kcal-inner { position:relative; z-index:1; text-align:center; }
+.hero-kcal-inner .num { font-size:11px; font-weight:900; color:var(--gold-light); line-height:1.0; }
+.hero-kcal-inner .unit { font-size:6px; color:rgba(255,255,255,.6); font-weight:600; }
+.hero-kcal-lbl { font-size:7px; color:rgba(255,255,255,.5); margin-top:3px; }
+
+/* INNER */
+.page-inner { padding:7px 16px 6px 16px; flex:1; display:flex; flex-direction:column; overflow:hidden; }
+
+/* SECTION TAG */
+.section-tag { display:inline-flex; align-items:center;
+  background:linear-gradient(90deg,var(--green-dark) 0%,var(--green) 100%);
+  color:var(--white); font-size:8px; font-weight:800;
+  padding:2px 10px; border-radius:0 15px 15px 0;
+  margin-right:-16px; margin-bottom:4px; letter-spacing:1px; }
+.section-tag.red-tag { background:linear-gradient(90deg,var(--red-dark) 0%,var(--red) 100%); }
+.section-tag.gold-tag { background:linear-gradient(90deg,#8a6010 0%,var(--gold) 100%); }
+
+/* PRINCIPLES */
+.principles { background:#0d1a05; border-right:3px solid var(--green); padding:4px 10px; margin-bottom:5px; }
+.principle-row { display:flex; gap:6px; padding:1.5px 0; font-size:8px; color:rgba(255,255,255,.85); border-bottom:1px solid rgba(255,255,255,.06); }
+.principle-row:last-child { border-bottom:none; }
+.principle-row strong { color:var(--gold-light); }
+
+/* MEAL TABLE */
+.meal-table { width:100%; border-collapse:collapse; font-size:8.5px; margin-bottom:5px; }
+.meal-table thead tr { background:linear-gradient(90deg,#111 0%,#1a2a08 100%); }
+.meal-table thead th { color:var(--white); padding:4px 7px; font-size:7.5px; font-weight:700; text-align:right; }
+.meal-table thead th:last-child { color:var(--gold-light); }
+.meal-table tbody tr { border-bottom:1px solid var(--gray-mid); }
+.meal-table tbody tr:nth-child(even) { background:var(--gray-light); }
+.meal-table td { padding:4px 7px; vertical-align:top; }
+.meal-label { display:inline-flex; align-items:center; gap:3px; font-weight:700; font-size:8.5px; color:var(--green-dark); white-space:nowrap; }
+.meal-icon { font-size:10px; }
+.meal-main { font-size:8.5px; font-weight:600; color:#111; }
+.meal-sub { font-size:7.5px; color:#555; margin-top:1px; line-height:1.35; }
+.kcal-val { font-weight:800; font-size:10px; color:var(--green); }
+.protein-val { font-weight:700; font-size:8.5px; color:#666; }
+.total-row td { background:linear-gradient(90deg,#111 0%,#1a2a08 100%) !important; color:var(--white); font-weight:800; font-size:8.5px; border-bottom:none; }
+.total-row td .kcal-val { color:var(--gold-light); font-size:10px; }
+.total-row td .protein-val { color:rgba(255,255,255,.8); }
+
+/* THREE COLUMN */
+.three-col { display:flex; gap:6px; margin-bottom:5px; }
+.three-col > div { flex:1; }
+
+/* MACRO TABLES */
+.macro-panel { border-radius:4px; overflow:hidden; }
+.macro-header { padding:3px 8px; font-size:8.5px; font-weight:800; color:#fff; }
+.macro-header.protein { background:linear-gradient(90deg,var(--green-dark),var(--green)); }
+.macro-header.carbs { background:linear-gradient(90deg,var(--red-dark),var(--red)); }
+.macro-header.fat { background:linear-gradient(90deg,#8a6010,var(--gold)); }
+.macro-table { width:100%; border-collapse:collapse; }
+.macro-table th { padding:2px 5px; text-align:right; font-size:7px; font-weight:700; border-bottom:1px solid rgba(255,255,255,.2); }
+.macro-table.protein th { background:#3a5a10; color:#fff; }
+.macro-table.carbs th { background:#7a1a0e; color:#fff; }
+.macro-table.fat th { background:#7a5010; color:#fff; }
+.macro-table td { padding:2px 5px; border-bottom:1px solid var(--gray-mid); font-size:7.5px; }
+.macro-table tr:last-child td { border-bottom:none; }
+.macro-table tr:nth-child(even) td { background:var(--gray-light); }
+.mv { font-weight:700; }
+.mv.p { color:var(--green-dark); }
+.mv.c { color:var(--red-dark); }
+.mv.f { color:#7a5010; }
+
+/* OPTIONS */
+.options-block { background:var(--green-pale); border-right:3px solid var(--green); border-radius:0 4px 4px 0; padding:4px 8px; margin-bottom:4px; }
+.options-block.red { background:#fff5f4; border-right-color:var(--red); }
+.options-block.gold { background:#fff9ee; border-right-color:var(--gold); }
+.options-title { font-size:7.5px; font-weight:800; color:var(--green-dark); margin-bottom:3px; }
+.options-title.red { color:var(--red-dark); }
+.options-title.gold { color:#6a4c10; }
+.option-row { display:flex; gap:4px; align-items:flex-start; padding:1.5px 0; font-size:7.5px; border-bottom:1px dashed rgba(107,146,25,.2); }
+.option-row:last-child { border-bottom:none; }
+.option-row.red { border-bottom-color:rgba(192,57,43,.15); }
+.option-num { background:var(--green-dark); color:#fff; font-size:6.5px; font-weight:800;
+  min-width:13px; height:13px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+.option-num.red { background:var(--red-dark); }
+.option-num.gold { background:#8a6010; }
+.option-text { flex:1; color:#333; line-height:1.4; }
+.option-text strong { color:var(--green-dark); }
+.option-text strong.red { color:var(--red-dark); }
+.option-text strong.gold { color:#7a5010; }
+
+/* TWO-COL */
+.two-col { display:flex; gap:6px; margin-bottom:4px; }
+.two-col > div { flex:1; }
+
+/* FOOTER */
+.page-footer { padding:4px 16px;
+  background:linear-gradient(90deg,#0d1a05 0%,#1a2a08 100%);
+  display:flex; align-items:center; justify-content:space-between;
+  border-top:2px solid var(--green-dark); flex-shrink:0; }
+.footer-text { font-size:7px; color:rgba(255,255,255,.5); }
+.footer-brand { font-size:7.5px; color:var(--gold-light); font-weight:700; }
+@media print {
+  body { background:white; }
+  .page { margin:0; box-shadow:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+<div class="topbar"></div>
+<div class="page-header">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Xpert כושר קרבי">
+  <div class="header-title">תוכנית תזונה – ירידה במשקל | <span>אסף</span></div>
+  <div class="header-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTEwVDE0OjQ2OjE3KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xMFQxNDo0NzoyNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODU0ZjMyMy1lZTcxLTVmNGEtYWNhNS1mZGE1ZmZhZjYxODgi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" alt="X"></div>
+</div>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">MASS GAIN PLAN · PHASE A</div>
+    <div class="hero-name"><span class="accent">אסף</span></div>
+    <div class="hero-sub">עלייה מ-67 ל-71 ק"ג | שלב א׳ | 3 ארוחות ביום</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="val">67</div><div class="lbl">משקל נוכחי</div></div>
+      <div class="hero-stat goal"><div class="val">71</div><div class="lbl">משקל יעד</div></div>
+      <div class="hero-stat"><div class="val">3,000</div><div class="lbl">קק"ל/יום</div></div>
+      <div class="hero-stat"><div class="val">~200</div><div class="lbl">חלבון גרם</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-kcal-ring">
+      <div class="hero-kcal-inner"><div class="num">3,000</div><div class="unit">קק"ל</div></div>
+    </div>
+    <div class="hero-kcal-lbl">יעד קלורי</div>
+  </div>
+</div>
+
+<div class="page-inner">
+
+  <!-- PRINCIPLES + MEAL TABLE SIDE BY SIDE -->
+  <div class="two-col" style="margin-bottom:5px;">
+    <div>
+      <div class="section-tag">⚡ עקרונות</div>
+      <div class="principles">
+        <div class="principle-row">📈 <span><strong>3,000 קק"ל ביום</strong> – תפריט לעלייה במסה. נתאים לפי התגובה של הגוף</span></div>
+        <div class="principle-row">💪 <span><strong>200 גרם חלבון</strong> – בונה שריר ומאפשר עלייה איכותית במסה</span></div>
+        <div class="principle-row">🍽️ <span><strong>3 ארוחות</strong> – בוקר / צהריים / ערב. לא לדלג ולא לנשנש</span></div>
+        <div class="principle-row">⚖️ <span><strong>כל 3 ימים</strong> – שקילה בבוקר לפני אכילה + תמונה + משקל → לשלוח לעמית</span></div>
+        <div class="principle-row">🔄 <span><strong>גמישות מלאה</strong> – להחליף מאכלים לפי הטבלאות למטה</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag red-tag">🍽️ תפריט מודל יומי</div>
+      <table class="meal-table">
+        <thead><tr>
+          <th style="width:14%">ארוחה</th><th>מה אוכלים</th>
+          <th style="width:12%">קק"ל</th><th style="width:11%">חלבון</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td><div class="meal-label"><span class="meal-icon">🌅</span> בוקר</div></td>
+          <td><div class="meal-main">5 ביצים שלמות + 4 פרוסות לחם מלא</div>
+              <div class="meal-sub">+ קוטג' 3% (200 גרם) + עגבנייה + מלפפון + כף טחינה</div></td>
+          <td><span class="kcal-val">~780</span></td>
+          <td><span class="protein-val">~56 גרם</span></td>
+        </tr>
+        <tr>
+          <td><div class="meal-label"><span class="meal-icon">☀️</span> צהריים</div></td>
+          <td><div class="meal-main">350 גרם חזה עוף + 300 גרם אורז מבושל</div>
+              <div class="meal-sub">+ סלט ירקות + 2 כפות טחינה + שמן זית כף + לחם פרוסה</div></td>
+          <td><span class="kcal-val">~1,320</span></td>
+          <td><span class="protein-val">~89 גרם</span></td>
+        </tr>
+        <tr>
+          <td><div class="meal-label"><span class="meal-icon">🌙</span> ערב</div></td>
+          <td><div class="meal-main">300 גרם עוף / דג + 250 גרם אורז / פסטה</div>
+              <div class="meal-sub">+ ירקות מבושלים + שמן זית + סלט קטן + כף חמאת בוטנים</div></td>
+          <td><span class="kcal-val">~900</span></td>
+          <td><span class="protein-val">~55 גרם</span></td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>סה"כ – 3 ארוחות</strong></td>
+          <td><span class="kcal-val">~3,000</span></td>
+          <td><span class="protein-val">~200 גרם</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MACRO GUIDE -->
+  <div class="section-tag gold-tag">🥗 בנה את הצלחת שלך – מדריך מאקרו</div>
+  <div class="three-col">
+    <div class="macro-panel">
+      <div class="macro-header protein">💪 חלבון</div>
+      <table class="macro-table protein">
+        <thead><tr><th>מאכל</th><th>מנה</th><th>קק"ל</th><th>חלבון</th></tr></thead>
+        <tbody>
+        <tr><td>חזה עוף</td><td>100 גרם</td><td>165</td><td><span class="mv p">31 גרם</span></td></tr>
+        <tr><td>פירגית (ללא עור)</td><td>100 גרם</td><td>190</td><td><span class="mv p">27 גרם</span></td></tr>
+        <tr><td>בשר בקר רזה</td><td>100 גרם</td><td>180</td><td><span class="mv p">29 גרם</span></td></tr>
+        <tr><td>סלמון</td><td>100 גרם</td><td>185</td><td><span class="mv p">25 גרם</span></td></tr>
+        <tr><td>טונה (מים)</td><td>100 גרם</td><td>110</td><td><span class="mv p">25 גרם</span></td></tr>
+        <tr><td>ביצה שלמה</td><td>1 יח'</td><td>80</td><td><span class="mv p">6 גרם</span></td></tr>
+        <tr><td>חלבון ביצה</td><td>1 יח'</td><td>17</td><td><span class="mv p">3.5 גרם</span></td></tr>
+        <tr><td>קוטג' 3%</td><td>200 גרם</td><td>160</td><td><span class="mv p">22 גרם</span></td></tr>
+        <tr><td>יוגורט יווני 5%</td><td>200 גרם</td><td>200</td><td><span class="mv p">18 גרם</span></td></tr>
+        <tr><td>גבינה לבנה 5%</td><td>100 גרם</td><td>100</td><td><span class="mv p">12 גרם</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="macro-panel">
+      <div class="macro-header carbs">🍚 פחמימות</div>
+      <table class="macro-table carbs">
+        <thead><tr><th>מאכל</th><th>מנה</th><th>קק"ל</th><th>פחמימות</th></tr></thead>
+        <tbody>
+        <tr><td>אורז לבן מבושל</td><td>100 גרם</td><td>130</td><td><span class="mv c">28 גרם</span></td></tr>
+        <tr><td>אורז מלא מבושל</td><td>100 גרם</td><td>112</td><td><span class="mv c">23 גרם</span></td></tr>
+        <tr><td>פסטה מבושלת</td><td>100 גרם</td><td>130</td><td><span class="mv c">25 גרם</span></td></tr>
+        <tr><td>תפוח אדמה מבושל</td><td>100 גרם</td><td>87</td><td><span class="mv c">20 גרם</span></td></tr>
+        <tr><td>בטטה מבושלת</td><td>100 גרם</td><td>86</td><td><span class="mv c">20 גרם</span></td></tr>
+        <tr><td>שיבולת שועל</td><td>50 גרם</td><td>185</td><td><span class="mv c">32 גרם</span></td></tr>
+        <tr><td>לחם מלא</td><td>פרוסה</td><td>85</td><td><span class="mv c">14 גרם</span></td></tr>
+        <tr><td>פיתה מלאה</td><td>1 יח'</td><td>160</td><td><span class="mv c">30 גרם</span></td></tr>
+        <tr><td>קינואה מבושלת</td><td>100 גרם</td><td>120</td><td><span class="mv c">22 גרם</span></td></tr>
+        <tr><td>עדשים מבושלות</td><td>100 גרם</td><td>115</td><td><span class="mv c">20 גרם</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="macro-panel">
+      <div class="macro-header fat">🥑 שומן</div>
+      <table class="macro-table fat">
+        <thead><tr><th>מאכל</th><th>מנה</th><th>קק"ל</th><th>שומן</th></tr></thead>
+        <tbody>
+        <tr><td>שמן זית</td><td>כף (15 מ"ל)</td><td>120</td><td><span class="mv f">14 גרם</span></td></tr>
+        <tr><td>אבוקדו</td><td>חצי (80 גרם)</td><td>120</td><td><span class="mv f">11 גרם</span></td></tr>
+        <tr><td>חמאת בוטנים</td><td>כף (15 גרם)</td><td>95</td><td><span class="mv f">8 גרם</span></td></tr>
+        <tr><td>טחינה</td><td>כף (15 גרם)</td><td>90</td><td><span class="mv f">8 גרם</span></td></tr>
+        <tr><td>שקדים</td><td>25 גרם</td><td>145</td><td><span class="mv f">12 גרם</span></td></tr>
+        <tr><td>אגוזי מלך</td><td>25 גרם</td><td>165</td><td><span class="mv f">16 גרם</span></td></tr>
+        <tr><td>גבינה צהובה</td><td>פרוסה (25 גרם)</td><td>90</td><td><span class="mv f">7 גרם</span></td></tr>
+        <tr><td>גרעיני דלעת</td><td>25 גרם</td><td>135</td><td><span class="mv f">11 גרם</span></td></tr>
+        <tr><td>חומוס</td><td>100 גרם</td><td>165</td><td><span class="mv f">9 גרם</span></td></tr>
+        <tr><td>זיתים</td><td>50 גרם</td><td>75</td><td><span class="mv f">7 גרם</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MEAL OPTIONS 3 COLUMNS -->
+  <div class="three-col">
+    <div>
+      <div class="section-tag" style="font-size:7.5px;">🌅 אפשרויות בוקר (~780 קק"ל)</div>
+      <div class="options-block">
+        <div class="option-row"><div class="option-num">1</div><div class="option-text"><strong>קלאסי:</strong> 4 ביצים חביתה + 3 פרוסות לחם + קוטג' 200 גרם + ירקות</div></div>
+        <div class="option-row"><div class="option-num">2</div><div class="option-text"><strong>שיבולת שועל:</strong> שיבולת שועל 50 גרם + חלב 250 מ"ל + 3 ביצים קשות + יוגורט יווני 150 גרם</div></div>
+        <div class="option-row"><div class="option-num">3</div><div class="option-text"><strong>אבוקדו:</strong> 4 ביצים + אבוקדו חצי + 3 פרוסות לחם מלא + עגבנייה</div></div>
+        <div class="option-row"><div class="option-num">4</div><div class="option-text"><strong>חומוס:</strong> חומוס 150 גרם + 3 ביצים קשות + פיתה מלאה + סלט ירקות</div></div>
+        <div class="option-row"><div class="option-num">5</div><div class="option-text"><strong>יוגורט:</strong> יוגורט יווני 5% 300 גרם + שיבולת שועל 50 גרם + 3 ביצים קשות</div></div>
+        <div class="option-row"><div class="option-num">6</div><div class="option-text"><strong>לחם:</strong> 4 פרוסות לחם + גבינה לבנה 80 גרם + 3 ביצים + עגבנייה + זיתים</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag red-tag" style="font-size:7.5px;">☀️ אפשרויות צהריים (~1,320 קק"ל)</div>
+      <div class="options-block red">
+        <div class="option-row"><div class="option-num red">1</div><div class="option-text"><strong class="red">עוף ואורז:</strong> 300 גרם עוף גריל + 250 גרם אורז + סלט + טחינה 2 כפות</div></div>
+        <div class="option-row"><div class="option-num red">2</div><div class="option-text"><strong class="red">בשר ופסטה:</strong> 300 גרם בשר טחון + 250 גרם פסטה + רוטב עגבניות + סלט</div></div>
+        <div class="option-row"><div class="option-num red">3</div><div class="option-text"><strong class="red">סלמון ואורז:</strong> 300 גרם סלמון + 200 גרם אורז + ירקות מוקפצים + שמן זית</div></div>
+        <div class="option-row"><div class="option-num red">4</div><div class="option-text"><strong class="red">עוף ובטטה:</strong> 300 גרם עוף + 300 גרם בטטה + ירקות צלויים + שמן זית</div></div>
+        <div class="option-row"><div class="option-num red">5</div><div class="option-text"><strong class="red">טונה ואורז:</strong> 2 קופסאות טונה + 250 גרם אורז + שמן זית + עגבנייה + גבינה</div></div>
+        <div class="option-row"><div class="option-num red">6</div><div class="option-text"><strong class="red">שווארמה:</strong> 300 גרם עוף + פיתה מלאה + חומוס 100 גרם + ירקות + טחינה</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag gold-tag" style="font-size:7.5px;">🌙 אפשרויות ערב (~900 קק"ל)</div>
+      <div class="options-block gold">
+        <div class="option-row"><div class="option-num gold">1</div><div class="option-text"><strong class="gold">עוף ואורז:</strong> 250 גרם עוף + 200 גרם אורז + ירקות + שמן זית</div></div>
+        <div class="option-row"><div class="option-num gold">2</div><div class="option-text"><strong class="gold">דג ובטטה:</strong> 270 גרם דג אפוי + 200 גרם בטטה + ירקות + לימון</div></div>
+        <div class="option-row"><div class="option-num gold">3</div><div class="option-text"><strong class="gold">ביצים ולחם:</strong> 5 ביצים חביתה + 3 פרוסות לחם + קוטג' 150 גרם + סלט</div></div>
+        <div class="option-row"><div class="option-num gold">4</div><div class="option-text"><strong class="gold">עוף וקינואה:</strong> 250 גרם פירגית + 200 גרם קינואה + ירקות צלויים</div></div>
+        <div class="option-row"><div class="option-num gold">5</div><div class="option-text"><strong class="gold">שניצל ואורז:</strong> 250 גרם שניצל עוף (תנור) + 180 גרם אורז + ירקות</div></div>
+        <div class="option-row"><div class="option-num gold">6</div><div class="option-text"><strong class="gold">טונה ופסטה:</strong> קופסת טונה + 180 גרם פסטה + שמן זית + עגבנייה + ביצה</div></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- WEIGH-IN PROTOCOL -->
+  <div class="section-tag gold-tag" style="margin-top:4px;">⚖️ פרוטוקול שקילה — כל 3 ימים</div>
+  <div class="principles" style="margin-bottom:0;">
+    <div class="principle-row">🌅 <span><strong>מתי לשקול:</strong> בבוקר, ישר אחרי קימה — לפני אכילה, שתייה, ואפילו לפני שירותים</span></div>
+    <div class="principle-row">📸 <span><strong>מה לשלוח לעמית:</strong> תמונה של עצמך + תמונה של המשקל — באותו הוואטסאפ</span></div>
+    <div class="principle-row">📋 <span><strong>איך לרשום:</strong> אתה בונה רשימה מצטברת ושולח אותה בכל פעם</span></div>
+    <div class="principle-row" style="background:#1a2a08;border-radius:4px;padding:4px 8px;">
+      <span style="color:var(--gold-light);font-weight:800;">דוגמה לרשימה שתצטבר:</span>
+    </div>
+    <div class="principle-row">📅 <span style="font-family:monospace;letter-spacing:.5px;">13.6.26, 67.2 ק"ג<br>16.6.26, 67.5 ק"ג<br>19.6.26, 67.8 ק"ג<br>...</span></div>
+    <div class="principle-row">✅ <span><strong>ימי שקילה לדוגמה:</strong> 13.6 / 16.6 / 19.6 / 22.6 / 25.6 / 28.6 — כל 3 ימים קבוע</span></div>
+    <div class="principle-row">⚠️ <span><strong>חשוב:</strong> לא לשנות בגדים, לא לאכול, לא לשתות — הכי מדויק ככה</span></div>
+  </div>
+</div><!-- end page-inner -->
+
+<div class="page-footer">
+  <div class="footer-text">אסף | תוכנית תזונה – 2,500 קק"ל</div>
+  <div class="footer-brand">XPERT כושר קרבי | kosherkravi.co.il</div>
+</div>
+</div>
+
+</body>
+</html>
