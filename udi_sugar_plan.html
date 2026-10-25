@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>תוכנית אימונים | נועם נחשון | XPERT כושר קרבי</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+@page { size: A4 portrait; margin: 0mm; }
+:root {
+  --red:#c0392b; --rd:#922b21; --green:#6b9219; --gd:#445e0e; --gl:#9bbf30;
+  --gold:#c8952a; --go:#e8b84a; --dark:#0d1205; --pu:#7d3c98;
+  --white:#fff; --gray:#f5f5f3; --mid:#e0e0d8; --text:#222;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Heebo',Arial,sans-serif; background:#1a1a1a; color:var(--text); direction:rtl; font-size:8.5px; }
+.page { width:210mm; height:297mm; margin:0 auto; background:var(--white);
+  page-break-after:always; overflow:hidden; display:flex; flex-direction:column; }
+.page:last-child { page-break-after:avoid; }
+@media screen { .page { margin:7mm auto; box-shadow:0 6px 40px rgba(0,0,0,.4); } }
+.topbar { height:6px; flex-shrink:0;
+  background:linear-gradient(90deg,#922b21 0%,#c0392b 25%,#445e0e 50%,#6b9219 70%,#9bbf30 85%,#c8952a 100%); }
+.ph { flex-shrink:0; display:flex; align-items:center; justify-content:space-between;
+  padding:6px 17px; background:linear-gradient(90deg,#080f02,#111a04); border-bottom:3px solid var(--green); }
+.ph img.logo { height:28px; }
+.ph .htitle { font-size:10px; font-weight:700; color:#fff; letter-spacing:1px; text-align:center; }
+.ph .hicon { width:30px; height:30px; border-radius:5px; overflow:hidden; }
+.ph .hicon img { width:100%; height:100%; object-fit:cover; }
+.hero-p1 { flex-shrink:0; position:relative; height:155px; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; background-size:cover; background-position:center 25%;
+  opacity:.5; filter:saturate(.7) brightness(.85); }
+.hero-ov { position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(5,10,2,.92) 0%,rgba(12,22,4,.65) 50%,rgba(5,10,2,.80) 100%); }
+.hero-content { position:relative; z-index:2; padding:12px 20px 10px; height:100%;
+  display:flex; flex-direction:column; justify-content:space-between; }
+.hero-badge { display:inline-block; background:linear-gradient(135deg,var(--rd),var(--red));
+  color:#fff; font-size:7px; font-weight:800; letter-spacing:3px;
+  padding:3px 12px; border-radius:20px; margin-bottom:4px; text-transform:uppercase; }
+.hero-name { font-size:32px; font-weight:900; color:#fff; line-height:1.0; letter-spacing:-1px; text-shadow:0 2px 8px rgba(0,0,0,.6); }
+.hero-name .acc { color:var(--gl); }
+.hero-sub { font-size:9px; color:rgba(255,255,255,.65); margin-top:2px; }
+.hero-stats { display:flex; gap:7px; flex-wrap:wrap; }
+.hstat { background:rgba(255,255,255,.08); border:1px solid rgba(155,191,48,.3); border-radius:8px; padding:4px 11px; text-align:center; }
+.hstat .v { font-size:12px; font-weight:900; color:var(--go); line-height:1.0; }
+.hstat .l { font-size:6.5px; color:rgba(255,255,255,.5); font-weight:500; margin-top:1px; }
+.pi { flex:1; padding:7px 17px 5px; display:flex; flex-direction:column; overflow:hidden; }
+.tag { display:inline-flex; align-items:center; gap:4px;
+  color:#fff; font-size:8.5px; font-weight:800; letter-spacing:1px;
+  padding:2px 12px 2px 8px; border-radius:0 15px 15px 0;
+  margin-right:-17px; margin-bottom:5px; }
+.tag.g  { background:linear-gradient(90deg,var(--gd),var(--green)); }
+.tag.r  { background:linear-gradient(90deg,var(--rd),var(--red)); }
+.tag.au { background:linear-gradient(90deg,#7a4a08,var(--gold)); }
+.tag.dk { background:linear-gradient(90deg,#080f02,#172208); border-left:3px solid var(--green); }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:6px; }
+.box { background:var(--gray); border:1px solid var(--mid); border-radius:5px; padding:5px 9px; }
+.box-title { font-size:8.5px; font-weight:800; color:var(--rd); margin-bottom:2px; }
+.box-body { font-size:7.5px; color:#444; line-height:1.5; }
+.box.dark { background:#080f02; border-color:#2a3a0a; }
+.box.dark .box-title { color:var(--gl); }
+.box.dark .box-body { color:rgba(255,255,255,.75); }
+.wu-box { background:linear-gradient(90deg,#1a0808,#2a0f0f); border-right:4px solid var(--red);
+  padding:5px 12px; margin-bottom:5px; border-radius:0 5px 5px 0; }
+.wu-box p { font-size:8.5px; color:rgba(255,255,255,.9); line-height:1.7; }
+.wu-box strong { color:var(--go); }
+.part-hdr { background:linear-gradient(90deg,#0d1a05,#1c2e08); color:#fff; padding:3px 10px;
+  font-size:8.5px; font-weight:800; display:flex; align-items:center; gap:5px;
+  border-right:4px solid var(--green); margin-bottom:0; }
+.part-hdr.r { border-right-color:var(--red); background:linear-gradient(90deg,#1a0808,#2a0f0f); }
+.part-hdr.au { border-right-color:var(--gold); background:linear-gradient(90deg,#1a1008,#2a1a05); }
+.part-body { background:var(--gray); border:1px solid var(--mid); border-top:none;
+  padding:4px 11px; margin-bottom:4px; font-size:8.5px; line-height:1.6; }
+.part-body strong { color:var(--rd); }
+.part-body em { color:var(--gd); font-style:normal; font-weight:700; }
+.part-body a { color:var(--green); font-size:8px; }
+.note { border-radius:0 5px 5px 0; padding:4px 10px; margin-bottom:4px; font-size:8px; line-height:1.5; }
+.note.g { background:#eaf4cc; border-right:3px solid var(--gd); color:#2a3a0a; }
+.note.g strong { color:var(--gd); }
+.note.r { background:#fdf0ef; border-right:3px solid var(--rd); color:#3a0a08; }
+.note.r strong { color:var(--rd); }
+.note.au { background:#fff8e6; border-right:3px solid var(--gold); color:#4a3500; }
+.rt { width:100%; border-collapse:collapse; font-size:8px; margin-bottom:5px; }
+.rt thead tr { background:linear-gradient(90deg,#080f02,#172208); }
+.rt thead th { color:#fff; padding:3px 7px; font-size:7.5px; font-weight:700; text-align:right; }
+.rt thead th.gold { color:var(--go); }
+.rt tbody tr { border-bottom:1px solid var(--mid); }
+.rt tbody tr:nth-child(even) { background:var(--gray); }
+.rt tbody tr.deload { background:linear-gradient(90deg,#0d1a05,#1c2e08) !important; }
+.rt tbody tr.deload td { color:rgba(255,255,255,.8) !important; }
+.rt td { padding:3px 7px; font-size:8px; vertical-align:middle; }
+.wbadge { display:inline-block; color:#fff; font-size:7px; font-weight:800; padding:1.5px 6px; border-radius:10px; }
+.wb1{background:var(--rd);} .wb2{background:#b03020;} .wb3{background:var(--red);}
+.wb4{background:var(--gd);} .wb5{background:var(--green);} .wb6{background:#7a7010;}
+.wb7{background:#5a5008;} .wb8{background:#3a3a3a;}
+.ft { flex-shrink:0; background:linear-gradient(90deg,#080f02,#111a04);
+  padding:4px 17px; display:flex; justify-content:space-between; align-items:center;
+  border-top:2px solid var(--gd); }
+.ft-l { font-size:7px; color:rgba(255,255,255,.4); }
+.ft-c { font-size:7.5px; color:var(--go); font-weight:700; }
+.ft-r { font-size:7px; color:rgba(255,255,255,.4); }
+</style>
+<style>
+.hero-team { font-size:9px; color:var(--go); font-weight:700; margin-top:2px; }
+.scard { background:var(--gray); border:1px solid var(--mid); border-radius:5px; padding:5px 6px; text-align:center; }
+.scard-icon { font-size:14px; margin-bottom:2px; }
+.scard-title { font-size:7.5px; font-weight:800; color:var(--rd); margin-bottom:1px; }
+.scard-body { font-size:7px; color:#444; line-height:1.4; }
+.scard.dark { background:#0d1a05; border-color:#2a3a0a; }
+.scard.dark .scard-title { color:var(--gl); }
+.scard.dark .scard-body { color:rgba(255,255,255,.75); }
+.scard.rest { background:#f0f0f0; }
+.scard.rest .scard-title { color:#888; }
+.scard.rest .scard-body { color:#666; }
+.pf { flex-shrink:0; padding:4px 17px;
+  background:linear-gradient(90deg,#080f02,#111a04); border-top:2px solid var(--gd);
+  display:flex; align-items:center; justify-content:space-between; }
+.pf .ft { font-size:7px; color:rgba(255,255,255,.4); }
+.pf .fb { font-size:8px; color:var(--go); font-weight:700; }
+.pf .fp { font-size:7px; color:rgba(255,255,255,.3); }
+.rt tbody tr.rest td { color:rgba(255,255,255,.8) !important; }
+.rt tbody tr.rest { background:linear-gradient(90deg,#3a3a3a,#555) !important; }
+</style>
+
+<div class="page">
+  <div class="topbar"></div>
+  <div class="ph">
+    <img class="logo" src="data:image/png;base64,data:image/png;base64,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" alt="Xpert">
+    <div class="htitle">תוכנית אימונים | אודי סוכר | <span>XPERT כושר קרבי</span></div>
+    <div class="ph-icon"><img src="" alt="X"></div>
+  </div>
+  <div class="hero-p1">
+    <div class="hero-bg" style="background-image:url()"></div>
+    <div class="hero-ov"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge">XPERT COMBAT FITNESS · 8 WEEKS</div>
+        <div class="hero-name"><span class="acc">אודי</span> סוכר</div>
+        <div class="hero-sub">תוכנית אישית | 7 שבועות עלייה + שבוע הורדת עומס | מזכרת בתיה</div>
+        <div class="hero-team">צוות ״אלפי״ מזכרת בתיה | XPERT שני + רביעי</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="v">26.10</div><div class="l">התחלה</div></div>
+        <div class="hstat"><div class="v">18.12</div><div class="l">סיום</div></div>
+        <div class="hstat"><div class="v">3</div><div class="l">אימונים/שבוע</div></div>
+        <div class="hstat"><div class="v">8</div><div class="l">שבועות</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pi">
+    <div class="tag r">🎯 מטרה</div>
+    <p style="font-size:8.5px;line-height:1.6;margin-bottom:6px;color:#333">
+      לגדול, להתחזק, להגיע מוכן יותר לשנה הבאה.<br>
+      <strong>יעד ריצה: 6 ק"מ רצוף בקצב קבוע של 4:10 דק'/ק"מ</strong> — ולשמור עליו לאורך כל הדרך.<br>
+      7 שבועות עלייה בנפחים + שבוע 8 הורדת עומס.
+    </p>
+
+    <div class="tag g">📅 לוח שבועי — 3 פעילויות</div>
+    <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px">
+      <div class="scard dark" style="flex:1;min-width:70px">
+        <div class="scard-icon">⚡</div>
+        <div class="scard-title">שני + רביעי</div>
+        <div class="scard-body">XPERT<br>צוות ״אלפי״ מזכרת בתיה<br>אימון קבוצתי מלא — לא מפספסים</div>
+      </div>
+      <div class="scard dark" style="flex:1;min-width:70px">
+        <div class="scard-icon">🏃</div>
+        <div class="scard-title">שישי</div>
+        <div class="scard-body">ריצת נפח<br>6 ק"מ | יעד: 4:10 דק'/ק"מ<br>בנייה הדרגתית לקצב יציב</div>
+      </div>
+      <div class="scard rest" style="flex:1;min-width:70px">
+        <div class="scard-icon">💤</div>
+        <div class="scard-title">שאר הימים</div>
+        <div class="scard-body">מנוחה פעילה<br>הליכה + מתיחות<br>שחזור מלא</div>
+      </div>
+    </div>
+
+    <div class="tag r">📆 לוח תאריכים — ריצת נפח שישי</div>
+    <table class="rt" style="margin-bottom:6px">
+      <thead><tr>
+        <th>שבוע</th><th>תאריך</th><th class="gold">מרחק</th><th class="gold">קצב יעד</th><th class="gold">זמן כולל</th><th class="gold">הערות</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="wbadge wb1">1</span></td><td>31.10</td><td><strong>4 ק"מ</strong></td><td>4:35/ק"מ</td><td>~18:20</td><td>כניסה בטוחה — בנה קצב</td></tr>
+        <tr><td><span class="wbadge wb2">2</span></td><td>7.11</td><td><strong>5 ק"מ</strong></td><td>4:25/ק"מ</td><td>~22:05</td><td>הגדלת מרחק — קצב יורד קצת</td></tr>
+        <tr><td><span class="wbadge wb3">3</span></td><td>14.11</td><td><strong>5 ק"מ</strong></td><td>4:20/ק"מ</td><td>~21:40</td><td>חיזוק הקצב על המרחק הנוכחי</td></tr>
+        <tr><td><span class="wbadge wb4">4</span></td><td>21.11</td><td><strong>6 ק"מ</strong></td><td>4:20/ק"מ</td><td>~26:00</td><td>מרחק מלא — קצב שמרני</td></tr>
+        <tr><td><span class="wbadge wb5">5</span></td><td>28.11</td><td><strong>6 ק"מ</strong></td><td>4:15/ק"מ</td><td>~25:30</td><td>הידוק הקצב על 6 ק"מ</td></tr>
+        <tr><td><span class="wbadge wb6">6</span></td><td>5.12</td><td><strong>6 ק"מ</strong></td><td>4:10/ק"מ</td><td>~25:00</td><td>קצב יעד — לשמור עד הסוף ✅</td></tr>
+        <tr><td><span class="wbadge wb5">7</span></td><td>12.12</td><td><strong>6 ק"מ</strong></td><td>4:10/ק"מ</td><td>~25:00</td><td>שמירה על הקצב — שיא! ✅</td></tr>
+        <tr class="rest"><td><span class="wbadge" style="background:#888">8</span></td><td>19.12</td><td>הורדת עומס</td><td>קל</td><td>—</td><td>4 ק"מ ריצה קלה + מתיחות</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note g" style="font-size:7.5px;padding:4px 8px;border-right:3px solid var(--green)">
+      💡 <strong>טיפ מפתח:</strong> המטרה היא <strong>קצב קבוע</strong> — לא להתחיל מהר ולהאט. ק"מ ראשון = ק"מ אחרון. אם מרגיש קל ב-5 ק"מ הראשונים — זה הסימן הנכון.
+    </div>
+  </div>
+  <div class="pf">
+    <div class="ft">אודי סוכר | צוות ״אלפי״ מזכרת בתיה</div>
+    <div class="fb">XPERT כושר קרבי | kosherkravi.co.il</div>
+    <div class="fp">עמוד 1 מתוך 1</div>
+  </div>
+</div>
+
+</html>
